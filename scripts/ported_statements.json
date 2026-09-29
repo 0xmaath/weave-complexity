@@ -1,0 +1,334 @@
+{
+ "axioms": [
+  {
+   "full": "Complexity.Classical.BasicProperties.L_subset_NL",
+   "mod": "Complexity.Classical.BasicProperties"
+  },
+  {
+   "full": "Complexity.Classical.BasicProperties.NL_subset_P",
+   "mod": "Complexity.Classical.BasicProperties"
+  },
+  {
+   "full": "Complexity.Classical.BasicProperties.P_subset_NP",
+   "mod": "Complexity.Classical.BasicProperties"
+  },
+  {
+   "full": "Complexity.Classical.BasicProperties.NP_subset_PSPACE",
+   "mod": "Complexity.Classical.BasicProperties"
+  },
+  {
+   "full": "Complexity.Classical.BasicProperties.NPSPACE_subset_EXPTIME",
+   "mod": "Complexity.Classical.BasicProperties"
+  },
+  {
+   "full": "Complexity.Classical.Certificates.unpair_pair",
+   "mod": "Complexity.Classical.Certificates"
+  },
+  {
+   "full": "Complexity.Classical.Certificates.pair_injective",
+   "mod": "Complexity.Classical.Certificates"
+  },
+  {
+   "full": "Complexity.Classical.Certificates.pair_length",
+   "mod": "Complexity.Classical.Certificates"
+  },
+  {
+   "full": "Complexity.Classical.ComplementClosure.closed_under_complement",
+   "mod": "Complexity.Classical.ComplementClosure"
+  },
+  {
+   "full": "Complexity.Classical.FiniteStackEquivalence.finiteStackP_eq_P",
+   "mod": "Complexity.Classical.FiniteStackEquivalence"
+  },
+  {
+   "full": "Complexity.Classical.ModelEquivalence.singleTapeP_eq_P",
+   "mod": "Complexity.Classical.ModelEquivalence"
+  },
+  {
+   "full": "Complexity.Classical.PolynomialSpaceEquality.PSPACE_eq_NPSPACE",
+   "mod": "Complexity.Classical.PolynomialSpaceEquality"
+  },
+  {
+   "full": "Complexity.Classical.SingleTapeComplement.closed_under_complement",
+   "mod": "Complexity.Classical.SingleTapeComplement"
+  },
+  {
+   "full": "Complexity.CookLevin.CircuitMachine.compile",
+   "mod": "Complexity.CookLevin.CircuitMachine"
+  },
+  {
+   "full": "Complexity.CookLevin.CookLevin.np_complete",
+   "mod": "Complexity.CookLevin.CookLevin"
+  },
+  {
+   "full": "Complexity.CookLevin.EncodingCorrect.roundtrip",
+   "mod": "Complexity.CookLevin.EncodingCorrect"
+  },
+  {
+   "full": "Complexity.CookLevin.FiniteWitness.bounded",
+   "mod": "Complexity.CookLevin.FiniteWitness"
+  },
+  {
+   "full": "Complexity.CookLevin.GateCorrect.correct",
+   "mod": "Complexity.CookLevin.GateCorrect"
+  },
+  {
+   "full": "Complexity.CookLevin.SATEncoding.correct",
+   "mod": "Complexity.CookLevin.SATEncoding"
+  },
+  {
+   "full": "Complexity.CookLevin.SATHard.hardness",
+   "mod": "Complexity.CookLevin.SATHard"
+  },
+  {
+   "full": "Complexity.CookLevin.SATinNP.membership",
+   "mod": "Complexity.CookLevin.SATinNP"
+  },
+  {
+   "full": "Complexity.CookLevin.TseitinCorrect.correct",
+   "mod": "Complexity.CookLevin.TseitinCorrect"
+  },
+  {
+   "full": "Complexity.CookLevin.VerifierCorrect.correct",
+   "mod": "Complexity.CookLevin.VerifierCorrect"
+  },
+  {
+   "full": "Complexity.CookLevin.VerifierTime.polynomial",
+   "mod": "Complexity.CookLevin.VerifierTime"
+  },
+  {
+   "full": "Complexity.ArcKayles.Biclique.value_eq",
+   "mod": "Complexity.ArcKayles.Biclique"
+  },
+  {
+   "full": "Complexity.ArcKayles.Completeness.membership",
+   "mod": "Complexity.ArcKayles.Completeness"
+  },
+  {
+   "full": "Complexity.ArcKayles.Completeness.pspace_complete",
+   "mod": "Complexity.ArcKayles.Completeness"
+  },
+  {
+   "full": "Complexity.ArcKayles.GrundyProperties.smaller_reachable",
+   "mod": "Complexity.ArcKayles.GrundyProperties"
+  },
+  {
+   "full": "Complexity.ArcKayles.GrundyProperties.value_not_reachable",
+   "mod": "Complexity.ArcKayles.GrundyProperties"
+  },
+  {
+   "full": "Complexity.ArcKayles.GrundyProperties.losing_iff_zero",
+   "mod": "Complexity.ArcKayles.GrundyProperties"
+  },
+  {
+   "full": "Complexity.ArcKayles.GrundyProperties.disjoint_union",
+   "mod": "Complexity.ArcKayles.GrundyProperties"
+  },
+  {
+   "full": "Complexity.ArcKayles.Passes.outcome_equivalent",
+   "mod": "Complexity.ArcKayles.Passes"
+  },
+  {
+   "full": "Complexity.ArcKayles.PositiveCNFHardness.hard",
+   "mod": "Complexity.ArcKayles.PositiveCNFHardness"
+  },
+  {
+   "full": "Complexity.ArcKayles.Reduction.false_strategy",
+   "mod": "Complexity.ArcKayles.Reduction"
+  },
+  {
+   "full": "Complexity.ArcKayles.Reduction.true_strategy",
+   "mod": "Complexity.ArcKayles.Reduction"
+  },
+  {
+   "full": "Complexity.ArcKayles.Reduction.polynomial_reduction",
+   "mod": "Complexity.ArcKayles.Reduction"
+  },
+  {
+   "full": "Complexity.ArcKayles.RegularPlay.deviation_loses",
+   "mod": "Complexity.ArcKayles.RegularPlay"
+  },
+  {
+   "full": "Complexity.ArcKayles.RegularPlay.exceptional_parity",
+   "mod": "Complexity.ArcKayles.RegularPlay"
+  },
+  {
+   "full": "Complexity.ArcKayles.Sizes.graph_length",
+   "mod": "Complexity.ArcKayles.Sizes"
+  },
+  {
+   "full": "Complexity.ArcKayles.Sizes.formula_length",
+   "mod": "Complexity.ArcKayles.Sizes"
+  },
+  {
+   "full": "Complexity.ArcKayles.Sizes.construction_size",
+   "mod": "Complexity.ArcKayles.Sizes"
+  }
+ ],
+ "aliases": {
+  "Complexity.Classical.BasicProperties.L_subset_NL": {
+   "proof_module": "Complexity.ClassicalProofs.BasicProperties",
+   "proof": "Complexity.ClassicalProofs.BasicProperties.L_subset_NL"
+  },
+  "Complexity.Classical.Certificates.unpair_pair": {
+   "proof_module": "Complexity.ClassicalProofs.Certificates",
+   "proof": "Complexity.ClassicalProofs.Certificates.unpair_pair"
+  },
+  "Complexity.Classical.Certificates.pair_injective": {
+   "proof_module": "Complexity.ClassicalProofs.Certificates",
+   "proof": "Complexity.ClassicalProofs.Certificates.pair_injective"
+  },
+  "Complexity.Classical.Certificates.pair_length": {
+   "proof_module": "Complexity.ClassicalProofs.Certificates",
+   "proof": "Complexity.ClassicalProofs.Certificates.pair_length"
+  },
+  "Complexity.Classical.ComplementClosure.closed_under_complement": {
+   "proof_module": "Complexity.ClassicalProofs.ComplementClosure",
+   "proof": "Complexity.ClassicalProofs.closed_under_complement"
+  },
+  "Complexity.Classical.FiniteStackEquivalence.finiteStackP_eq_P": {
+   "proof_module": "Complexity.ClassicalProofs.ModelEquivalence",
+   "proof": "Complexity.ClassicalProofs.ModelEquivalence.finiteStackP_eq_P"
+  },
+  "Complexity.Classical.ModelEquivalence.singleTapeP_eq_P": {
+   "proof_module": "Complexity.ClassicalProofs.ModelEquivalence",
+   "proof": "Complexity.ClassicalProofs.ModelEquivalence.singleTapeP_eq_P"
+  },
+  "Complexity.Classical.SingleTapeComplement.closed_under_complement": {
+   "proof_module": "Complexity.ClassicalProofs.ModelEquivalence",
+   "proof": "Complexity.ClassicalProofs.ModelEquivalence.singleTape_closed_under_complement"
+  },
+  "Complexity.Classical.BasicProperties.NL_subset_P": {
+   "proof_module": "Complexity.ClassicalProofs.NLPolynomialTime",
+   "proof": "Complexity.ClassicalProofs.NL_subset_P"
+  },
+  "Complexity.Classical.BasicProperties.NP_subset_PSPACE": {
+   "proof_module": "Complexity.ClassicalProofs.NPPolynomialSpace",
+   "proof": "Complexity.ClassicalProofs.NP_subset_PSPACE"
+  },
+  "Complexity.Classical.BasicProperties.NPSPACE_subset_EXPTIME": {
+   "proof_module": "Complexity.ClassicalProofs.NPSpaceExponentialTime",
+   "proof": "Complexity.ClassicalProofs.NPSPACE_subset_EXPTIME"
+  },
+  "Complexity.Classical.BasicProperties.P_subset_NP": {
+   "proof_module": "Complexity.ClassicalProofs.PSubsetNP",
+   "proof": "Complexity.ClassicalProofs.P_subset_NP"
+  },
+  "Complexity.Classical.PolynomialSpaceEquality.PSPACE_eq_NPSPACE": {
+   "proof_module": "Complexity.ClassicalProofs.PolynomialSpaceEquality",
+   "proof": "Complexity.ClassicalProofs.PSPACE_eq_NPSPACE"
+  },
+  "Complexity.CookLevin.FiniteWitness.bounded": {
+   "proof_module": "Complexity.CookLevinProofs.Certificates",
+   "proof": "Complexity.CookLevinProofs.finite_witness"
+  },
+  "Complexity.CookLevin.VerifierCorrect.correct": {
+   "proof_module": "Complexity.CookLevinProofs.Certificates",
+   "proof": "Complexity.CookLevinProofs.verifier_correct"
+  },
+  "Complexity.CookLevin.SATEncoding.correct": {
+   "proof_module": "Complexity.CookLevinProofs.Certificates",
+   "proof": "Complexity.CookLevinProofs.sat_encoding"
+  },
+  "Complexity.CookLevin.SATinNP.membership": {
+   "proof_module": "Complexity.CookLevinProofs.Certificates",
+   "proof": "Complexity.CookLevinProofs.sat_in_np"
+  },
+  "Complexity.CookLevin.CircuitMachine.compile": {
+   "proof_module": "Complexity.CookLevinProofs.CircuitMachine",
+   "proof": "Complexity.CookLevinProofs.Streaming.circuit_machine"
+  },
+  "Complexity.CookLevin.SATHard.hardness": {
+   "proof_module": "Complexity.CookLevinProofs.CookLevin",
+   "proof": "Complexity.CookLevinProofs.sat_hard"
+  },
+  "Complexity.CookLevin.CookLevin.np_complete": {
+   "proof_module": "Complexity.CookLevinProofs.CookLevin",
+   "proof": "Complexity.CookLevinProofs.cook_levin"
+  },
+  "Complexity.CookLevin.EncodingCorrect.roundtrip": {
+   "proof_module": "Complexity.CookLevinProofs.Encoding",
+   "proof": "Complexity.CookLevinProofs.encoding_roundtrip"
+  },
+  "Complexity.CookLevin.GateCorrect.correct": {
+   "proof_module": "Complexity.CookLevinProofs.Tseitin",
+   "proof": "Complexity.CookLevinProofs.gate_correct"
+  },
+  "Complexity.CookLevin.TseitinCorrect.correct": {
+   "proof_module": "Complexity.CookLevinProofs.Tseitin",
+   "proof": "Complexity.CookLevinProofs.tseitin_correct"
+  },
+  "Complexity.CookLevin.VerifierTime.polynomial": {
+   "proof_module": "Complexity.CookLevinProofs.VerifierTime",
+   "proof": "Complexity.CookLevinProofs.verifier_polynomial"
+  },
+  "Complexity.ArcKayles.Biclique.value_eq": {
+   "proof_module": "Complexity.ArcKaylesProofs.Biclique",
+   "proof": "Complexity.ArcKaylesProofs.biclique_value"
+  },
+  "Complexity.ArcKayles.Completeness.pspace_complete": {
+   "proof_module": "Complexity.ArcKaylesProofs.Completeness",
+   "proof": "Complexity.ArcKaylesProofs.arcKayles_pspace_complete"
+  },
+  "Complexity.ArcKayles.RegularPlay.deviation_loses": {
+   "proof_module": "Complexity.ArcKaylesProofs.Deviations",
+   "proof": "Complexity.ArcKaylesProofs.deviation_loses"
+  },
+  "Complexity.ArcKayles.GrundyProperties.disjoint_union": {
+   "proof_module": "Complexity.ArcKaylesProofs.DisjointUnion",
+   "proof": "Complexity.ArcKaylesProofs.disjoint_union"
+  },
+  "Complexity.ArcKayles.RegularPlay.exceptional_parity": {
+   "proof_module": "Complexity.ArcKaylesProofs.ExceptionalMove",
+   "proof": "Complexity.ArcKaylesProofs.exceptional_parity"
+  },
+  "Complexity.ArcKayles.Reduction.false_strategy": {
+   "proof_module": "Complexity.ArcKaylesProofs.FalseSimulation",
+   "proof": "Complexity.ArcKaylesProofs.false_strategy"
+  },
+  "Complexity.ArcKayles.GrundyProperties.smaller_reachable": {
+   "proof_module": "Complexity.ArcKaylesProofs.Grundy",
+   "proof": "Complexity.ArcKaylesProofs.smaller_reachable"
+  },
+  "Complexity.ArcKayles.GrundyProperties.value_not_reachable": {
+   "proof_module": "Complexity.ArcKaylesProofs.Grundy",
+   "proof": "Complexity.ArcKaylesProofs.value_not_reachable"
+  },
+  "Complexity.ArcKayles.GrundyProperties.losing_iff_zero": {
+   "proof_module": "Complexity.ArcKaylesProofs.Grundy",
+   "proof": "Complexity.ArcKaylesProofs.losing_iff_zero"
+  },
+  "Complexity.ArcKayles.Completeness.membership": {
+   "proof_module": "Complexity.ArcKaylesProofs.Membership",
+   "proof": "Complexity.ArcKaylesProofs.arcKayles_membership"
+  },
+  "Complexity.ArcKayles.Passes.outcome_equivalent": {
+   "proof_module": "Complexity.ArcKaylesProofs.Passes",
+   "proof": "Complexity.ArcKaylesProofs.outcome_equivalent"
+  },
+  "Complexity.ArcKayles.PositiveCNFHardness.hard": {
+   "proof_module": "Complexity.ArcKaylesProofs.PositiveCNFHardness",
+   "proof": "Complexity.ArcKaylesProofs.positiveCNF_hard"
+  },
+  "Complexity.ArcKayles.Reduction.polynomial_reduction": {
+   "proof_module": "Complexity.ArcKaylesProofs.ReductionTime",
+   "proof": "Complexity.ArcKaylesProofs.polynomial_reduction"
+  },
+  "Complexity.ArcKayles.Sizes.graph_length": {
+   "proof_module": "Complexity.ArcKaylesProofs.Sizes",
+   "proof": "Complexity.ArcKaylesProofs.graph_length"
+  },
+  "Complexity.ArcKayles.Sizes.formula_length": {
+   "proof_module": "Complexity.ArcKaylesProofs.Sizes",
+   "proof": "Complexity.ArcKaylesProofs.formula_length"
+  },
+  "Complexity.ArcKayles.Sizes.construction_size": {
+   "proof_module": "Complexity.ArcKaylesProofs.Sizes",
+   "proof": "Complexity.ArcKaylesProofs.construction_size"
+  },
+  "Complexity.ArcKayles.Reduction.true_strategy": {
+   "proof_module": "Complexity.ArcKaylesProofs.TrueSimulation",
+   "proof": "Complexity.ArcKaylesProofs.true_strategy"
+  }
+ }
+}
