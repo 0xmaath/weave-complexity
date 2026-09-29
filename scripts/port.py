@@ -252,7 +252,14 @@ replaced by `alias`es of their proofs; imports adjusted accordingly.
 -/
 """
 
-shutil.rmtree(f'{DST}/Complexity', ignore_errors=True)
+# Remove only the ported package trees; other modules under Complexity/ are hand-written.
+for _, _, _, t, tp, *_ in REPOS:
+    for m in (t, tp):
+        shutil.rmtree(f"{DST}/{m.replace('.', '/')}", ignore_errors=True)
+        try:
+            os.remove(f"{DST}/{m.replace('.', '/')}.lean")
+        except FileNotFoundError:
+            pass
 for f in files:
     path = f"{DST}/{f['newmod'].replace('.', '/')}.lean"
     os.makedirs(os.path.dirname(path), exist_ok=True)
@@ -263,11 +270,13 @@ os.makedirs(f'{DST}/LICENSES', exist_ok=True)
 for d, *_ in REPOS:
     shutil.copy(f'{SRC}/{d}/LICENSE', f'{DST}/LICENSES/{d}.LICENSE')
 
-# root module
+# root module (ported packages plus the hand-written milestone modules)
 roots = [tp for _, _, _, t, tp, *_ in REPOS] + [t for _, _, _, t, tp, *_ in REPOS]
 with open(f'{DST}/Complexity.lean', 'w') as out:
     out.write('/-\nRoot module of the Complexity library. Imports every ported definition and proof.\n-/\n')
     for r in sorted(roots):
+        out.write(f'import {r}\n')
+    for r in ['Complexity.Savitch', 'Complexity.Games.Membership', 'Complexity.QBF.Completeness']:
         out.write(f'import {r}\n')
 
 # ---------- statement-fidelity check file ----------
@@ -308,6 +317,10 @@ for a in axioms:
     chk.append('')
 with open(f'{DST}/Complexity/StatementCheck.lean', 'w') as out:
     out.write('\n'.join(chk))
+    # Hand-maintained restatements of later milestones' theorems.
+    extra_path = f'{DST}/scripts/StatementCheckExtra.lean'
+    if os.path.exists(extra_path):
+        out.write('\n' + open(extra_path).read())
 os.makedirs(f'{DST}/scripts', exist_ok=True)
 names = sorted(rename(a['full']) for a in axioms)
 with open(f'{DST}/scripts/AxiomCheck.lean', 'w') as out:
