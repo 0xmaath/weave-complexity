@@ -1,0 +1,16 @@
+name = "Complexity"
+defaultTargets = ["Complexity"]
+
+[leanOptions]
+autoImplicit = false
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4"
+rev = "db584cd6d46c92f209a44c0f1c829460d327499d"
+
+[[lean_lib]]
+name = "Complexity"
+# Build the root module and every module under Complexity/, including the
+# generated StatementCheck module that re-elaborates the archived statements.
+globs = ["Complexity.*"]
