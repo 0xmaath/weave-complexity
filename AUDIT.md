@@ -814,6 +814,261 @@ the port.
 
 ---
 
+## 9. Savitch's theorem (milestone 2)
+
+```lean
+theorem NPSPACE_subset_PSPACE : NPSPACE ⊆ PSPACE := by
+  rw [Complexity.Classes.PolynomialSpaceEquality.PSPACE_eq_NPSPACE]
+```
+(`Complexity/Savitch.lean`)
+
+The port already contains a complete Savitch simulation
+(`Complexity/ClassesProofs/SavitchProofs`, `SavitchDefinitions`), stated as the class
+equality `PSPACE = NPSPACE` on the §1.3 machine model. Milestone 2 exposes the nontrivial
+direction as an inclusion theorem next to the trivial one. There is no new mathematics here:
+the inclusion is the equality read from right to left. The statement is Sipser Corollary 8.6
+/ Arora–Barak Corollary 4.15 for the polynomial-space classes of §4.4. The general
+`NSPACE(s) ⊆ DSPACE(s²)` form is not stated (the port proves the polynomial-space instance
+only).
+
+---
+
+## 10. The game template (milestone 2)
+
+```lean
+/-- A polynomially bounded normal-play game with computable moves. -/
+structure Game where
+  arity : Polynomial ℕ
+  succ : Word → Word → ℕ → Option Word
+  start : Word → Option Word
+  size : Polynomial ℕ
+  rank : Word → Word → ℕ
+  length : Polynomial ℕ
+  succCode : Code MoveInput
+  startCode : Code Unit
+  succ_eval : ∀ w p k, succCode.eval (moveEnv w p (List.replicate k true)) = optionWord (succ w p k)
+  start_eval : ∀ w, startCode.eval (fun _ => w) = optionWord (start w)
+  start_size : ∀ w p, start w = some p → p.length ≤ size.eval w.length
+  succ_size : ∀ w p k q, p.length ≤ size.eval w.length → k < arity.eval w.length →
+    succ w p k = some q → q.length ≤ size.eval w.length
+  rank_lt : ∀ w p k q, p.length ≤ size.eval w.length → k < arity.eval w.length →
+    succ w p k = some q → rank w q < rank w p
+  rank_le : ∀ w p, p.length ≤ size.eval w.length → rank w p ≤ length.eval w.length
+
+def Move (w p q : Word) : Prop := ∃ k, k < G.arity.eval w.length ∧ G.succ w p k = some q
+
+def winEval (w : Word) : ℕ → Word → Bool
+  | 0, _ => false
+  | fuel + 1, p => (List.range (G.arity.eval w.length)).any fun k =>
+      (G.succ w p k).elim false fun q => !winEval w fuel q
+
+def Winning (w p : Word) : Prop := G.winEval w (G.length.eval w.length + 1) p = true
+
+def language : Language := {w | ∃ p, G.start w = some p ∧ G.Winning w p}
+```
+(`Complexity/Games/Alternating.lean`)
+
+```lean
+theorem Game.language_mem_PSPACE (G : Game) : G.language ∈ PSPACE
+```
+(`Complexity/Games/Membership.lean`)
+
+**What it says.** A game is played on binary words. The instance word `w` fixes an initial
+position (`start w = none` means `w` is not an instance and is rejected). From a position
+`p` the player to move has at most `arity(|w|)` candidate moves, indexed by `k`; `succ w p k`
+is the position after candidate `k`, or `none` when that candidate is not legal. Play is
+normal: a player with no legal move loses. `winEval` is the textbook backward-induction
+evaluation of the game tree with a fuel bound, `Winning` fixes the fuel at
+`length(|w|) + 1`, and `winning_iff` shows that on bounded positions this is the usual
+recursion `Winning p ↔ ∃ q, Move p q ∧ ¬ Winning q` (the fuel is irrelevant beyond the
+rank, `winEval_stable`). The two players are implicit in this recursion: after every move
+it is the other player's turn, exactly as in Sipser's treatment of generalized geography
+(Theorem 8.14) and Arora–Barak's of QBF as a game (§4.2.2).
+
+**Resource hypotheses.** These are what the textbook proof of "the game is in PSPACE"
+needs: positions have polynomial size (`size`), every play has polynomial length (a rank
+that strictly decreases along moves and is polynomially bounded), and the move relation is
+computable. Computability is supplied concretely, as programs in the tree's `Code` language
+(`succCode`, `startCode`) together with proofs that they compute `succ` and `start`. Every
+`Code` program runs in polynomial time and space by construction (that is what the ported
+compiler infrastructure guarantees; `Complexity.ArcKaylesProofs.MachineCode.code_polynomial_time`
+is the reduction-side witness and `CodeStepper` the space-side one), so the hypotheses are
+the standard "moves computable in polynomial time/space", not an oracle.
+
+**The proof** is the depth-first search of the game tree with an explicit stack of frames
+(position, remaining candidates, fuel); the stack has depth at most `length + 2` and each
+frame has polynomial size, so the search runs in polynomial space. This is the same
+argument, generic in the move relation, that the port used for Arc Kayles; the Arc Kayles
+membership proof is the special case `succ = try the k-th edge`.
+
+**Deviations.**
+
+* *Normal play, strict alternation.* The template has no explicit "terminal position won by
+  X" predicate and no "same player moves twice". Both are encoded by moves: a terminal win
+  is a move to a sink with no moves, a repeated turn is a pass move. This is a modelling
+  convention, not a restriction (see the TQBF instance in §12, which uses both).
+* *Universal laws.* The size and rank laws are required for *every* word `p` of bounded
+  length, not only for reachable positions, because the template quantifies over all words.
+  A concrete game therefore usually makes `succ` return `none` on malformed positions.
+* *Move computability is by `Code`.* A game whose moves are computable but not obviously
+  expressible in the `Code` language cannot instantiate the template without first writing
+  the program. The language is total and its programs are compiled, so this is the honest
+  form of the textbook hypothesis rather than a weakening of it.
+
+---
+
+## 11. Quantified Boolean formulas and TQBF (milestone 2)
+
+```lean
+inductive Expr
+  | var (i : ℕ)
+  | not (p : Expr)
+  | and (p q : Expr)
+  | or (p q : Expr)
+
+structure Formula where
+  quantifiers : List Bool
+  matrix : Expr
+
+def Holds (M : Expr) : List Bool → ℕ → (ℕ → Bool) → Prop
+  | [], _, ρ => M.eval ρ = true
+  | q :: qs, k, ρ =>
+      if q then ∀ b : Bool, Holds M qs (k + 1) (Function.update ρ k b)
+      else ∃ b : Bool, Holds M qs (k + 1) (Function.update ρ k b)
+
+def Closed (φ : Formula) : Prop := φ.matrix.Bounded φ.quantifiers.length
+def IsTrue (φ : Formula) : Prop := Holds φ.matrix φ.quantifiers 0 (fun _ => false)
+```
+(`Complexity/QBF/Syntax.lean`)
+
+A QBF is in prenex form: a quantifier prefix (`true` = ∀, `false` = ∃; the `i`-th
+quantifier binds variable `i`) over an unquantified Boolean formula built from variables,
+negation, conjunction and disjunction. This is Arora–Barak Definition 4.9 and Sipser's
+"fully quantified Boolean formula" (§8.3) with the usual prenex normalization. `Holds`
+is the textbook semantics: peel the quantifiers in order, each binding the next variable
+to `∀`/`∃` over `{false, true}`, then evaluate the matrix. `IsTrue` evaluates a formula from
+the all-`false` assignment; for closed formulas the start assignment is irrelevant
+(`Holds_congr`).
+
+```lean
+def TQBF : Language := {w | ∃ φ : Formula, decode w = some φ ∧ φ.IsTrue}
+```
+(`Complexity/QBF/Encoding.lean`)
+
+**Encoding.** A formula with `n` quantifiers and `N` matrix nodes is the word
+`1^n 0 · 1^N 0 · 1^W 0 · prefix · rec_0 ⋯ rec_{N-1}`: the prefix bits, then the matrix in
+postorder, one fixed-width record per node (two tag bits and a `W`-bit numeric field
+holding the variable index for a leaf and the size of the subtree for an inner node). In
+postorder the right operand of node `j` is node `j-1` and the left operand is node
+`j-1-size(j-1)`, so the sizes determine the tree. `valid` checks the header arithmetic and
+the local consistency of every record (canonical field padding, variable index below `n`,
+size of a negation = size of its operand + 1, size of a binary node = sum of the operands'
+sizes + 1, root size = `N`), and `decode` reads the tree back.
+
+* `decode_encode : φ.Closed → decode (encode φ) = some φ`: every closed formula has a word.
+* `decode_closed : decode w = some φ → φ.Closed`: every valid word is the word of a closed
+  formula (all variables bound).
+
+So `TQBF` is exactly "the words that encode true closed QBFs", the textbook language, for
+this encoding. Because the language is defined through `decode`, no injectivity of the
+encoding is needed for the definition to be meaningful; `encode` is one canonical word for
+each formula.
+
+**Deviations.**
+
+* *One specific encoding.* Any reasonable encoding of formulas is polynomially
+  interconvertible with this one, so PSPACE-completeness is encoding-independent in the
+  textbook sense, but only this encoding is formalized. The sizes stored in records make
+  validity a local check; a plain postfix token stream would also work but needs scanning
+  to find operands.
+* *Canonicity is not proved.* `valid w → w = encode (decode w)` is not stated. Validity
+  forces the postorder layout and canonical padding, so the encoding is in fact injective,
+  but nothing in the milestone depends on it and it is left unproved.
+* *Prenex only.* Non-prenex formulas are not part of the syntax; the standard prenexing
+  transformation is not formalized.
+
+---
+
+## 12. TQBF ∈ PSPACE as the formula game (milestone 2)
+
+```lean
+/-- Positions: t s 1^k 0 ρ 1^j 0 -/
+def mkPos (t s : Bool) (ρ : Word) (j : ℕ) : Word := …
+
+theorem TQBF_mem_PSPACE : TQBF ∈ PSPACE
+```
+(`Complexity/QBF/Game.lean`, `Complexity/QBF/TQBFGame.lean`)
+
+TQBF is proved to be in PSPACE by instantiating the game template with Sipser's formula
+game (§8.3): while quantifiers remain, the owner of the next quantifier (E for ∃, A for ∀)
+chooses the value of its variable; once the matrix is reached the players walk down the
+formula, A choosing a conjunct and E a disjunct, with the roles swapped by each negation
+(the parity bit `s`); at a leaf the player who is right about the literal's value moves to
+the empty sink position, which has no moves. Whenever it is not the owner's turn the only
+move is a pass, so alternation is strict. The main invariant
+(`TQBFGame.winning_iff_val`) says that at every well-formed position the player to move wins
+exactly when the value of the residual formula is on their side, proved by induction on
+the rank; at the initial position (E to move, nothing assigned, at the root) this is truth
+of the formula, giving `TQBFGame.language_eq : game.language = TQBF` and hence membership.
+
+The move function `succ` is written in the exact shape of its `Code` transcription
+(`Complexity/QBF/GameCode.lean`), and returns `none` on words that are not valid instances
+or not well-formed positions, which is what makes the template's universal size and rank
+laws hold. The validity test of §11 is part of the start program, so invalid words are
+rejected by the machine.
+
+**Deviation.** This is a different route from Sipser's direct recursive algorithm (Theorem
+8.9), which evaluates the formula with a recursion stack; the game formulation is
+Sipser's own second proof (Theorem 8.11 via the formula game) and Arora–Barak's remark in
+§4.2.2. Both give the same polynomial space bound.
+
+---
+
+## 13. TQBF is PSPACE-hard (milestone 2)
+
+```lean
+theorem TQBF_hard : Complexity.ArcKayles.PSPACE.Hard TQBF
+theorem TQBF_complete : Complexity.ArcKayles.PSPACE.Complete TQBF
+```
+(`Complexity/QBF/Completeness.lean`)
+
+Hardness is not assumed from the literature. The Arc Kayles port proves, from the §1.3
+definition of PSPACE, that the language `Byskov.signedLanguage` is PSPACE-hard
+(`Complexity.ArcKaylesProofs.signedCNF_hard`): a polynomial-space machine's configuration
+graph is compiled into a uniformly generated circuit, reachability is expressed by
+quantified repeated squaring, and the result is a prenex quantified CNF with a strictly
+alternating `∀ b_i ∃ c_i` prefix whose literals are `(round, existential?, positive?)`.
+That language is a QBF in disguise: variable `2i` is `b_i` (universal), variable `2i+1` is
+`c_i` (existential), and the matrix is a CNF. Milestone 2 makes the disguise explicit:
+
+* `Reduction.translate` builds the QBF with prefix `∀ x₀ ∃ x₁ ∀ x₂ ∃ x₃ ⋯` and, for each
+  clause, a left-deep disjunction over all variables of a fixed 14-node gadget that
+  evaluates to `x_u`, `¬x_u`, `x_u ∨ ¬x_u` or `false` according to which literals of `x_u`
+  the clause contains; `translate_true` proves that truth is preserved, by induction over
+  the rounds (each round of the signed semantics is one `∀` and one `∃` of `Holds`).
+* `ReductionCode.reductionCode` is a `Code` program that reads the signed-CNF word (the
+  positive-CNF formula-word format of the port: unary `4r`, unary `m`, then the `m × 4r`
+  incidence matrix) and emits `encode (translate r F)` record by record; words that are not
+  signed-CNF words, and the degenerate case `r = 0`, are sent to fixed true or false
+  instances. `reduction_polynomial : ManyOne signedLanguage TQBF` packages it as a Karp
+  reduction with the machine supplied by the ported `code_polynomial_time`.
+
+`PSPACE.Hard` and `PSPACE.Complete` are the tree's definitions (§5): hardness under
+polynomial-time many-one reductions in the same `FinTM2` model used for P and for the Arc
+Kayles reduction.
+
+**Deviations.**
+
+* *Route.* The textbook proof (Sipser Theorem 8.9, Arora–Barak Theorem 4.13) reduces an
+  arbitrary polynomial-space computation to TQBF directly by the Savitch-style recursion.
+  Here that step is inherited from the port's hardness proof of the signed-CNF language,
+  which performs exactly that recursion (with a circuit instead of a formula, converted to
+  CNF by the ported Tseitin lemma); milestone 2 adds only the change of syntax. The theorem
+  proved is the textbook theorem; the proof is factored differently.
+* *Gadget matrix.* The hard instances produced have a specific uniform matrix shape (14
+  nodes per variable and clause), so the reduction produces formulas that are polynomially
+  larger than the minimal CNF translation. This affects only the size polynomial.
+
 ## 8. Summary of deviations and weaknesses
 
 | Item | Status |
@@ -829,7 +1084,13 @@ the port.
 | Arc Kayles encoding | Labeled graphs, full adjacency matrix, injectivity proved. Other encodings not formalized. |
 | Reductions | Polynomial-time many-one (Karp), not log-space. |
 | Passes lemma | Finite pass budget (what the reduction needs), not the paper's unbounded version. |
+| Savitch (milestone 2) | Polynomial-space instance only (`NPSPACE ⊆ PSPACE`); no general `NSPACE(s) ⊆ DSPACE(s²)`. |
+| Game template (milestone 2) | Normal play with strict alternation (terminal wins and repeated turns are encoded as moves); move computability is given as `Code` programs; size/rank laws are required on all bounded words. |
+| QBF encoding (milestone 2) | Prenex formulas, one specific postorder-with-sizes encoding; canonicity (`valid w → w = encode (decode w)`) not proved. |
+| TQBF membership (milestone 2) | Via the formula game (Sipser's second proof), not the direct recursive evaluator. |
+| TQBF hardness (milestone 2) | Inherits the configuration-graph recursion from the port's signed-CNF hardness; milestone 2 adds the syntactic translation. Hard instances have a uniform gadget matrix. |
 
 Nothing in the list weakens the headline theorems as stated; they are the
 standard statements for the standard definitions, and the only axioms they
-use are `propext`, `Classical.choice` and `Quot.sound`.
+use are `propext`, `Classical.choice` and `Quot.sound` (checked for every
+ported statement and every milestone-2 theorem by `scripts/AxiomCheck.lean`).
