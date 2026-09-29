@@ -321,7 +321,7 @@ elab "#check_standard_axioms " ids:ident* : command => do
   let allowed : List Name := [``propext, ``Classical.choice, ``Quot.sound]
   let mut bad : Array (Name × Array Name) := #[]
   for id in ids do
-    let n ← liftCoreM <| realizeGlobalConstNoOverloadWithInfo id
+    let n ← resolveGlobalConstNoOverload id
     let axs ← collectAxioms n
     let extra := axs.filter fun a => !allowed.contains a
     logInfo m!"{n} depends on axioms: {axs.toList}"
