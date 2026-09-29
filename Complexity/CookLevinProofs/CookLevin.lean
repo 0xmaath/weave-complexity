@@ -12,6 +12,7 @@ import Complexity.CookLevin.SATEncoding
 import Complexity.CookLevin.SATinNP
 import Complexity.CookLevin.SATHard
 import Complexity.CookLevin.CookLevin
+import Batteries.Tactic.Alias
 import Complexity.CookLevinProofs.Certificates
 import Complexity.CookLevinProofs.CircuitMachine
 import Complexity.CookLevinProofs.Tseitin

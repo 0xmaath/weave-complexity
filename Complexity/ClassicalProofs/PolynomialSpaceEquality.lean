@@ -8,6 +8,7 @@ replaced by `alias`es of their proofs; imports adjusted accordingly.
 -/
 import Complexity.Classical.PolynomialSpaceEquality
 import Complexity.ClassicalProofs.SavitchProofs.Savitch
+import Batteries.Tactic.Alias
 
 namespace Complexity.ClassicalProofs
 

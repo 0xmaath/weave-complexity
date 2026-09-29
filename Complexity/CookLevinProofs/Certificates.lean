@@ -12,6 +12,7 @@ import Complexity.CookLevin.VerifierCorrect
 import Complexity.CookLevin.VerifierTime
 import Complexity.CookLevin.SATinNP
 import Complexity.CookLevin.SATEncoding
+import Batteries.Tactic.Alias
 import Complexity.CookLevinProofs.VerifierTime
 import Complexity.ClassicalProofs.Certificates
 

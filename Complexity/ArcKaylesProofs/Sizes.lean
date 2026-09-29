@@ -8,6 +8,7 @@ replaced by `alias`es of their proofs; imports adjusted accordingly.
 -/
 import Complexity.ArcKayles.Sizes
 import Mathlib.Tactic
+import Batteries.Tactic.Alias
 
 namespace Complexity.ArcKaylesProofs
 

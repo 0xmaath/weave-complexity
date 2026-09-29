@@ -9,6 +9,7 @@ replaced by `alias`es of their proofs; imports adjusted accordingly.
 import Complexity.ArcKaylesProofs.DriverTrace
 import Complexity.ArcKaylesProofs.InputCapture
 import Complexity.ArcKayles.Completeness
+import Batteries.Tactic.Alias
 
 set_option backward.isDefEq.respectTransparency false
 

@@ -7,6 +7,7 @@ renamed from `Lax689614Proofs.Passes` to `Complexity.ArcKaylesProofs.Passes`; co
 replaced by `alias`es of their proofs; imports adjusted accordingly.
 -/
 import Complexity.ArcKaylesProofs.PositiveCNF
+import Batteries.Tactic.Alias
 
 namespace Complexity.ArcKaylesProofs
 

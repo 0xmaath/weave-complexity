@@ -8,6 +8,7 @@ replaced by `alias`es of their proofs; imports adjusted accordingly.
 -/
 import Complexity.Classical.BasicProperties
 import Complexity.ClassicalProofs.SpaceExponentialTime
+import Batteries.Tactic.Alias
 import Complexity.ClassicalProofs.PolynomialSpaceEquality
 
 namespace Complexity.ClassicalProofs

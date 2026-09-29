@@ -8,6 +8,7 @@ replaced by `alias`es of their proofs; imports adjusted accordingly.
 -/
 import Complexity.CookLevinProofs.VerifierExecution
 import Complexity.CookLevin.VerifierTime
+import Batteries.Tactic.Alias
 
 namespace Complexity.CookLevinProofs
 

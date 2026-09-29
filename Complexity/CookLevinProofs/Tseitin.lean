@@ -9,6 +9,7 @@ replaced by `alias`es of their proofs; imports adjusted accordingly.
 import Complexity.CookLevin.GateCorrect
 import Complexity.CookLevin.TseitinCorrect
 import Mathlib.Tactic
+import Batteries.Tactic.Alias
 
 namespace Complexity.CookLevinProofs
 

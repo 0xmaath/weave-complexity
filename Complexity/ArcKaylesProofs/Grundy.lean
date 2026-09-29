@@ -9,6 +9,7 @@ replaced by `alias`es of their proofs; imports adjusted accordingly.
 import Complexity.ArcKayles.GrundyProperties
 import Mathlib.Data.Set.Finite.Basic
 import Mathlib.Tactic
+import Batteries.Tactic.Alias
 
 namespace Complexity.ArcKaylesProofs
 

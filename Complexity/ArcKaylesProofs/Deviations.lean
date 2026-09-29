@@ -7,6 +7,7 @@ renamed from `Lax689614Proofs.Deviations` to `Complexity.ArcKaylesProofs.Deviati
 replaced by `alias`es of their proofs; imports adjusted accordingly.
 -/
 import Complexity.ArcKaylesProofs.ClauseReplies
+import Batteries.Tactic.Alias
 
 namespace Complexity.ArcKaylesProofs
 

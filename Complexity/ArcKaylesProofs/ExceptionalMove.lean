@@ -8,6 +8,7 @@ replaced by `alias`es of their proofs; imports adjusted accordingly.
 -/
 import Complexity.ArcKaylesProofs.ResidualValues
 import Mathlib.Data.Fintype.Fin
+import Batteries.Tactic.Alias
 import Complexity.ArcKaylesProofs.Grundy
 
 namespace Complexity.ArcKaylesProofs

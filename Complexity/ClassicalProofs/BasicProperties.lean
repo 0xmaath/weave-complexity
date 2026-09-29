@@ -9,6 +9,7 @@ replaced by `alias`es of their proofs; imports adjusted accordingly.
 import Complexity.Classical.BasicProperties
 import Complexity.Classical.ModelEquivalence
 import Mathlib.Tactic
+import Batteries.Tactic.Alias
 import Complexity.ClassicalProofs.ModelEquivalence
 
 namespace Complexity.ClassicalProofs.BasicProperties

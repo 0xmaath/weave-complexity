@@ -11,6 +11,7 @@ import Complexity.CookLevinProofs.OutputMachine
 import Complexity.CookLevinProofs.OutputPolynomials
 import Complexity.CookLevinProofs.VerifierCompilation
 import Complexity.CookLevin.CircuitMachine
+import Batteries.Tactic.Alias
 
 set_option backward.isDefEq.respectTransparency false
 

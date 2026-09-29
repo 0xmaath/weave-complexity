@@ -153,7 +153,11 @@ for f in files:
             i = j + 1
             continue
         i += 1
-    # apply insertions from the end
+    # apply insertions from the end; make sure the `alias` command is available
+    if insertions and 'import Batteries.Tactic.Alias' not in t:
+        last = max(i for i, l in enumerate(lines) if l.startswith('import '))
+        lines.insert(last + 1, 'import Batteries.Tactic.Alias')
+        insertions = [(k + 1, text) for k, text in insertions]
     for k, text in sorted(insertions, key=lambda x: -x[0]):
         # ensure blank line separation
         block = ('' if (k > 0 and lines[k-1].strip() == '') else '\n') + text

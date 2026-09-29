@@ -8,6 +8,7 @@ replaced by `alias`es of their proofs; imports adjusted accordingly.
 -/
 import Complexity.Classical.BasicProperties
 import Complexity.ClassicalProofs.InclusionAux.ConfigurationSearch
+import Batteries.Tactic.Alias
 
 namespace Complexity.ClassicalProofs
 

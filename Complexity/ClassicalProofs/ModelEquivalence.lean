@@ -13,6 +13,7 @@ import Complexity.Classical.ComplementClosure
 import Complexity.ClassicalProofs.StackToTape
 import Complexity.ClassicalProofs.TapeToStack
 import Complexity.ClassicalProofs.ComplementClosure
+import Batteries.Tactic.Alias
 
 namespace Complexity.ClassicalProofs.ModelEquivalence
 

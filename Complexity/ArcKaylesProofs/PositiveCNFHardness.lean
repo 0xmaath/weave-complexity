@@ -9,6 +9,7 @@ replaced by `alias`es of their proofs; imports adjusted accordingly.
 import Complexity.ArcKaylesProofs.SpaceReductionCode
 import Complexity.ArcKaylesProofs.ReductionComposition
 import Complexity.ArcKayles.PositiveCNFHardness
+import Batteries.Tactic.Alias
 
 namespace Complexity.ArcKaylesProofs
 

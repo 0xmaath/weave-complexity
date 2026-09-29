@@ -8,6 +8,7 @@ replaced by `alias`es of their proofs; imports adjusted accordingly.
 -/
 import Complexity.ArcKaylesProofs.HeaderCode
 import Complexity.ArcKaylesProofs.WordReduction
+import Batteries.Tactic.Alias
 
 set_option backward.isDefEq.respectTransparency false
 
