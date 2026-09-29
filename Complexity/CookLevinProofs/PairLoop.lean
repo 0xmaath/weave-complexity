@@ -12,7 +12,7 @@ set_option backward.isDefEq.respectTransparency false
 
 namespace Complexity.CookLevinProofs.VerifierProgram
 
-open Complexity.Classical.PolynomialTime Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackProgram
+open Complexity.Classes.PolynomialTime Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackProgram
 
 lemma decodingLoop_end (base : Register → Word) (xs rev : Word) (conj disj : Bool) :
     Executes decodingLoop (decodingData base (true :: xs) rev conj disj)

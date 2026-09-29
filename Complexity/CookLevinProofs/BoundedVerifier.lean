@@ -7,13 +7,13 @@ renamed from `Lax429075Proofs.BoundedVerifier` to `Complexity.CookLevinProofs.Bo
 replaced by `alias`es of their proofs; imports adjusted accordingly.
 -/
 import Complexity.CookLevinProofs.WindowMachine
-import Complexity.Classical.Certificates
-import Complexity.ClassicalProofs.Certificates
-import Complexity.ClassicalProofs.ModelEquivalence
+import Complexity.Classes.Certificates
+import Complexity.ClassesProofs.Certificates
+import Complexity.ClassesProofs.ModelEquivalence
 
 namespace Complexity.CookLevinProofs.WindowMachine
 
-open Turing Complexity.Classical.MachineModels Complexity.Classical.PolynomialTime Complexity.Classical.Certificates
+open Turing Complexity.Classes.MachineModels Complexity.Classes.PolynomialTime Complexity.Classes.Certificates
 
 lemma polynomial_monotone (p : Polynomial ℕ) : Monotone p.eval := by
   intro x y hxy
@@ -58,7 +58,7 @@ lemma bounded_verifier (V : Language) (hV : V ∈ P) (p : Polynomial ℕ) :
       (pair x y).length < R.eval x.length ∧
       (M.accept ((next M (R.eval x.length))^[R.eval x.length]
         (initial M (R.eval x.length) (pair x y))).state = true ↔ pair x y ∈ V) := by
-  have hS : V ∈ SingleTapeP := by rw [Complexity.Classical.ModelEquivalence.singleTapeP_eq_P]; exact hV
+  have hS : V ∈ SingleTapeP := by rw [Complexity.Classes.ModelEquivalence.singleTapeP_eq_P]; exact hV
   obtain ⟨M, q, hM⟩ := hS
   refine ⟨M, horizon p q, ?_⟩
   intro x y hy

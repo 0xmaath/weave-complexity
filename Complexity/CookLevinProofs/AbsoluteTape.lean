@@ -6,12 +6,12 @@ see `LICENSES/cook-levin.LICENSE`. Modifications for this port: module and names
 renamed from `Lax429075Proofs.AbsoluteTape` to `Complexity.CookLevinProofs.AbsoluteTape`; concept-package `axiom` statements
 replaced by `alias`es of their proofs; imports adjusted accordingly.
 -/
-import Complexity.Classical.ModelEquivalence
+import Complexity.Classes.ModelEquivalence
 import Mathlib.Tactic
 
 namespace Complexity.CookLevinProofs.AbsoluteTape
 
-open Turing Complexity.Classical.MachineModels Complexity.Classical.PolynomialTime
+open Turing Complexity.Classes.MachineModels Complexity.Classes.PolynomialTime
 
 structure Cfg (M : SingleTape) where
   state : M.Q

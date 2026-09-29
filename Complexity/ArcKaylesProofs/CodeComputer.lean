@@ -6,8 +6,8 @@ see `LICENSES/arc-kayles.LICENSE`. Modifications for this port: module and names
 renamed from `Lax689614Proofs.CodeComputer` to `Complexity.ArcKaylesProofs.CodeComputer`; concept-package `axiom` statements
 replaced by `alias`es of their proofs; imports adjusted accordingly.
 -/
-import Complexity.ClassicalProofs.InclusionAux.TimeHelpers.BoundedCode
-import Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackClear
+import Complexity.ClassesProofs.InclusionAux.TimeHelpers.BoundedCode
+import Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackClear
 
 /-!
 The output-buffer conversion below adapts the Apache-2.0 proof in
@@ -18,13 +18,13 @@ package's extended `Code`, which also has space-capped iteration.
 
 namespace Complexity.ArcKaylesProofs.MachineCode
 
-open Complexity.ClassicalProofs.InclusionAux.TimeHelpers.Streaming
-open Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackProgram
-open Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackTransfer
-open Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackRename
-open Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackClear (clear clear_store)
-open Complexity.Classical.PolynomialTime Polynomial Turing
-open Complexity.ClassicalProofs.InclusionAux.TimeHelpers.CNFOutput
+open Complexity.ClassesProofs.InclusionAux.TimeHelpers.Streaming
+open Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackProgram
+open Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackTransfer
+open Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackRename
+open Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackClear (clear clear_store)
+open Complexity.Classes.PolynomialTime Polynomial Turing
+open Complexity.ClassesProofs.InclusionAux.TimeHelpers.CNFOutput
 
 theorem code_polynomial_time (c : Code Unit) :
     Nonempty (TM2ComputableInPolyTime id id (fun x => c.eval (fun _ => x))) := by

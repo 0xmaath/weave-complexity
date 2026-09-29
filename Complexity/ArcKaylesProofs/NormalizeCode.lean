@@ -12,8 +12,8 @@ set_option backward.isDefEq.respectTransparency false
 
 namespace Complexity.ArcKaylesProofs.MachineCode
 
-open Complexity.ClassicalProofs.InclusionAux.TimeHelpers.Streaming
-open Complexity.Classical.PolynomialTime Complexity.ArcKayles PositiveCNF
+open Complexity.ClassesProofs.InclusionAux.TimeHelpers.Streaming
+open Complexity.Classes.PolynomialTime Complexity.ArcKayles PositiveCNF
 
 def takeCode {I : Type} (n : Number I) (bits : I) : Code I :=
   Code.loop n (Test.input (some bits) (.length none)).code

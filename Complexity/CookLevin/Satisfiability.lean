@@ -7,7 +7,7 @@ renamed from `Lax429075.Satisfiability` to `Complexity.CookLevin.Satisfiability`
 replaced by `alias`es of their proofs; imports adjusted accordingly.
 -/
 import Complexity.CookLevin.Encoding
-import Complexity.Classical.Certificates
+import Complexity.Classes.Certificates
 
 /-!
 ---
@@ -22,7 +22,7 @@ when every clause is satisfied. Malformed encodings are outside the language.
 
 namespace Complexity.CookLevin.Satisfiability
 
-open CNF Encoding Complexity.Classical.PolynomialTime Complexity.Classical.Certificates
+open CNF Encoding Complexity.Classes.PolynomialTime Complexity.Classes.Certificates
 
 def assignment (y : Word) : Assignment := fun i => (y[i]?).getD false
 

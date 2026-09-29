@@ -11,7 +11,7 @@ import Complexity.CookLevinProofs.OutputGates
 
 namespace Complexity.CookLevinProofs.Streaming
 
-open CircuitBuilder Complexity.Classical.PolynomialTime
+open CircuitBuilder Complexity.Classes.PolynomialTime
 
 lemma compileMany_uniform_outputs (start width : ℕ) (es : List Expr)
     (hw : 0 < width) (hc : ∀ e ∈ es, e.cost = width) :

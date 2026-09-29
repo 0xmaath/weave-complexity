@@ -15,12 +15,12 @@ namespace Complexity.ArcKaylesProofs.CodeStepper
 
 noncomputable section
 
-open Complexity.ClassicalProofs.InclusionAux.TimeHelpers.Streaming
-open Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackProgram
-open Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackTransfer
-open Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackClear
-open Complexity.ClassicalProofs.SavitchProofs
-open Complexity.Classical.PolynomialTime Polynomial
+open Complexity.ClassesProofs.InclusionAux.TimeHelpers.Streaming
+open Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackProgram
+open Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackTransfer
+open Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackClear
+open Complexity.ClassesProofs.SavitchProofs
+open Complexity.Classes.PolynomialTime Polynomial
 open MachineCode
 
 def running (s : Word) : Bool := decide (s.length ≠ 2)

@@ -6,16 +6,16 @@ see `LICENSES/cook-levin.LICENSE`. Modifications for this port: module and names
 renamed from `Lax429075Proofs.VerifierProgram` to `Complexity.CookLevinProofs.VerifierProgram`; concept-package `axiom` statements
 replaced by `alias`es of their proofs; imports adjusted accordingly.
 -/
-import Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackCopy
-import Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackClear
+import Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackCopy
+import Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackClear
 import Complexity.CookLevinProofs.DecoderSoundness
 
 set_option backward.isDefEq.respectTransparency false
 
 namespace Complexity.CookLevinProofs.VerifierProgram
 
-open Complexity.Classical.PolynomialTime Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackProgram Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackTransfer
-open Complexity.ClassicalProofs.InclusionAux.TimeCompiler
+open Complexity.Classes.PolynomialTime Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackProgram Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackTransfer
+open Complexity.ClassesProofs.InclusionAux.TimeCompiler
 
 inductive Register where
   | input | formula | reverse | cursor | temporary | output

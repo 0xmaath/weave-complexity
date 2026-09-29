@@ -6,7 +6,7 @@ see `LICENSES/cook-levin.LICENSE`. Modifications for this port: module and names
 renamed from `Lax429075.Reductions` to `Complexity.CookLevin.Reductions`; concept-package `axiom` statements
 replaced by `alias`es of their proofs; imports adjusted accordingly.
 -/
-import Complexity.Classical.NondeterministicPolynomialTime
+import Complexity.Classes.NondeterministicPolynomialTime
 
 /-!
 ---
@@ -20,7 +20,7 @@ belongs to NP and every language in NP reduces to it.
 
 namespace Complexity.CookLevin.Reductions
 
-open Complexity.Classical.PolynomialTime Complexity.Classical.NondeterministicPolynomialTime
+open Complexity.Classes.PolynomialTime Complexity.Classes.NondeterministicPolynomialTime
 
 def ManyOne (A B : Language) : Prop :=
   ∃ f : Word → Word, Nonempty (Turing.TM2ComputableInPolyTime id id f) ∧

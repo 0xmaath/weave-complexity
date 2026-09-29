@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency false
 namespace Complexity.ArcKaylesProofs.CircuitStreaming
 
 open Complexity.CookLevinProofs.CircuitBuilder Complexity.CookLevinProofs.Streaming
-open Complexity.Classical.PolynomialTime
+open Complexity.Classes.PolynomialTime
 open Quantified (Vector)
 
 def vectorValue {I : Type} (n : ℕ) (e : Expression (Option I)) (a : I → Word) (ρ : ℕ → Bool) : Vector n :=

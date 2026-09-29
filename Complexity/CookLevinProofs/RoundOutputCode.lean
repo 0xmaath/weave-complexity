@@ -10,7 +10,7 @@ import Complexity.CookLevinProofs.RoundGateStream
 
 namespace Complexity.CookLevinProofs.Streaming
 
-open Complexity.Classical.PolynomialTime Complexity.Classical.MachineModels
+open Complexity.Classes.PolynomialTime Complexity.Classes.MachineModels
 open MachineCircuit CircuitBuilder
 
 variable {I : Type}

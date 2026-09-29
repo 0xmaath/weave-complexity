@@ -10,7 +10,7 @@ import Complexity.CookLevinProofs.CertificatePrefixes
 
 namespace Complexity.CookLevinProofs.CertificateCircuit
 
-open Complexity.Classical.PolynomialTime Complexity.CookLevin.CNF Complexity.CookLevin.Satisfiability CircuitBuilder
+open Complexity.Classes.PolynomialTime Complexity.CookLevin.CNF Complexity.CookLevin.Satisfiability CircuitBuilder
 
 def certificateAssignment (bound : ℕ) (y : Word) : Assignment := fun j =>
   if 0 < j ∧ j ≤ bound then assignment y (j - 1)

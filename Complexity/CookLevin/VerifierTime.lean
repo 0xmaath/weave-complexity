@@ -21,7 +21,7 @@ on malformed encodings, using the machine model of
 
 namespace Complexity.CookLevin.VerifierTime
 
-open Satisfiability Complexity.Classical.PolynomialTime
+open Satisfiability Complexity.Classes.PolynomialTime
 
 /- The archived concept stated `polynomial` here as an `axiom`. In this port it is a
 theorem: it is proved as `Complexity.CookLevinProofs.verifier_polynomial` in `Complexity.CookLevinProofs.VerifierTime`, which

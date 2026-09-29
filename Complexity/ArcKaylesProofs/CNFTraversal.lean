@@ -13,7 +13,7 @@ import Complexity.CookLevinProofs.EmitFormula
 namespace Complexity.ArcKaylesProofs.CNFTraversal
 
 open Complexity.CookLevin CNF Encoding
-open Complexity.Classical.PolynomialTime
+open Complexity.Classes.PolynomialTime
 
 /-- Advance one literal in a clause; a clause terminator is a fixed point. -/
 def literalStep (w : Word) : Word :=

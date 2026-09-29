@@ -16,8 +16,8 @@ set_option backward.isDefEq.respectTransparency false
 namespace Complexity.ArcKaylesProofs.CNFTraversal
 
 open Complexity.CookLevin CNF Encoding
-open Complexity.Classical.PolynomialTime
-open Complexity.ClassicalProofs.InclusionAux.TimeHelpers.Streaming
+open Complexity.Classes.PolynomialTime
+open Complexity.ClassesProofs.InclusionAux.TimeHelpers.Streaming
 
 def bindTest {I : Type} (c : Code I) (t : Test (Option I)) : Test I where
   value a := t.value (extend a (c.eval a))

@@ -12,7 +12,7 @@ set_option backward.isDefEq.respectTransparency false
 
 namespace Complexity.CookLevinProofs
 
-open Complexity.CookLevin Complexity.CookLevin.CNF Complexity.CookLevin.Encoding Complexity.Classical.PolynomialTime
+open Complexity.CookLevin Complexity.CookLevin.CNF Complexity.CookLevin.Encoding Complexity.Classes.PolynomialTime
 
 lemma parse_nat_sound (w : Word) (n : ℕ) (tail : Word) (h : parseNat w = some (n, tail)) :
     w = encodeNat n ++ tail := by

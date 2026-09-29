@@ -10,8 +10,8 @@ import Complexity.CookLevinProofs.VerifierCircuit
 
 namespace Complexity.CookLevinProofs.VerifierCircuit
 
-open Complexity.Classical.PolynomialTime Complexity.CookLevin.CNF Complexity.CookLevin.Circuits
-open Complexity.Classical.MachineModels CircuitBuilder CertificateCircuit MachineCircuit
+open Complexity.Classes.PolynomialTime Complexity.CookLevin.CNF Complexity.CookLevin.Circuits
+open Complexity.Classes.MachineModels CircuitBuilder CertificateCircuit MachineCircuit
 
 lemma prefixExpr_cost (bound : ℕ) : (prefixExpr bound).cost = 3 * (bound - 1) + 1 := by
   simp [prefixExpr, allExpr_cost, List.map_map, Function.comp_def, Expr.cost, Nat.mul_comm] <;> omega

@@ -13,7 +13,7 @@ import Batteries.Tactic.Alias
 
 namespace Complexity.ArcKaylesProofs
 
-open Complexity.Classical.PolynomialTime Complexity.Classical.PolynomialSpace Complexity.CookLevin.Reductions
+open Complexity.Classes.PolynomialTime Complexity.Classes.PolynomialSpace Complexity.CookLevin.Reductions
 
 theorem signedCNF_hard : Complexity.ArcKayles.PSPACE.Hard Byskov.signedLanguage := by
   intro A hA

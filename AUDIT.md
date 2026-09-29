@@ -10,7 +10,7 @@ flagged explicitly in a **Deviation** or **Weakness** paragraph.
 Every Lean snippet below is quoted verbatim from the ported sources
 (`Complexity/…`). The three source packages are
 [classical-complexity](https://github.com/EdouardBonnet/classical-complexity)
-(namespace `Complexity.Classical`),
+(namespace `Complexity.Classes`),
 [cook-levin](https://github.com/EdouardBonnet/cook-levin)
 (namespace `Complexity.CookLevin`) and
 [arc-kayles](https://github.com/EdouardBonnet/arc-kayles)
@@ -36,7 +36,7 @@ abbrev Word := List Bool
 /-- A language of finite binary strings. -/
 abbrev Language := Set Word
 ```
-(`Complexity/Classical/PolynomialTime.lean`)
+(`Complexity/Classes/PolynomialTime.lean`)
 
 Every complexity class in the library is a `Set Language`. This is exactly
 the textbook setting: languages are sets of finite strings over the binary
@@ -66,7 +66,7 @@ def P : Set Language :=
     (∀ w, f w = true ↔ w ∈ L) ∧
     Nonempty (Turing.TM2ComputableInPolyTime id Computability.encodeBool f)}
 ```
-(`Complexity/Classical/PolynomialTime.lean`)
+(`Complexity/Classes/PolynomialTime.lean`)
 
 `Turing.TM2ComputableInPolyTime ea eb f` is Mathlib's bundle of
 
@@ -115,9 +115,9 @@ def FiniteStackP : Set Language :=
     (M : TM2ComputableInPolyTime id Computability.encodeBool f),
     (∀ w, f w = true ↔ w ∈ L) ∧ ∀ k, Finite (M.tm.Γ k)}
 ```
-(`Complexity/Classical/MachineModels.lean`)
+(`Complexity/Classes/MachineModels.lean`)
 
-and `Complexity.Classical.FiniteStackEquivalence.finiteStackP_eq_P :
+and `Complexity.Classes.FiniteStackEquivalence.finiteStackP_eq_P :
 FiniteStackP = P` is proved. So P is exactly the class obtained with fully
 finite machines.
 
@@ -146,7 +146,7 @@ def SingleTapeP : Set Language :=
         (TM0.init (w.map M.input)) (some c) (p.eval w.length)) ∧
       TM0.step M.transition c = none ∧ (M.accept c.q = true ↔ w ∈ L)}
 ```
-(`Complexity/Classical/MachineModels.lean`)
+(`Complexity/Classes/MachineModels.lean`)
 
 `TM0.Machine Γ Q` is Mathlib's most elementary Turing machine: a partial
 function `Q → Γ → Option (Q × Stmt Γ)` where a statement either moves the head
@@ -158,7 +158,7 @@ machine must reach a halting configuration (`step … c = none`) within
 precisely Sipser's single-tape deterministic decider, with the standard
 quantifier order.
 
-`Complexity.Classical.ModelEquivalence.singleTapeP_eq_P : SingleTapeP = P`
+`Complexity.Classes.ModelEquivalence.singleTapeP_eq_P : SingleTapeP = P`
 is proved, so the two definitions of P (and hence Sipser's and Arora–Barak's
 presentations, modulo the multitape/stack simulations the port proves) agree.
 
@@ -238,7 +238,7 @@ inductive Machine.Run (M : Machine) (w : Word) : ℕ → M.Config → Prop
   | succ {n : ℕ} {c d : M.Config} :
       M.Run w n c → M.Step w c d → M.Run w (n + 1) d
 ```
-(`Complexity/Classical/SpaceMachines.lean`)
+(`Complexity/Classes/SpaceMachines.lean`)
 
 This is the textbook "offline" machine used to define sublinear space classes
 (Sipser §8.4 "read-only input tape"; Arora–Barak §4.1): a finite control, a
@@ -256,7 +256,7 @@ head by at most one cell. Points worth checking against the informal model:
   stored in the configuration; `readInput w` is a function of the immutable
   `w`. The input head is clamped to `[0, |w|+1]` by `min … (w.length + 1)`
   on the right and by truncated subtraction on the left, and the ported lemma
-  `Complexity.ClassicalProofs.SpaceSemantics.inputHead_le` proves the
+  `Complexity.ClassesProofs.SpaceSemantics.inputHead_le` proves the
   invariant for every run. Without clamping, an unbounded input-head position
   would be a free counter that could break the logarithmic-space classes.
 * **Work tape is semi-infinite and initially blank.** The tape is represented
@@ -278,7 +278,7 @@ are stated for this one-work-tape model.
 stack/tape machines, while L, NL, PSPACE, NPSPACE are defined on the space
 machine above. The library nevertheless proves the cross-model inclusions
 `NL ⊆ P`, `NP ⊆ PSPACE` and `NPSPACE ⊆ EXPTIME` by explicit simulations
-(`Complexity/ClassicalProofs/NLPolynomialTime.lean`, `NPPolynomialSpace.lean`,
+(`Complexity/ClassesProofs/NLPolynomialTime.lean`, `NPPolynomialSpace.lean`,
 `NPSpaceExponentialTime.lean` and their `InclusionAux`/`SavitchProofs`
 support). Those proofs are the evidence that the two models are consistent
 with each other in the way the textbooks assume.
@@ -292,7 +292,7 @@ with each other in the way the textbooks assume.
 def Machine.UsesSpace (M : Machine) (w : Word) (s : ℕ) : Prop :=
   ∀ (n : ℕ) (c : M.Config), M.Run w n c → c.workHead < s
 ```
-(`Complexity/Classical/SpaceMachines.lean`)
+(`Complexity/Classes/SpaceMachines.lean`)
 
 The textbook definition (Sipser Def. 8.1, Arora–Barak Def. 4.1) charges the
 number of work-tape cells *scanned* during the computation (blank or not), on
@@ -324,7 +324,7 @@ def NSPACE (s : ℕ → ℕ) : Set Language :=
 /-- An integer logarithm that is positive even at input length zero. -/
 def logSpace (n : ℕ) : ℕ := Nat.log 2 (n + 2)
 ```
-(`Complexity/Classical/SpaceBounds.lean`)
+(`Complexity/Classes/SpaceBounds.lean`)
 
 `DSPACE s` / `NSPACE s` use the *exact* bound `s(n)`; there is no implicit
 big-O. This is stricter than Sipser's `SPACE(f(n))`, which is defined with
@@ -365,7 +365,7 @@ def Machine.Deterministic (M : Machine) : Prop :=
   ∀ (q : M.Q) (i : InputSymbol) (b : M.Γ),
     ∀ a ∈ M.transition q i b, ∀ a' ∈ M.transition q i b, a = a'
 ```
-(`Complexity/Classical/SpaceMachines.lean`)
+(`Complexity/Classes/SpaceMachines.lean`)
 
 * **Nondeterminism** is the standard one: a transition table returning a
   finite *set* of actions; a computation is any sequence of legal steps
@@ -414,7 +414,7 @@ def pair : Word → Word → Word
   | [], y => true :: y
   | b :: x, y => false :: b :: pair x y
 ```
-(`Complexity/Classical/Certificates.lean`)
+(`Complexity/Classes/Certificates.lean`)
 
 ```lean
 /-- Languages with polynomially bounded, polynomial-time verifiable certificates. -/
@@ -422,7 +422,7 @@ def NP : Set Language :=
   {A | ∃ V : Language, V ∈ P ∧ ∃ p : Polynomial ℕ, ∀ x : Word,
     x ∈ A ↔ ∃ y : Word, y.length ≤ p.eval x.length ∧ pair x y ∈ V}
 ```
-(`Complexity/Classical/NondeterministicPolynomialTime.lean`)
+(`Complexity/Classes/NondeterministicPolynomialTime.lean`)
 
 This is Arora–Barak Definition 2.1 verbatim: `A ∈ NP` iff there is a
 polynomial `p` and a polynomial-time verifier `V` such that
@@ -452,7 +452,7 @@ def coNL : Set Language := co NL
 /-- Complements of languages in NP. -/
 def coNP : Set Language := co NP
 ```
-(`Complexity/Classical/ComplementClasses.lean`)
+(`Complexity/Classes/ComplementClasses.lean`)
 
 Standard (Arora–Barak Def. 2.20): the complement is applied to each language,
 not to the class. `co_co : co (co C) = C` and the universal-certificate
@@ -490,7 +490,7 @@ def NPSPACE : Set Language :=
   coefficients, which already absorbs constants and additive terms;
   this is `⋃_c SPACE(n^c)` in Sipser's notation.
 * Savitch's theorem `PSPACE = NPSPACE`
-  (`Complexity.Classical.PolynomialSpaceEquality.PSPACE_eq_NPSPACE`) is proved
+  (`Complexity.Classes.PolynomialSpaceEquality.PSPACE_eq_NPSPACE`) is proved
   in the port, on this machine model, so NPSPACE is not merely a definition
   left dangling.
 
@@ -505,7 +505,7 @@ def EXPTIME : Set Language :=
         (TM0.init (w.map M.input)) (some c) (2 ^ p.eval w.length)) ∧
       TM0.step M.transition c = none ∧ (M.accept c.q = true ↔ w ∈ A)}
 ```
-(`Complexity/Classical/ExponentialTime.lean`)
+(`Complexity/Classes/ExponentialTime.lean`)
 
 The same single-tape decider as `SingleTapeP`, with time bound `2^{p(n)}` for
 an arbitrary polynomial `p`. This is EXP = ⋃_c DTIME(2^{n^c})
@@ -524,15 +524,15 @@ All of the following are theorems in the library, with only
 `scripts/AxiomCheck.lean`):
 
 ```
-L ⊆ NL          Complexity.Classical.BasicProperties.L_subset_NL
-NL ⊆ P          Complexity.Classical.BasicProperties.NL_subset_P
-P ⊆ NP          Complexity.Classical.BasicProperties.P_subset_NP
-NP ⊆ PSPACE     Complexity.Classical.BasicProperties.NP_subset_PSPACE
-PSPACE = NPSPACE  Complexity.Classical.PolynomialSpaceEquality.PSPACE_eq_NPSPACE
-NPSPACE ⊆ EXPTIME Complexity.Classical.BasicProperties.NPSPACE_subset_EXPTIME
-P closed under complement   Complexity.Classical.ComplementClosure.closed_under_complement
-SingleTapeP = P             Complexity.Classical.ModelEquivalence.singleTapeP_eq_P
-FiniteStackP = P            Complexity.Classical.FiniteStackEquivalence.finiteStackP_eq_P
+L ⊆ NL          Complexity.Classes.BasicProperties.L_subset_NL
+NL ⊆ P          Complexity.Classes.BasicProperties.NL_subset_P
+P ⊆ NP          Complexity.Classes.BasicProperties.P_subset_NP
+NP ⊆ PSPACE     Complexity.Classes.BasicProperties.NP_subset_PSPACE
+PSPACE = NPSPACE  Complexity.Classes.PolynomialSpaceEquality.PSPACE_eq_NPSPACE
+NPSPACE ⊆ EXPTIME Complexity.Classes.BasicProperties.NPSPACE_subset_EXPTIME
+P closed under complement   Complexity.Classes.ComplementClosure.closed_under_complement
+SingleTapeP = P             Complexity.Classes.ModelEquivalence.singleTapeP_eq_P
+FiniteStackP = P            Complexity.Classes.FiniteStackEquivalence.finiteStackP_eq_P
 ```
 
 Not included: `P ≠ NP`. The archived source states it as an axiom marked
@@ -573,7 +573,7 @@ encodings). Points to check:
 * **Same time model as P.** Membership (P, NP verifier) and reductions use
   the same machine model and time accounting, so composing reductions with
   deciders is meaningful; the port's
-  `Complexity.ClassicalProofs.PolynomialComposition.comp` performs that
+  `Complexity.ClassesProofs.PolynomialComposition.comp` performs that
   composition in the final completeness proof.
 * `NPComplete` and `PSPACE.Complete` are the textbook definitions
   (Arora–Barak Def. 2.7 and Def. 4.10): membership plus hardness under

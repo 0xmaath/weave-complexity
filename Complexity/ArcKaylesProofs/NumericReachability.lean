@@ -13,8 +13,8 @@ set_option backward.isDefEq.respectTransparency false
 namespace Complexity.ArcKaylesProofs.Quantified.NumericReach
 
 open Complexity.CookLevin
-open Complexity.ClassicalProofs.SavitchDefinitions.Reachability
-open Complexity.ClassicalProofs.SavitchProofs (within_one path_splitting)
+open Complexity.ClassesProofs.SavitchDefinitions.Reachability
+open Complexity.ClassesProofs.SavitchProofs (within_one path_splitting)
 
 abbrev VectorFunction (n : ℕ) := CNF.Assignment → Vector n
 

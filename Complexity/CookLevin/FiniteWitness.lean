@@ -19,7 +19,7 @@ of its binary encoding. Only variables occurring in the formula matter.
 
 namespace Complexity.CookLevin.FiniteWitness
 
-open CNF Encoding Satisfiability Complexity.Classical.PolynomialTime
+open CNF Encoding Satisfiability Complexity.Classes.PolynomialTime
 
 /- The archived concept stated `bounded` here as an `axiom`. In this port it is a
 theorem: it is proved as `Complexity.CookLevinProofs.finite_witness` in `Complexity.CookLevinProofs.Certificates`, which

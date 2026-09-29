@@ -6,15 +6,15 @@ see `LICENSES/cook-levin.LICENSE`. Modifications for this port: module and names
 renamed from `Lax429075Proofs.EmitLiteral` to `Complexity.CookLevinProofs.EmitLiteral`; concept-package `axiom` statements
 replaced by `alias`es of their proofs; imports adjusted accordingly.
 -/
-import Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackCopy
+import Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackCopy
 import Complexity.CookLevin.Encoding
 
 set_option backward.isDefEq.respectTransparency false
 
 namespace Complexity.CookLevinProofs.CNFOutput
 
-open Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackProgram Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackTransfer
-open Complexity.CookLevin.Encoding Complexity.CookLevin.CNF Complexity.Classical.PolynomialTime
+open Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackProgram Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackTransfer
+open Complexity.CookLevin.Encoding Complexity.CookLevin.CNF Complexity.Classes.PolynomialTime
 
 variable {K Aux : Type} [DecidableEq K]
 
@@ -46,7 +46,7 @@ lemma emitBit_executes (out : K) (value : Aux → Bool) (s : BitStore K Aux) (hs
   · simp [Op.apply, emitted]
 
 def emitLiteral (out tmp index : K) (sign : Aux → Bool) : BitProgram K Aux :=
-  .seq (Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackCopy.copy index out tmp)
+  .seq (Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackCopy.copy index out tmp)
     (.seq (emitBit out (fun _ => false)) (emitBit out sign))
 
 lemma emitLiteral_executes (out tmp index : K) (sign : Aux → Bool)
@@ -54,7 +54,7 @@ lemma emitLiteral_executes (out tmp index : K) (sign : Aux → Bool)
     (s : BitStore K Aux) (n : ℕ) (hn : s.stk index = List.replicate n true) (ht : s.stk tmp = []) :
     Executes (emitLiteral out tmp index sign) s
       (emitted out (encodeLiteral ⟨n, sign s.state.1⟩) s) (7 * n + 6) := by
-  have hc := Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackCopy.copy_store index out tmp hio hit hot s ht
+  have hc := Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackCopy.copy_store index out tmp hio hit hot s ht
   have he : (⟨(s.state.1, none), Function.update s.stk out (s.stk index ++ s.stk out)⟩ : BitStore K Aux) =
       emitted out (List.replicate n true) s := by simp [emitted, hn]
   rw [he, hn, List.length_replicate] at hc

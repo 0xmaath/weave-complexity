@@ -12,7 +12,7 @@ set_option backward.isDefEq.respectTransparency false
 
 namespace Complexity.CookLevinProofs.Streaming
 
-open Complexity.Classical.PolynomialTime
+open Complexity.Classes.PolynomialTime
 
 lemma selected_prefix (n bound : ℕ) :
     ((List.range n).flatMap fun i => if i < bound then [true] else []) =

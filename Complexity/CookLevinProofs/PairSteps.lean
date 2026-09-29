@@ -10,7 +10,7 @@ import Complexity.CookLevinProofs.PairDecoding
 
 namespace Complexity.CookLevinProofs.VerifierProgram
 
-open Complexity.Classical.PolynomialTime Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackProgram Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackTransfer
+open Complexity.Classes.PolynomialTime Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackProgram Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackTransfer
 
 def decodingData (base : Register → Word) (xs rev : Word) (conj disj : Bool) : Data :=
   ⟨(⟨true, true, conj, disj⟩, xs.head?), Function.update (Function.update base .input xs.tail) .reverse rev⟩

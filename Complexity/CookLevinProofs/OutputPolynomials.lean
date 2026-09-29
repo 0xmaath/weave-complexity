@@ -10,7 +10,7 @@ import Complexity.CookLevinProofs.OutputNumbers
 
 namespace Complexity.CookLevinProofs.Streaming
 
-open Complexity.Classical.PolynomialTime Polynomial
+open Complexity.Classes.PolynomialTime Polynomial
 
 variable {I : Type}
 

@@ -10,7 +10,7 @@ import Complexity.CookLevinProofs.CertificateAssignments
 
 namespace Complexity.CookLevinProofs.CertificateCircuit
 
-open Complexity.Classical.PolynomialTime Complexity.CookLevin.CNF Complexity.CookLevin.Satisfiability
+open Complexity.Classes.PolynomialTime Complexity.CookLevin.CNF Complexity.CookLevin.Satisfiability
 
 def Represents (bound : ℕ) (ρ : Assignment) (y : Word) : Prop :=
   y.length ≤ bound ∧ (∀ i, live bound ρ i = true ↔ i < y.length) ∧

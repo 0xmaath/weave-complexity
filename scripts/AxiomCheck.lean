@@ -38,19 +38,19 @@ elab "#check_standard_axioms " ids:ident* : command => do
 #print axioms Complexity.ArcKayles.Sizes.construction_size
 #print axioms Complexity.ArcKayles.Sizes.formula_length
 #print axioms Complexity.ArcKayles.Sizes.graph_length
-#print axioms Complexity.Classical.BasicProperties.L_subset_NL
-#print axioms Complexity.Classical.BasicProperties.NL_subset_P
-#print axioms Complexity.Classical.BasicProperties.NPSPACE_subset_EXPTIME
-#print axioms Complexity.Classical.BasicProperties.NP_subset_PSPACE
-#print axioms Complexity.Classical.BasicProperties.P_subset_NP
-#print axioms Complexity.Classical.Certificates.pair_injective
-#print axioms Complexity.Classical.Certificates.pair_length
-#print axioms Complexity.Classical.Certificates.unpair_pair
-#print axioms Complexity.Classical.ComplementClosure.closed_under_complement
-#print axioms Complexity.Classical.FiniteStackEquivalence.finiteStackP_eq_P
-#print axioms Complexity.Classical.ModelEquivalence.singleTapeP_eq_P
-#print axioms Complexity.Classical.PolynomialSpaceEquality.PSPACE_eq_NPSPACE
-#print axioms Complexity.Classical.SingleTapeComplement.closed_under_complement
+#print axioms Complexity.Classes.BasicProperties.L_subset_NL
+#print axioms Complexity.Classes.BasicProperties.NL_subset_P
+#print axioms Complexity.Classes.BasicProperties.NPSPACE_subset_EXPTIME
+#print axioms Complexity.Classes.BasicProperties.NP_subset_PSPACE
+#print axioms Complexity.Classes.BasicProperties.P_subset_NP
+#print axioms Complexity.Classes.Certificates.pair_injective
+#print axioms Complexity.Classes.Certificates.pair_length
+#print axioms Complexity.Classes.Certificates.unpair_pair
+#print axioms Complexity.Classes.ComplementClosure.closed_under_complement
+#print axioms Complexity.Classes.FiniteStackEquivalence.finiteStackP_eq_P
+#print axioms Complexity.Classes.ModelEquivalence.singleTapeP_eq_P
+#print axioms Complexity.Classes.PolynomialSpaceEquality.PSPACE_eq_NPSPACE
+#print axioms Complexity.Classes.SingleTapeComplement.closed_under_complement
 #print axioms Complexity.CookLevin.CircuitMachine.compile
 #print axioms Complexity.CookLevin.CookLevin.np_complete
 #print axioms Complexity.CookLevin.EncodingCorrect.roundtrip
@@ -81,19 +81,19 @@ elab "#check_standard_axioms " ids:ident* : command => do
   Complexity.ArcKayles.Sizes.construction_size
   Complexity.ArcKayles.Sizes.formula_length
   Complexity.ArcKayles.Sizes.graph_length
-  Complexity.Classical.BasicProperties.L_subset_NL
-  Complexity.Classical.BasicProperties.NL_subset_P
-  Complexity.Classical.BasicProperties.NPSPACE_subset_EXPTIME
-  Complexity.Classical.BasicProperties.NP_subset_PSPACE
-  Complexity.Classical.BasicProperties.P_subset_NP
-  Complexity.Classical.Certificates.pair_injective
-  Complexity.Classical.Certificates.pair_length
-  Complexity.Classical.Certificates.unpair_pair
-  Complexity.Classical.ComplementClosure.closed_under_complement
-  Complexity.Classical.FiniteStackEquivalence.finiteStackP_eq_P
-  Complexity.Classical.ModelEquivalence.singleTapeP_eq_P
-  Complexity.Classical.PolynomialSpaceEquality.PSPACE_eq_NPSPACE
-  Complexity.Classical.SingleTapeComplement.closed_under_complement
+  Complexity.Classes.BasicProperties.L_subset_NL
+  Complexity.Classes.BasicProperties.NL_subset_P
+  Complexity.Classes.BasicProperties.NPSPACE_subset_EXPTIME
+  Complexity.Classes.BasicProperties.NP_subset_PSPACE
+  Complexity.Classes.BasicProperties.P_subset_NP
+  Complexity.Classes.Certificates.pair_injective
+  Complexity.Classes.Certificates.pair_length
+  Complexity.Classes.Certificates.unpair_pair
+  Complexity.Classes.ComplementClosure.closed_under_complement
+  Complexity.Classes.FiniteStackEquivalence.finiteStackP_eq_P
+  Complexity.Classes.ModelEquivalence.singleTapeP_eq_P
+  Complexity.Classes.PolynomialSpaceEquality.PSPACE_eq_NPSPACE
+  Complexity.Classes.SingleTapeComplement.closed_under_complement
   Complexity.CookLevin.CircuitMachine.compile
   Complexity.CookLevin.CookLevin.np_complete
   Complexity.CookLevin.EncodingCorrect.roundtrip

@@ -12,7 +12,7 @@ set_option backward.isDefEq.respectTransparency false
 
 namespace Complexity.CookLevinProofs.VerifierProgram
 
-open Complexity.Classical.PolynomialTime Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackProgram Complexity.CookLevin.CNF
+open Complexity.Classes.PolynomialTime Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackProgram Complexity.CookLevin.CNF
 open Complexity.CookLevin.Satisfiability
 
 lemma parsing_sign (xs ys cursor : Word) (flags : Flags) (scratch : Option Bool) :

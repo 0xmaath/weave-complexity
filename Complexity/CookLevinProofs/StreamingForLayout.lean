@@ -8,14 +8,14 @@ replaced by `alias`es of their proofs; imports adjusted accordingly.
 -/
 import Complexity.CookLevinProofs.StreamingBind
 import Complexity.CookLevinProofs.StreamingSource
-import Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackFor
+import Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackFor
 
 set_option backward.isDefEq.respectTransparency false
 
 namespace Complexity.CookLevinProofs.Streaming
 
-open Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackProgram Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackTransfer
-open Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackRename Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackFor CNFOutput Complexity.Classical.PolynomialTime
+open Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackProgram Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackTransfer
+open Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackRename Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackFor CNFOutput Complexity.Classes.PolynomialTime
 
 variable {I W : Type} [DecidableEq I] [DecidableEq W]
 
@@ -58,9 +58,9 @@ lemma forStore_start (a : I → Word) (n : ℕ) (tail : Word) (scratch : Option 
   cases s <;> simp [emitted, store, forStore]
 
 lemma forStore_clear (a : I → Word) (n : ℕ) (tail : Word) :
-    Executes (Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackClear.clear (.work (.inl ForSlot.domain)))
+    Executes (Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackClear.clear (.work (.inl ForSlot.domain)))
       (forStore (W := W) a n tail) (store a tail none) (2 * n + 2) := by
-  have h := Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackClear.clear_store (.work (.inl ForSlot.domain))
+  have h := Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackClear.clear_store (.work (.inl ForSlot.domain))
     (forStore (W := W) a n tail)
   convert! h using 1
   · apply Store.ext <;> try rfl

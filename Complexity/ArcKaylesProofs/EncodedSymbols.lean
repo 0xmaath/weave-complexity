@@ -8,7 +8,7 @@ replaced by `alias`es of their proofs; imports adjusted accordingly.
 -/
 import Complexity.ArcKaylesProofs.PatternExpressions
 import Complexity.ArcKaylesProofs.QuantifiedSizes
-import Complexity.ClassicalProofs.SavitchProofs.FiniteCoding
+import Complexity.ClassesProofs.SavitchProofs.FiniteCoding
 
 set_option backward.isDefEq.respectTransparency false
 
@@ -70,7 +70,7 @@ theorem vectorWord_injective (n : ℕ) : Function.Injective (@vectorWord n) := b
   have hi := congrArg (fun xs : List Bool => xs[i.val]?) h
   simpa [vectorWord, List.getElem?_eq_getElem, i.isLt] using hi
 
-open Complexity.ClassicalProofs.SavitchProofs
+open Complexity.ClassesProofs.SavitchProofs
 
 noncomputable def codedSymbol (α : Type) [Fintype α] [Inhabited α] {β : Type}
     (xs : Wires (FiniteCoding.width α) β) : Symbol (FiniteCoding.Letter α) β :=

@@ -14,13 +14,13 @@ import Complexity.CookLevin.SATinNP
 import Complexity.CookLevin.SATEncoding
 import Batteries.Tactic.Alias
 import Complexity.CookLevinProofs.VerifierTime
-import Complexity.ClassicalProofs.Certificates
+import Complexity.ClassesProofs.Certificates
 
 namespace Complexity.CookLevinProofs
 
 open Complexity.CookLevin Complexity.CookLevin.CNF Complexity.CookLevin.Encoding Complexity.CookLevin.Satisfiability
-open Complexity.Classical.PolynomialTime Complexity.Classical.Certificates
-open Complexity.Classical.NondeterministicPolynomialTime
+open Complexity.Classes.PolynomialTime Complexity.Classes.Certificates
+open Complexity.Classes.NondeterministicPolynomialTime
 
 /--
 ---
@@ -56,7 +56,7 @@ alias _root_.Complexity.CookLevin.FiniteWitness.bounded := finite_witness
 conclusion: Complexity.CookLevin.VerifierCorrect.correct
 assumptions:
   - Complexity.CookLevin.FiniteWitness.bounded
-  - Complexity.Classical.Certificates.pair_injective
+  - Complexity.Classes.Certificates.pair_injective
 ---
 Use the bounded assignment and the injective encoding of input-certificate pairs.
 -/

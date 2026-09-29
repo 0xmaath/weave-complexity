@@ -6,18 +6,18 @@ see `LICENSES/arc-kayles.LICENSE`. Modifications for this port: module and names
 renamed from `Lax689614Proofs.ReductionComposition` to `Complexity.ArcKaylesProofs.ReductionComposition`; concept-package `axiom` statements
 replaced by `alias`es of their proofs; imports adjusted accordingly.
 -/
-import Complexity.ClassicalProofs.PolynomialComposition
+import Complexity.ClassesProofs.PolynomialComposition
 import Complexity.ArcKayles.PSPACE
 
 namespace Complexity.ArcKaylesProofs
 
-open Complexity.Classical.PolynomialTime Complexity.Classical.PolynomialSpace Complexity.CookLevin.Reductions
+open Complexity.Classes.PolynomialTime Complexity.Classes.PolynomialSpace Complexity.CookLevin.Reductions
 
 theorem manyOne_trans {A B C : Language} (hab : ManyOne A B) (hbc : ManyOne B C) :
     ManyOne A C := by
   obtain ⟨f, ⟨hf⟩, hfc⟩ := hab
   obtain ⟨g, ⟨hg⟩, hgc⟩ := hbc
-  refine ⟨g ∘ f, Complexity.ClassicalProofs.PolynomialComposition.comp hf hg, ?_⟩
+  refine ⟨g ∘ f, Complexity.ClassesProofs.PolynomialComposition.comp hf hg, ?_⟩
   intro w
   exact (hfc w).trans (hgc (f w))
 

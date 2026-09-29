@@ -17,7 +17,7 @@ set_option backward.isDefEq.respectTransparency false
 
 namespace Complexity.CookLevinProofs.Streaming
 
-open Complexity.Classical.PolynomialTime Complexity.Classical.Certificates Complexity.Classical.MachineModels
+open Complexity.Classes.PolynomialTime Complexity.Classes.Certificates Complexity.Classes.MachineModels
 open Complexity.CookLevin.Encoding Turing
 
 lemma verifier_polynomial_time (M : SingleTape) (p R : Polynomial ℕ) :
@@ -40,8 +40,8 @@ lemma verifier_polynomial_time (M : SingleTape) (p R : Polynomial ℕ) :
 ---
 conclusion: Complexity.CookLevin.CircuitMachine.compile
 assumptions:
-  - Complexity.Classical.Certificates.pair_length
-  - Complexity.Classical.ModelEquivalence.singleTapeP_eq_P
+  - Complexity.Classes.Certificates.pair_length
+  - Complexity.Classes.ModelEquivalence.singleTapeP_eq_P
 ---
 Unroll the bounded verifier and emit its gate clauses with polynomially bounded loops.
 -/

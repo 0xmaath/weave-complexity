@@ -13,7 +13,7 @@ set_option backward.isDefEq.respectTransparency false
 
 namespace Complexity.CookLevinProofs.VerifierProgram
 
-open Complexity.Classical.PolynomialTime Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackProgram Complexity.CookLevin.CNF
+open Complexity.Classes.PolynomialTime Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackProgram Complexity.CookLevin.CNF
 
 def formulaTail : Code := .seq (.loop continuing formulaBody) requireTerminator
 

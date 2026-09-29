@@ -12,12 +12,12 @@ set_option backward.isDefEq.respectTransparency false
 
 namespace Complexity.ArcKaylesProofs.CodeStepper
 
-open Complexity.ClassicalProofs.InclusionAux.TimeHelpers.Streaming
-open Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackProgram
-open Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackTransfer
-open Complexity.ClassicalProofs.SavitchProofs
+open Complexity.ClassesProofs.InclusionAux.TimeHelpers.Streaming
+open Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackProgram
+open Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackTransfer
+open Complexity.ClassesProofs.SavitchProofs
 open StackLanguage
-open Complexity.Classical.PolynomialTime Complexity.Classical.SpaceMachines
+open Complexity.Classes.PolynomialTime Complexity.Classes.SpaceMachines
 open scoped Classical
 
 noncomputable section

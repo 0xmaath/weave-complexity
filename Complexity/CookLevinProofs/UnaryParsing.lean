@@ -10,7 +10,7 @@ import Complexity.CookLevinProofs.PairExecution
 
 namespace Complexity.CookLevinProofs.VerifierProgram
 
-open Complexity.Classical.PolynomialTime Complexity.CookLevin.Encoding
+open Complexity.Classes.PolynomialTime Complexity.CookLevin.Encoding
 
 structure UnaryResult where
   index : ℕ

@@ -11,7 +11,7 @@ import Complexity.CookLevinProofs.CircuitRounds
 
 namespace Complexity.CookLevinProofs.MachineCircuit
 
-open Turing Complexity.Classical.MachineModels
+open Turing Complexity.Classes.MachineModels
 open WindowMachine CircuitBuilder
 
 lemma sum_cost_bound (es : List Expr) (bound : ℕ) (h : ∀ e ∈ es, e.cost ≤ bound) :

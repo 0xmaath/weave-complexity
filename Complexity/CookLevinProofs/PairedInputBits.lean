@@ -10,7 +10,7 @@ import Complexity.CookLevinProofs.CertificateCells
 
 namespace Complexity.CookLevinProofs.CertificateCircuit
 
-open Complexity.Classical.PolynomialTime Complexity.Classical.Certificates
+open Complexity.Classes.PolynomialTime Complexity.Classes.Certificates
 
 def prefixBit (x : Word) (i : ℕ) : Bool :=
   decide (i = 2 * x.length) || (decide (i % 2 = 1) && (x[i / 2]?).getD false)

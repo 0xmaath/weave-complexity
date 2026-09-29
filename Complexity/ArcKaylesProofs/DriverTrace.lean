@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency false
 namespace Complexity.ArcKaylesProofs.DepthFirst
 
 open Complexity.ArcKayles Encoding MachineCode CodeStepper Polynomial
-open Complexity.Classical.PolynomialTime
+open Complexity.Classes.PolynomialTime
 open scoped Classical
 
 noncomputable def stateBound : Polynomial ℕ := (X + C 2) ^ 3 + C 2 * X + C 2

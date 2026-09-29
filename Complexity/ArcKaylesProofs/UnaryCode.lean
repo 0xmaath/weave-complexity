@@ -11,8 +11,8 @@ import Complexity.ArcKaylesProofs.FormulaParser
 
 namespace Complexity.ArcKaylesProofs.MachineCode
 
-open Complexity.ClassicalProofs.InclusionAux.TimeHelpers.Streaming
-open Complexity.Classical.PolynomialTime
+open Complexity.ClassesProofs.InclusionAux.TimeHelpers.Streaming
+open Complexity.Classes.PolynomialTime
 
 theorem prefix_all_iff (w : Word) (k : ℕ) :
     (∀ j ≤ k, (w[j]?).getD false = true) ↔ k < (w.takeWhile id).length := by

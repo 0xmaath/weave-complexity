@@ -11,7 +11,7 @@ import Complexity.CookLevinProofs.VerifierSemantics
 
 namespace Complexity.CookLevinProofs.VerifierProgram
 
-open Complexity.Classical.PolynomialTime Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackProgram
+open Complexity.Classes.PolynomialTime Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackProgram
 
 lemma ready_eq (xs ys : Word) (good : Bool) :
     ready xs ys good = parsing xs ys [] ⟨good, false, true, false⟩ none := by

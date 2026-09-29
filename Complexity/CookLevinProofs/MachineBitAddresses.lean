@@ -10,7 +10,7 @@ import Complexity.CookLevinProofs.MachineBits
 
 namespace Complexity.CookLevinProofs.MachineCircuit
 
-open Complexity.Classical.MachineModels WindowMachine
+open Complexity.Classes.MachineModels WindowMachine
 
 noncomputable def stateIndex (M : SingleTape) (q : M.Q) : ℕ := (Fintype.equivFin M.Q q).val
 

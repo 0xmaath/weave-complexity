@@ -12,8 +12,8 @@ set_option backward.isDefEq.respectTransparency false
 
 namespace Complexity.ArcKaylesProofs.CNFTraversal
 
-open Complexity.Classical.PolynomialTime
-open Complexity.ClassicalProofs.InclusionAux.TimeHelpers.Streaming
+open Complexity.Classes.PolynomialTime
+open Complexity.ClassesProofs.InclusionAux.TimeHelpers.Streaming
 
 def dropCode {I : Type} (word : I) (n : Number I) : Code I :=
   .bind n.code (.drop (some word) none)

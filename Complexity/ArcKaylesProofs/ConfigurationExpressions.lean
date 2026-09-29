@@ -7,13 +7,13 @@ renamed from `Lax689614Proofs.ConfigurationExpressions` to `Complexity.ArcKayles
 replaced by `alias`es of their proofs; imports adjusted accordingly.
 -/
 import Complexity.ArcKaylesProofs.EncodedSymbols
-import Complexity.ClassicalProofs.SavitchProofs.EncodedGraph
+import Complexity.ClassesProofs.SavitchProofs.EncodedGraph
 
 set_option backward.isDefEq.respectTransparency false
 
 namespace Complexity.ArcKaylesProofs.Quantified
 
-open Complexity.ClassicalProofs.SavitchProofs
+open Complexity.ClassesProofs.SavitchProofs
 
 noncomputable def codedSymbols (α : Type) [Fintype α] [Inhabited α] {β : Type} :
     ℕ → List (Expr β) → List (Symbol (FiniteCoding.Letter α) β)

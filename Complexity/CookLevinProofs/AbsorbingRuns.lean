@@ -10,7 +10,7 @@ import Complexity.CookLevinProofs.AbsoluteTape
 
 namespace Complexity.CookLevinProofs.AbsoluteTape
 
-open Turing Complexity.Classical.MachineModels Complexity.Classical.PolynomialTime
+open Turing Complexity.Classes.MachineModels Complexity.Classes.PolynomialTime
 
 lemma absorbing_iterate (M : SingleTape) (n : ℕ) {c d : TM0.Cfg M.Γ M.Q}
     (h : (fun q : Option (TM0.Cfg M.Γ M.Q) => q.bind (TM0.step M.transition))^[n]

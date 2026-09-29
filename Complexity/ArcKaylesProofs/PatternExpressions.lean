@@ -7,13 +7,13 @@ renamed from `Lax689614Proofs.PatternExpressions` to `Complexity.ArcKaylesProofs
 replaced by `alias`es of their proofs; imports adjusted accordingly.
 -/
 import Complexity.ArcKaylesProofs.QuantifiedFormulas
-import Complexity.ClassicalProofs.SavitchProofs.PatternAutomata
+import Complexity.ClassesProofs.SavitchProofs.PatternAutomata
 
 set_option backward.isDefEq.respectTransparency false
 
 namespace Complexity.ArcKaylesProofs.Quantified
 
-open Complexity.ClassicalProofs.SavitchProofs.PatternAutomata
+open Complexity.ClassesProofs.SavitchProofs.PatternAutomata
 
 def Expr.any {α : Type} (ps : List (Expr α)) : Expr α := ps.foldr .disj (.constant false)
 

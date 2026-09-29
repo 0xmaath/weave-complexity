@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency false
 
 namespace Complexity.ArcKaylesProofs.CircuitStreaming
 
-open Complexity.Classical.PolynomialTime Complexity.Classical.SpaceMachines
+open Complexity.Classes.PolynomialTime Complexity.Classes.SpaceMachines
 open Complexity.CookLevinProofs.Streaming
 
 noncomputable def machineSignedCode (M : Machine) {I : Type} (input table : I)
@@ -34,8 +34,8 @@ theorem machineSignedCode_eval (M : Machine) {I : Type} (input table : I)
         (fun i => (Quantified.Prefix.expand (machinePrefix M input table count k a))[i.val])
         (machineClauses M input table count k a)) := by
   simp only [machineSignedCode, CS.Code.eval, liftCode_eval, flagsCode_eval,
-    Complexity.ClassicalProofs.InclusionAux.TimeHelpers.Streaming.Code.eval_rename,
-    Complexity.ClassicalProofs.InclusionAux.TimeHelpers.Streaming.extend_some, fragmentCode_eval]
+    Complexity.ClassesProofs.InclusionAux.TimeHelpers.Streaming.Code.eval_rename,
+    Complexity.ClassesProofs.InclusionAux.TimeHelpers.Streaming.extend_some, fragmentCode_eval]
   exact CNFTraversal.signedMatrixCode_eval (some none) none _ _ rfl
 
 def inputWidth {I : Type} (input : I) : Number I := (Number.length input).add (.constant 2)

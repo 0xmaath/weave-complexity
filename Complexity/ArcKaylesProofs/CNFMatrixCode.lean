@@ -13,8 +13,8 @@ set_option backward.isDefEq.respectTransparency false
 namespace Complexity.ArcKaylesProofs.CNFTraversal
 
 open Complexity.CookLevin CNF Encoding
-open Complexity.Classical.PolynomialTime
-open Complexity.ClassicalProofs.InclusionAux.TimeHelpers.Streaming
+open Complexity.Classes.PolynomialTime
+open Complexity.ClassesProofs.InclusionAux.TimeHelpers.Streaming
 
 theorem extend_skip_two {I : Type} (a : I → Word) (x y z : Word) :
     extend (extend (extend a x) y) z ∘ Option.map (some ∘ some) = extend a z := by

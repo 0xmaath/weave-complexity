@@ -11,7 +11,7 @@ import Complexity.CookLevinProofs.EmitGate
 
 namespace Complexity.CookLevinProofs.Streaming
 
-open Complexity.Classical.PolynomialTime Complexity.CookLevin.CNF Complexity.CookLevin.Encoding Complexity.CookLevin.Circuits Complexity.CookLevin.Tseitin
+open Complexity.Classes.PolynomialTime Complexity.CookLevin.CNF Complexity.CookLevin.Encoding Complexity.CookLevin.Circuits Complexity.CookLevin.Tseitin
 open CNFOutput
 
 variable {I : Type}

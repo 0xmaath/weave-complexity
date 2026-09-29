@@ -11,8 +11,8 @@ import Complexity.ArcKaylesProofs.Sizes
 
 namespace Complexity.ArcKaylesProofs.MachineCode
 
-open Complexity.ClassicalProofs.InclusionAux.TimeHelpers.Streaming
-open Complexity.Classical.PolynomialTime
+open Complexity.ClassesProofs.InclusionAux.TimeHelpers.Streaming
+open Complexity.Classes.PolynomialTime
 open Complexity.ArcKayles
 
 def sizeNumber {I : Type} (n m : Number I) : Number I :=

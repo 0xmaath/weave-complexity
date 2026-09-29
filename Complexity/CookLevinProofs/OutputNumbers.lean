@@ -10,7 +10,7 @@ import Complexity.CookLevinProofs.OutputCode
 
 namespace Complexity.CookLevinProofs.Streaming
 
-open Complexity.Classical.PolynomialTime
+open Complexity.Classes.PolynomialTime
 
 structure Number (I : Type) where
   value : (I → Word) → ℕ

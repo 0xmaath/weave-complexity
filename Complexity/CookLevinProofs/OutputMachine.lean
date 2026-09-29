@@ -10,9 +10,9 @@ import Complexity.CookLevinProofs.OutputCode
 
 namespace Complexity.CookLevinProofs.Streaming
 
-open Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackProgram Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackTransfer Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackRename
-open Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackClear (clear clear_store)
-open CNFOutput Complexity.Classical.PolynomialTime Polynomial Turing
+open Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackProgram Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackTransfer Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackRename
+open Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackClear (clear clear_store)
+open CNFOutput Complexity.Classes.PolynomialTime Polynomial Turing
 
 lemma Code.polynomial_time (c : Code Unit) :
     Nonempty (TM2ComputableInPolyTime id id (fun x => c.eval (fun _ => x))) := by
@@ -20,7 +20,7 @@ lemma Code.polynomial_time (c : Code Unit) :
   let K := Key Unit (Option p.Workspace)
   let input : K := .input ()
   let output : K := .work none
-  let program : BitProgram K Unit := .seq (Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackRename.rename (workMap some) p.program)
+  let program : BitProgram K Unit := .seq (Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackRename.rename (workMap some) p.program)
     (.seq (clear input) (transfer .output output))
   apply program_polytime program input output ((), none) id id
     (fun x => c.eval (fun _ => x)) (C 4 * p.bound + C 2 * X + C 4)

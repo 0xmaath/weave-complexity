@@ -11,7 +11,7 @@ import Complexity.CookLevin.Satisfiability
 
 namespace Complexity.CookLevinProofs.VerifierProgram
 
-open Complexity.Classical.PolynomialTime Complexity.CookLevin.Encoding Complexity.CookLevin.CNF Complexity.CookLevin.Satisfiability
+open Complexity.Classes.PolynomialTime Complexity.CookLevin.Encoding Complexity.CookLevin.CNF Complexity.CookLevin.Satisfiability
 
 structure Parsed (α : Type) where
   value : α

@@ -10,7 +10,7 @@ import Complexity.CookLevinProofs.WindowPositions
 
 namespace Complexity.CookLevinProofs.WindowMachine
 
-open Turing Complexity.Classical.MachineModels Complexity.Classical.PolynomialTime
+open Turing Complexity.Classes.MachineModels Complexity.Classes.PolynomialTime
 
 structure Cfg (M : SingleTape) (radius : ℕ) where
   state : M.Q

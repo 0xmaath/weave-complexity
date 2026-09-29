@@ -13,8 +13,8 @@ set_option backward.isDefEq.respectTransparency false
 
 namespace Complexity.ArcKaylesProofs.Byskov
 
-open Complexity.ClassicalProofs.InclusionAux.TimeHelpers.Streaming
-open Complexity.Classical.PolynomialTime
+open Complexity.ClassesProofs.InclusionAux.TimeHelpers.Streaming
+open Complexity.Classes.PolynomialTime
 
 def controlTest {I : Type} (r k u : Number I) : Test I :=
   (Test.lt u ((Number.constant 9).mul r)).and

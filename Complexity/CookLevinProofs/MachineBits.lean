@@ -11,7 +11,7 @@ import Complexity.CookLevinProofs.CircuitVectors
 
 namespace Complexity.CookLevinProofs.MachineCircuit
 
-open Turing Complexity.Classical.MachineModels Complexity.Classical.PolynomialTime
+open Turing Complexity.Classes.MachineModels Complexity.Classes.PolynomialTime
 open WindowMachine CircuitBuilder
 
 abbrev Bit (M : SingleTape) (radius : ℕ) := M.Q ⊕ (Position radius ⊕ (Position radius × M.Γ))

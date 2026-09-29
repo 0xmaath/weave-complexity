@@ -14,8 +14,8 @@ set_option backward.isDefEq.respectTransparency false
 namespace Complexity.ArcKaylesProofs.Byskov
 
 open Complexity.ArcKayles PositiveCNF
-open Complexity.Classical.PolynomialTime
-open Complexity.ClassicalProofs.InclusionAux.TimeHelpers.Streaming
+open Complexity.Classes.PolynomialTime
+open Complexity.ClassesProofs.InclusionAux.TimeHelpers.Streaming
 open MachineCode
 
 def signedLanguage : Language :=

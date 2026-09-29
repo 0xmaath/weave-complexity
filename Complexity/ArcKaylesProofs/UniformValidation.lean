@@ -14,8 +14,8 @@ set_option backward.isDefEq.respectTransparency false
 namespace Complexity.ArcKaylesProofs.CircuitStreaming
 
 open Complexity.CookLevinProofs.CircuitBuilder Complexity.CookLevinProofs.Streaming
-open Complexity.Classical.PolynomialTime Complexity.Classical.SpaceMachines
-open Complexity.ClassicalProofs.SavitchProofs ConfigurationWords PatternAutomata
+open Complexity.Classes.PolynomialTime Complexity.Classes.SpaceMachines
+open Complexity.ClassesProofs.SavitchProofs ConfigurationWords PatternAutomata
 
 theorem matches_inputPrefix (M : Machine) (w : Word) (k i : ℕ) (xs : List (Letter M)) :
     Matches ((Quantified.inputPrefix M w k i).map Piece.one ++ [.star Set.univ]) xs ↔

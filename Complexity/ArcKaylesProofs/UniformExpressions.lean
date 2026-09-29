@@ -13,7 +13,7 @@ set_option backward.isDefEq.respectTransparency false
 namespace Complexity.ArcKaylesProofs.CircuitStreaming
 
 open Complexity.CookLevinProofs.CircuitBuilder Complexity.CookLevinProofs.Streaming
-open Complexity.Classical.PolynomialTime
+open Complexity.Classes.PolynomialTime
 
 def fixedFold {I α : Type} (conjunction : Bool) (xs : List α) (f : α → Expression I) : Expression I :=
   xs.foldr (fun x rest => Expression.binary conjunction (f x) rest) (.constant (.constant conjunction))

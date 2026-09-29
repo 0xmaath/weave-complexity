@@ -7,7 +7,7 @@ renamed from `Lax429075.SATinNP` to `Complexity.CookLevin.SATinNP`; concept-pack
 replaced by `alias`es of their proofs; imports adjusted accordingly.
 -/
 import Complexity.CookLevin.Satisfiability
-import Complexity.Classical.NondeterministicPolynomialTime
+import Complexity.Classes.NondeterministicPolynomialTime
 
 /-!
 ---
@@ -19,7 +19,7 @@ A polynomial time verifier checks a satisfying assignment of polynomial length.
 
 namespace Complexity.CookLevin.SATinNP
 
-open Satisfiability Complexity.Classical.NondeterministicPolynomialTime
+open Satisfiability Complexity.Classes.NondeterministicPolynomialTime
 
 /- The archived concept stated `membership` here as an `axiom`. In this port it is a
 theorem: it is proved as `Complexity.CookLevinProofs.sat_in_np` in `Complexity.CookLevinProofs.Certificates`, which

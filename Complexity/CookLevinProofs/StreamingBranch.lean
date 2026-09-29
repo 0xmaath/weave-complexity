@@ -10,8 +10,8 @@ import Complexity.CookLevinProofs.StreamingAppend
 
 namespace Complexity.CookLevinProofs.Streaming
 
-open Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackProgram Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackTransfer Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackRename
-open CNFOutput Complexity.Classical.PolynomialTime Polynomial
+open Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackProgram Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackTransfer Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackRename
+open CNFOutput Complexity.Classes.PolynomialTime Polynomial
 
 variable {I : Type} [DecidableEq I]
 

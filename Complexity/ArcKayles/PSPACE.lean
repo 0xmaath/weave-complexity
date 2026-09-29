@@ -6,7 +6,7 @@ see `LICENSES/arc-kayles.LICENSE`. Modifications for this port: module and names
 renamed from `Lax689614.PSPACE` to `Complexity.ArcKayles.PSPACE`; concept-package `axiom` statements
 replaced by `alias`es of their proofs; imports adjusted accordingly.
 -/
-import Complexity.Classical.PolynomialSpace
+import Complexity.Classes.PolynomialSpace
 import Complexity.CookLevin.Reductions
 
 /-!
@@ -22,7 +22,7 @@ are those of the classical complexity and Cook–Levin submissions.
 
 namespace Complexity.ArcKayles.PSPACE
 
-open Complexity.Classical.PolynomialTime Complexity.Classical.PolynomialSpace Complexity.CookLevin.Reductions
+open Complexity.Classes.PolynomialTime Complexity.Classes.PolynomialSpace Complexity.CookLevin.Reductions
 
 def Hard (B : Language) : Prop := ∀ A : Language, A ∈ PSPACE → ManyOne A B
 

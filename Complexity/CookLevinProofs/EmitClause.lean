@@ -12,8 +12,8 @@ set_option backward.isDefEq.respectTransparency false
 
 namespace Complexity.CookLevinProofs.CNFOutput
 
-open Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackProgram Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackTransfer
-open Complexity.CookLevin.Encoding Complexity.CookLevin.CNF Complexity.Classical.PolynomialTime
+open Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackProgram Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackTransfer
+open Complexity.CookLevin.Encoding Complexity.CookLevin.CNF Complexity.Classes.PolynomialTime
 
 variable {K Aux : Type} [DecidableEq K]
 

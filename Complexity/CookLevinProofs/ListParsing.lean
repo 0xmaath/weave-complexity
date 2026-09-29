@@ -10,7 +10,7 @@ import Complexity.CookLevinProofs.LiteralParsing
 
 namespace Complexity.CookLevinProofs.VerifierProgram
 
-open Complexity.Classical.PolynomialTime Complexity.CookLevin.Encoding
+open Complexity.Classes.PolynomialTime Complexity.CookLevin.Encoding
 
 def scanMany {α : Type} (parse : Word → Parsed α)
     (shrink : ∀ xs, (parse xs).rest.length ≤ xs.length) : Word → Parsed (List α)

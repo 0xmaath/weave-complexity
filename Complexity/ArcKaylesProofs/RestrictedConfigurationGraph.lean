@@ -11,17 +11,17 @@ import Complexity.ArcKaylesProofs.ConfigurationValidity
 /-!
 The run-to-path construction specializes the archived configuration encoding
 to a fixed input-head field width. Its induction follows
-`Complexity.ClassicalProofs.SavitchProofs.EncodedGraph.encoded_run` (Apache-2.0).
+`Complexity.ClassesProofs.SavitchProofs.EncodedGraph.encoded_run` (Apache-2.0).
 -/
 
 set_option backward.isDefEq.respectTransparency false
 
 namespace Complexity.ArcKaylesProofs.Quantified.ConfigurationGraph
 
-open Complexity.ClassicalProofs.SavitchProofs
+open Complexity.ClassesProofs.SavitchProofs
 open ConfigurationWords PatternAutomata EncodedGraph
-open Complexity.Classical.SpaceMachines Complexity.Classical.PolynomialTime
-open Complexity.ClassicalProofs.SavitchDefinitions.Reachability
+open Complexity.Classes.SpaceMachines Complexity.Classes.PolynomialTime
+open Complexity.ClassesProofs.SavitchDefinitions.Reachability
 open scoped Classical
 
 noncomputable section

@@ -20,7 +20,7 @@ language of satisfiable CNF formulas.
 
 namespace Complexity.CookLevin.SATHard
 
-open Satisfiability Reductions Complexity.Classical.PolynomialTime Complexity.Classical.NondeterministicPolynomialTime
+open Satisfiability Reductions Complexity.Classes.PolynomialTime Complexity.Classes.NondeterministicPolynomialTime
 
 /- The archived concept stated `hardness` here as an `axiom`. In this port it is a
 theorem: it is proved as `Complexity.CookLevinProofs.sat_hard` in `Complexity.CookLevinProofs.CookLevin`, which

@@ -13,8 +13,8 @@ set_option backward.isDefEq.respectTransparency false
 namespace Complexity.ArcKaylesProofs.CircuitStreaming
 
 open Complexity.CookLevinProofs.CircuitBuilder Complexity.CookLevinProofs.Streaming
-open Complexity.Classical.PolynomialTime
-open Complexity.ClassicalProofs.SavitchProofs.PatternAutomata
+open Complexity.Classes.PolynomialTime
+open Complexity.ClassesProofs.SavitchProofs.PatternAutomata
 
 theorem matches_prefix_slice {α : Type} (ps : List (Set α)) (f : ℕ → α) (start n : ℕ) :
     Matches (ps.map Piece.one ++ [.star Set.univ]) (slice f start n) ↔

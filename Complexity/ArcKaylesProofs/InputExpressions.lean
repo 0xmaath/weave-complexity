@@ -12,9 +12,9 @@ set_option backward.isDefEq.respectTransparency false
 
 namespace Complexity.ArcKaylesProofs.Quantified
 
-open Complexity.ClassicalProofs.SavitchProofs
+open Complexity.ClassesProofs.SavitchProofs
 open PatternAutomata ConfigurationWords
-open Complexity.Classical.SpaceMachines Complexity.Classical.PolynomialTime
+open Complexity.Classes.SpaceMachines Complexity.Classes.PolynomialTime
 
 /-- The suffix after the prescribed prefix is unrestricted. -/
 def prefixExpr {α β : Type} : List (Set α) → List (Symbol α β) → Expr β

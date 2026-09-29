@@ -7,14 +7,14 @@ renamed from `Lax689614Proofs.QuantifiedReachability` to `Complexity.ArcKaylesPr
 replaced by `alias`es of their proofs; imports adjusted accordingly.
 -/
 import Complexity.ArcKaylesProofs.QuantifiedFormulas
-import Complexity.ClassicalProofs.SavitchProofs.Reachability
+import Complexity.ClassesProofs.SavitchProofs.Reachability
 
 set_option backward.isDefEq.respectTransparency false
 
 namespace Complexity.ArcKaylesProofs.Quantified
 
-open Complexity.ClassicalProofs.SavitchDefinitions.Reachability
-open Complexity.ClassicalProofs.SavitchProofs (within_one path_splitting)
+open Complexity.ClassesProofs.SavitchDefinitions.Reachability
+open Complexity.ClassesProofs.SavitchProofs (within_one path_splitting)
 
 abbrev Vector (n : ℕ) := Fin n → Bool
 abbrev Wires (n : ℕ) (α : Type) := Fin n → Expr α

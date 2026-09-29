@@ -14,8 +14,8 @@ set_option backward.isDefEq.respectTransparency false
 namespace Complexity.ArcKaylesProofs.CircuitStreaming
 
 open Complexity.CookLevinProofs.CircuitBuilder Complexity.CookLevinProofs.Streaming
-open Complexity.Classical.PolynomialTime
-open Complexity.ClassicalProofs.SavitchProofs
+open Complexity.Classes.PolynomialTime
+open Complexity.ClassesProofs.SavitchProofs
 
 theorem decodeWord_slices (α : Type) [Fintype α] [Inhabited α] (n : ℕ) (xs : Word)
     (hx : xs.length = FiniteCoding.width α * n) :

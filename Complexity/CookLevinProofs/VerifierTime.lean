@@ -12,8 +12,8 @@ import Batteries.Tactic.Alias
 
 namespace Complexity.CookLevinProofs
 
-open Complexity.Classical.PolynomialTime Complexity.CookLevin.Satisfiability
-open Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackProgram VerifierProgram
+open Complexity.Classes.PolynomialTime Complexity.CookLevin.Satisfiability
+open Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackProgram VerifierProgram
 
 /--
 ---

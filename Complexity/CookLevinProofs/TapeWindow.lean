@@ -10,7 +10,7 @@ import Complexity.CookLevinProofs.AbsorbingRuns
 
 namespace Complexity.CookLevinProofs.AbsoluteTape
 
-open Turing Complexity.Classical.MachineModels Complexity.Classical.PolynomialTime
+open Turing Complexity.Classes.MachineModels Complexity.Classes.PolynomialTime
 
 def Inside (radius : ℕ) (j : ℤ) : Prop := -(radius : ℤ) ≤ j ∧ j ≤ (radius : ℤ)
 

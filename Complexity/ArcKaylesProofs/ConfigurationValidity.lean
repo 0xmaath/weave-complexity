@@ -12,9 +12,9 @@ set_option backward.isDefEq.respectTransparency false
 
 namespace Complexity.ArcKaylesProofs.Quantified
 
-open Complexity.ClassicalProofs.SavitchProofs
+open Complexity.ClassesProofs.SavitchProofs
 open ConfigurationWords PatternAutomata
-open Complexity.Classical.SpaceMachines Complexity.Classical.PolynomialTime
+open Complexity.Classes.SpaceMachines Complexity.Classes.PolynomialTime
 
 def InputForm (M : Machine) (w : Word) (k : ℕ) (xs : List (Letter M)) : Prop :=
   (∀ x ∈ xs, x = Sum.inl false) ∨ (∀ x ∈ xs, x = Sum.inl true) ∨

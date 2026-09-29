@@ -10,7 +10,7 @@ import Complexity.CookLevinProofs.MachineBits
 
 namespace Complexity.CookLevinProofs.MachineCircuit
 
-open Turing Complexity.Classical.MachineModels Complexity.Classical.PolynomialTime
+open Turing Complexity.Classes.MachineModels Complexity.Classes.PolynomialTime
 open WindowMachine CircuitBuilder
 
 def nextState (M : SingleTape) (q : M.Q) (a : M.Γ) : M.Q :=

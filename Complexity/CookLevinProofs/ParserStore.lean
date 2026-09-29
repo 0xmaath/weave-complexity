@@ -12,7 +12,7 @@ set_option backward.isDefEq.respectTransparency false
 
 namespace Complexity.CookLevinProofs.VerifierProgram
 
-open Complexity.Classical.PolynomialTime Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackProgram Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackTransfer
+open Complexity.Classes.PolynomialTime Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackProgram Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackTransfer
 
 def parsing (xs ys cursor : Word) (flags : Flags) (scratch : Option Bool) : Data :=
   ⟨(flags, scratch), fun r => match r with
@@ -42,9 +42,9 @@ lemma parsing_require (xs ys cursor : Word) (flags : Flags) (scratch : Option Bo
         scratch) 1 := .atom _ _
 
 lemma parsing_copy (xs ys : Word) (flags : Flags) (scratch : Option Bool) :
-    Executes (Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackCopy.copy .input .cursor .temporary)
+    Executes (Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackCopy.copy .input .cursor .temporary)
       (parsing xs ys [] flags scratch) (parsing xs ys ys flags none) (7 * ys.length + 4) := by
-  have h := Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackCopy.copy_store .input .cursor .temporary
+  have h := Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackCopy.copy_store .input .cursor .temporary
     (by decide) (by decide) (by decide) (parsing xs ys [] flags scratch) rfl
   convert! h using 1
   apply Store.ext
@@ -53,10 +53,10 @@ lemma parsing_copy (xs ys : Word) (flags : Flags) (scratch : Option Bool) :
     cases r <;> simp [parsing]
 
 lemma parsing_clear (xs ys cursor : Word) (flags : Flags) (scratch : Option Bool) :
-    Executes (Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackClear.clear .cursor)
+    Executes (Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackClear.clear .cursor)
       (parsing xs ys cursor flags scratch) (parsing xs ys [] flags none)
       (2 * cursor.length + 2) := by
-  have h := Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackClear.clear_store .cursor (parsing xs ys cursor flags scratch)
+  have h := Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackClear.clear_store .cursor (parsing xs ys cursor flags scratch)
   convert! h using 1
   apply Store.ext
   · rfl

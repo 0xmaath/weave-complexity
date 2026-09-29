@@ -19,7 +19,7 @@ of length at most the input length.
 
 namespace Complexity.CookLevin.VerifierCorrect
 
-open Satisfiability Complexity.Classical.PolynomialTime Complexity.Classical.Certificates
+open Satisfiability Complexity.Classes.PolynomialTime Complexity.Classes.Certificates
 
 /- The archived concept stated `correct` here as an `axiom`. In this port it is a
 theorem: it is proved as `Complexity.CookLevinProofs.verifier_correct` in `Complexity.CookLevinProofs.Certificates`, which

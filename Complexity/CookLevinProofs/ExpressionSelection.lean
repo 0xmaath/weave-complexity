@@ -10,7 +10,7 @@ import Complexity.CookLevinProofs.ExpressionOperations
 
 namespace Complexity.CookLevinProofs.Streaming
 
-open Complexity.Classical.PolynomialTime
+open Complexity.Classes.PolynomialTime
 
 variable {I : Type}
 

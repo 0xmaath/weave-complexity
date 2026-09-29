@@ -10,7 +10,7 @@ import Complexity.CookLevinProofs.MachineCircuitRuns
 
 namespace Complexity.CookLevinProofs.MachineCircuit
 
-open Complexity.Classical.MachineModels CircuitBuilder
+open Complexity.Classes.MachineModels CircuitBuilder
 
 lemma stepExpr_cost_exact (M : SingleTape) (radius : ℕ) (b : Bit M radius) :
     (stepExpr M radius b).cost = 5 * (casesList M radius).length + 1 := by

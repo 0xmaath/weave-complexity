@@ -14,7 +14,7 @@ DST = os.environ.get('PORT_DST', '/home/user/weave-complexity')
 
 REPOS = [
     # (dir, concept ns, proof ns, target concept ns, target proof ns, github, authors)
-    ('classical-complexity', 'Lax434930', 'Lax434930Proofs', 'Complexity.Classical', 'Complexity.ClassicalProofs',
+    ('classical-complexity', 'Lax434930', 'Lax434930Proofs', 'Complexity.Classes', 'Complexity.ClassesProofs',
      'https://github.com/EdouardBonnet/classical-complexity', 'Édouard Bonnet, Codex 5.6 and 6', 'lax-434930'),
     ('cook-levin', 'Lax429075', 'Lax429075Proofs', 'Complexity.CookLevin', 'Complexity.CookLevinProofs',
      'https://github.com/EdouardBonnet/cook-levin', 'Édouard Bonnet, Codex 5.6 and 6', 'lax-429075'),

@@ -10,7 +10,7 @@ import Complexity.CookLevinProofs.UniformGateStream
 
 namespace Complexity.CookLevinProofs.Streaming
 
-open CircuitBuilder Complexity.Classical.PolynomialTime Complexity.CookLevin.Circuits Complexity.CookLevin.Tseitin CNFOutput
+open CircuitBuilder Complexity.Classes.PolynomialTime Complexity.CookLevin.Circuits Complexity.CookLevin.Tseitin CNFOutput
 
 lemma gatesWord_cons (start : ℕ) (g : Gate) (gs : List Gate) :
     gatesWord start (g :: gs) = segment (gateClauses start g) ++ gatesWord (start + 1) gs := by

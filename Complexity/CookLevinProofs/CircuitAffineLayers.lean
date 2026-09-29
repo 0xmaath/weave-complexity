@@ -10,7 +10,7 @@ import Complexity.CookLevinProofs.ConclusionExpressionCode
 
 namespace Complexity.CookLevinProofs.Streaming
 
-open CircuitBuilder Complexity.Classical.PolynomialTime
+open CircuitBuilder Complexity.Classes.PolynomialTime
 
 lemma rename_agrees_bounded (e : Expr) (n : ℕ) (f g : ℕ → ℕ) (he : e.Bounded n)
     (h : ∀ i < n, f i = g i) : e.rename f = e.rename g := by

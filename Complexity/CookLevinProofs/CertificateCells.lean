@@ -12,8 +12,8 @@ import Complexity.CookLevinProofs.CircuitPadding
 
 namespace Complexity.CookLevinProofs.CertificateCircuit
 
-open Complexity.Classical.PolynomialTime Complexity.Classical.Certificates Complexity.CookLevin.CNF
-open Complexity.Classical.MachineModels CircuitBuilder
+open Complexity.Classes.PolynomialTime Complexity.Classes.Certificates Complexity.CookLevin.CNF
+open Complexity.Classes.MachineModels CircuitBuilder
 open scoped Classical
 
 def pairedPrefix (x : Word) : Word := pair x []

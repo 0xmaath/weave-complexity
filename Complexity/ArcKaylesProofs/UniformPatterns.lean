@@ -14,8 +14,8 @@ set_option backward.isDefEq.respectTransparency false
 namespace Complexity.ArcKaylesProofs.CircuitStreaming
 
 open Complexity.CookLevinProofs.CircuitBuilder Complexity.CookLevinProofs.Streaming
-open Complexity.Classical.PolynomialTime
-open Complexity.ClassicalProofs.SavitchProofs.PatternAutomata
+open Complexity.Classes.PolynomialTime
+open Complexity.ClassesProofs.SavitchProofs.PatternAutomata
 
 def slice {α : Type} (f : ℕ → α) (start n : ℕ) : List α :=
   (List.range n).map (fun i => f (start + i))

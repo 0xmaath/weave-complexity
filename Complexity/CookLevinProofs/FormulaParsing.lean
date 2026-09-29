@@ -10,7 +10,7 @@ import Complexity.CookLevinProofs.ClauseParsing
 
 namespace Complexity.CookLevinProofs.VerifierProgram
 
-open Complexity.Classical.PolynomialTime Complexity.CookLevin.Encoding Complexity.CookLevin.CNF Complexity.CookLevin.Satisfiability
+open Complexity.Classes.PolynomialTime Complexity.CookLevin.Encoding Complexity.CookLevin.CNF Complexity.CookLevin.Satisfiability
 
 def scanFormula : Word → Parsed Formula := scanMany scanClause scanClause_length
 

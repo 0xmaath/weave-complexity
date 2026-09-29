@@ -10,7 +10,7 @@ import Complexity.CookLevinProofs.ClauseLoop
 
 namespace Complexity.CookLevinProofs.VerifierProgram
 
-open Complexity.Classical.PolynomialTime Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackProgram
+open Complexity.Classes.PolynomialTime Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackProgram
 
 def checkedClauseFlags (xs ys : Word) (flags : Flags) : Flags :=
   {flags with

@@ -7,12 +7,12 @@ renamed from `Lax429075Proofs.StreamingPrograms` to `Complexity.CookLevinProofs.
 replaced by `alias`es of their proofs; imports adjusted accordingly.
 -/
 import Complexity.CookLevinProofs.EmitFormula
-import Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackRename
+import Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackRename
 
 namespace Complexity.CookLevinProofs.Streaming
 
-open Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackProgram Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackTransfer
-open Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackRename CNFOutput Complexity.Classical.PolynomialTime
+open Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackProgram Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackTransfer
+open Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackRename CNFOutput Complexity.Classes.PolynomialTime
 
 inductive Key (I W : Type) where
   | input (i : I)

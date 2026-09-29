@@ -14,8 +14,8 @@ set_option backward.isDefEq.respectTransparency false
 namespace Complexity.ArcKaylesProofs.CircuitStreaming
 
 open Complexity.CookLevinProofs.CircuitBuilder Complexity.CookLevinProofs.Streaming
-open Complexity.Classical.PolynomialTime Complexity.Classical.SpaceMachines
-open Complexity.ClassicalProofs.SavitchProofs ConfigurationWords
+open Complexity.Classes.PolynomialTime Complexity.Classes.SpaceMachines
+open Complexity.ClassesProofs.SavitchProofs ConfigurationWords
 
 theorem readExpression_bounded {I : Type} (base : Number I) (a : I → Word) (i n b : ℕ)
     (hi : i < n) (hb : base.value a + n ≤ b) :

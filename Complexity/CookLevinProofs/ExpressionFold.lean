@@ -11,7 +11,7 @@ import Complexity.CookLevinProofs.FoldGateStream
 
 namespace Complexity.CookLevinProofs.Streaming
 
-open Complexity.Classical.PolynomialTime CircuitBuilder
+open Complexity.Classes.PolynomialTime CircuitBuilder
 
 variable {I : Type}
 

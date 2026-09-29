@@ -6,16 +6,16 @@ see `LICENSES/arc-kayles.LICENSE`. Modifications for this port: module and names
 renamed from `Lax689614Proofs.ProgramSpace` to `Complexity.ArcKaylesProofs.ProgramSpace`; concept-package `axiom` statements
 replaced by `alias`es of their proofs; imports adjusted accordingly.
 -/
-import Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackProgram
-import Complexity.ClassicalProofs.SavitchProofs.StackLanguage
+import Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackProgram
+import Complexity.ClassesProofs.SavitchProofs.StackLanguage
 
 set_option backward.isDefEq.respectTransparency false
 
 namespace Complexity.ArcKaylesProofs.ProgramSpace
 
-open Complexity.Classical.PolynomialTime
-open Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackProgram
-open Complexity.ClassicalProofs.SavitchProofs
+open Complexity.Classes.PolynomialTime
+open Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackProgram
+open Complexity.ClassesProofs.SavitchProofs
 
 variable {K σ : Type} [DecidableEq K]
 

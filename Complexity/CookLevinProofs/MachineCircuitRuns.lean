@@ -10,7 +10,7 @@ import Complexity.CookLevinProofs.MachineCircuitSize
 
 namespace Complexity.CookLevinProofs.MachineCircuit
 
-open Turing Complexity.Classical.MachineModels
+open Turing Complexity.Classes.MachineModels
 open WindowMachine CircuitBuilder Complexity.CookLevin.CNF
 
 lemma evaluate_rounds (M : SingleTape) (radius t : ℕ) (c : Cfg M radius) :

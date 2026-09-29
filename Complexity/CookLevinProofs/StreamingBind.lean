@@ -7,15 +7,15 @@ renamed from `Lax429075Proofs.StreamingBind` to `Complexity.CookLevinProofs.Stre
 replaced by `alias`es of their proofs; imports adjusted accordingly.
 -/
 import Complexity.CookLevinProofs.StreamingAppend
-import Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackClear
+import Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackClear
 
 set_option backward.isDefEq.respectTransparency false
 
 namespace Complexity.CookLevinProofs.Streaming
 
-open Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackProgram Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackTransfer
-open Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackRename Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackClear
-open CNFOutput Complexity.Classical.PolynomialTime Polynomial
+open Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackProgram Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackTransfer
+open Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackRename Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackClear
+open CNFOutput Complexity.Classes.PolynomialTime Polynomial
 
 variable {I W V : Type} [DecidableEq I] [DecidableEq W] [DecidableEq V]
 

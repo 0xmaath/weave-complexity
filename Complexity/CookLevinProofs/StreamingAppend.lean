@@ -12,8 +12,8 @@ set_option backward.isDefEq.respectTransparency false
 
 namespace Complexity.CookLevinProofs.Streaming
 
-open Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackProgram Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackTransfer
-open Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackRename CNFOutput Complexity.Classical.PolynomialTime Polynomial
+open Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackProgram Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackTransfer
+open Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackRename CNFOutput Complexity.Classes.PolynomialTime Polynomial
 
 variable {I : Type} [DecidableEq I]
 

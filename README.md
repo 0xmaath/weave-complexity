@@ -7,7 +7,7 @@ sources replaced by the actual proof.
 
 | Source | Lax id | Ported namespace | Content |
 | --- | --- | --- | --- |
-| [EdouardBonnet/classical-complexity](https://github.com/EdouardBonnet/classical-complexity) @ `0c08403` | lax-434930 | `Complexity.Classical`, `Complexity.ClassicalProofs` | L, NL, P, NP, coNL, coNP, PSPACE, NPSPACE, EXPTIME as sets of languages of finite binary strings; the inclusion chain `L ⊆ NL ⊆ P ⊆ NP ⊆ PSPACE = NPSPACE ⊆ EXPTIME`; single-tape and finite-stack characterizations of P; closure of P under complement. |
+| [EdouardBonnet/classical-complexity](https://github.com/EdouardBonnet/classical-complexity) @ `0c08403` | lax-434930 | `Complexity.Classes`, `Complexity.ClassesProofs` | L, NL, P, NP, coNL, coNP, PSPACE, NPSPACE, EXPTIME as sets of languages of finite binary strings; the inclusion chain `L ⊆ NL ⊆ P ⊆ NP ⊆ PSPACE = NPSPACE ⊆ EXPTIME`; single-tape and finite-stack characterizations of P; closure of P under complement. |
 | [EdouardBonnet/cook-levin](https://github.com/EdouardBonnet/cook-levin) @ `905f2da` | lax-429075 | `Complexity.CookLevin`, `Complexity.CookLevinProofs` | CNF, its binary encoding, SAT, polynomial many-one reductions, NP-completeness, the Cook–Levin theorem with a compiled reduction machine. |
 | [EdouardBonnet/arc-kayles](https://github.com/EdouardBonnet/arc-kayles) @ `dd8b6e6` | lax-689614 | `Complexity.ArcKayles`, `Complexity.ArcKaylesProofs` | Arc Kayles, Sprague–Grundy values, the positive CNF game, Schaefer's PSPACE-hardness, the reduction to Arc Kayles, and PSPACE-completeness of Arc Kayles. |
 
@@ -33,8 +33,8 @@ separate dependency any more.
 
 ```
 Complexity.lean                  root module: imports everything below
-Complexity/Classical/            definitions (former "concepts") of classical-complexity
-Complexity/ClassicalProofs/      proofs of classical-complexity
+Complexity/Classes/            definitions (former "concepts") of classical-complexity
+Complexity/ClassesProofs/      proofs of classical-complexity
 Complexity/CookLevin/            definitions of cook-levin
 Complexity/CookLevinProofs/      proofs of cook-levin
 Complexity/ArcKayles/            definitions of arc-kayles
@@ -73,11 +73,11 @@ The one axiom without a proof in the sources, `Lax434930.PVersusNP.P_ne_NP`
 Top-level theorems (see `AUDIT.md` §4.6, §5, §7 for the statements):
 
 ```
-Complexity.Classical.BasicProperties.{L_subset_NL, NL_subset_P, P_subset_NP, NP_subset_PSPACE, NPSPACE_subset_EXPTIME}
-Complexity.Classical.PolynomialSpaceEquality.PSPACE_eq_NPSPACE
-Complexity.Classical.ComplementClosure.closed_under_complement
-Complexity.Classical.ModelEquivalence.singleTapeP_eq_P
-Complexity.Classical.FiniteStackEquivalence.finiteStackP_eq_P
+Complexity.Classes.BasicProperties.{L_subset_NL, NL_subset_P, P_subset_NP, NP_subset_PSPACE, NPSPACE_subset_EXPTIME}
+Complexity.Classes.PolynomialSpaceEquality.PSPACE_eq_NPSPACE
+Complexity.Classes.ComplementClosure.closed_under_complement
+Complexity.Classes.ModelEquivalence.singleTapeP_eq_P
+Complexity.Classes.FiniteStackEquivalence.finiteStackP_eq_P
 Complexity.CookLevin.CookLevin.np_complete
 Complexity.ArcKayles.Completeness.pspace_complete
 ```

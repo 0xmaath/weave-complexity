@@ -20,7 +20,7 @@ import Complexity.CookLevinProofs.Tseitin
 namespace Complexity.CookLevinProofs
 
 open Complexity.CookLevin Complexity.CookLevin.Satisfiability Complexity.CookLevin.Encoding Complexity.CookLevin.Reductions
-open Complexity.Classical.PolynomialTime Complexity.Classical.NondeterministicPolynomialTime
+open Complexity.Classes.PolynomialTime Complexity.Classes.NondeterministicPolynomialTime
 
 /--
 ---

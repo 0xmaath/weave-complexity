@@ -13,12 +13,12 @@ set_option backward.isDefEq.respectTransparency false
 
 namespace Complexity.ArcKaylesProofs.CircuitStreaming
 
-open Complexity.Classical.PolynomialTime
+open Complexity.Classes.PolynomialTime
 
 namespace CS
-export Complexity.ClassicalProofs.InclusionAux.TimeHelpers.Streaming (Code Number Test extend)
+export Complexity.ClassesProofs.InclusionAux.TimeHelpers.Streaming (Code Number Test extend)
 namespace Code
-export Complexity.ClassicalProofs.InclusionAux.TimeHelpers.Streaming.Code (eval)
+export Complexity.ClassesProofs.InclusionAux.TimeHelpers.Streaming.Code (eval)
 end Code
 end CS
 

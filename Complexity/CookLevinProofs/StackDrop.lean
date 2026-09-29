@@ -6,12 +6,12 @@ see `LICENSES/cook-levin.LICENSE`. Modifications for this port: module and names
 renamed from `Lax429075Proofs.StackDrop` to `Complexity.CookLevinProofs.StackDrop`; concept-package `axiom` statements
 replaced by `alias`es of their proofs; imports adjusted accordingly.
 -/
-import Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackRepeat
+import Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackRepeat
 import Mathlib.Tactic
 
 namespace Complexity.CookLevinProofs.StackDrop
 
-open Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackProgram Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackTransfer Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackRepeat
+open Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackProgram Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackTransfer Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackRepeat
 
 variable {K Aux : Type} [DecidableEq K]
 

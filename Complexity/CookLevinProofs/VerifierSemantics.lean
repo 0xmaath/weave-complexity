@@ -11,7 +11,7 @@ import Complexity.CookLevinProofs.PairDecoding
 
 namespace Complexity.CookLevinProofs.VerifierProgram
 
-open Complexity.Classical.PolynomialTime Complexity.Classical.Certificates
+open Complexity.Classes.PolynomialTime Complexity.Classes.Certificates
 open Complexity.CookLevin.Encoding Complexity.CookLevin.CNF Complexity.CookLevin.Satisfiability
 
 def checkFormula (xs ys : Word) : Bool :=

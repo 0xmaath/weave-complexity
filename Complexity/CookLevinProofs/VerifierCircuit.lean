@@ -10,8 +10,8 @@ import Complexity.CookLevinProofs.CircuitAssembly
 
 namespace Complexity.CookLevinProofs.VerifierCircuit
 
-open Complexity.Classical.PolynomialTime Complexity.CookLevin.CNF Complexity.CookLevin.Circuits
-open Complexity.Classical.MachineModels CircuitBuilder CertificateCircuit MachineCircuit
+open Complexity.Classes.PolynomialTime Complexity.CookLevin.CNF Complexity.CookLevin.Circuits
+open Complexity.Classes.MachineModels CircuitBuilder CertificateCircuit MachineCircuit
 
 noncomputable def preparation (M : SingleTape) (x : Word) (bound radius : ℕ) : VectorBlock (bitCount M radius) :=
   compileVector (inputCount bound) (initialExpressions M x bound radius)

@@ -10,8 +10,8 @@ import Complexity.CookLevinProofs.InitialCircuit
 
 namespace Complexity.CookLevinProofs.CertificateCircuit
 
-open Complexity.Classical.PolynomialTime Complexity.CookLevin.CNF
-open Complexity.Classical.MachineModels CircuitBuilder WindowMachine
+open Complexity.Classes.PolynomialTime Complexity.CookLevin.CNF
+open Complexity.Classes.MachineModels CircuitBuilder WindowMachine
 open scoped Classical
 
 noncomputable def acceptanceExpr (M : SingleTape) (radius : ℕ) : Expr :=

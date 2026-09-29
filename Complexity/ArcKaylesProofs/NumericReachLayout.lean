@@ -13,7 +13,7 @@ set_option backward.isDefEq.respectTransparency false
 namespace Complexity.ArcKaylesProofs.Quantified.NumericReach
 
 open Complexity.CookLevin
-open Complexity.ClassicalProofs.SavitchDefinitions.Reachability
+open Complexity.ClassesProofs.SavitchDefinitions.Reachability
 
 def endpoint (n : ℕ) : ℕ → Bool → VectorFunction n
   | 0, side => fun _ _ => side

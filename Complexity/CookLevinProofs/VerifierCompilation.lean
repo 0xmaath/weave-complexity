@@ -11,8 +11,8 @@ import Complexity.CookLevinProofs.CircuitSizeBounds
 
 namespace Complexity.CookLevinProofs.VerifierCircuit
 
-open Complexity.Classical.PolynomialTime Complexity.Classical.Certificates Complexity.CookLevin
-open Complexity.Classical.MachineModels
+open Complexity.Classes.PolynomialTime Complexity.Classes.Certificates Complexity.CookLevin
+open Complexity.Classes.MachineModels
 
 lemma verifier_circuits (V : Language) (hV : V ∈ P) (p : Polynomial ℕ) :
     ∃ (M : SingleTape) (R : Polynomial ℕ), ∀ x : Word,

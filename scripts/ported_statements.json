@@ -1,56 +1,56 @@
 {
  "axioms": [
   {
-   "full": "Complexity.Classical.BasicProperties.L_subset_NL",
-   "mod": "Complexity.Classical.BasicProperties"
+   "full": "Complexity.Classes.BasicProperties.L_subset_NL",
+   "mod": "Complexity.Classes.BasicProperties"
   },
   {
-   "full": "Complexity.Classical.BasicProperties.NL_subset_P",
-   "mod": "Complexity.Classical.BasicProperties"
+   "full": "Complexity.Classes.BasicProperties.NL_subset_P",
+   "mod": "Complexity.Classes.BasicProperties"
   },
   {
-   "full": "Complexity.Classical.BasicProperties.P_subset_NP",
-   "mod": "Complexity.Classical.BasicProperties"
+   "full": "Complexity.Classes.BasicProperties.P_subset_NP",
+   "mod": "Complexity.Classes.BasicProperties"
   },
   {
-   "full": "Complexity.Classical.BasicProperties.NP_subset_PSPACE",
-   "mod": "Complexity.Classical.BasicProperties"
+   "full": "Complexity.Classes.BasicProperties.NP_subset_PSPACE",
+   "mod": "Complexity.Classes.BasicProperties"
   },
   {
-   "full": "Complexity.Classical.BasicProperties.NPSPACE_subset_EXPTIME",
-   "mod": "Complexity.Classical.BasicProperties"
+   "full": "Complexity.Classes.BasicProperties.NPSPACE_subset_EXPTIME",
+   "mod": "Complexity.Classes.BasicProperties"
   },
   {
-   "full": "Complexity.Classical.Certificates.unpair_pair",
-   "mod": "Complexity.Classical.Certificates"
+   "full": "Complexity.Classes.Certificates.unpair_pair",
+   "mod": "Complexity.Classes.Certificates"
   },
   {
-   "full": "Complexity.Classical.Certificates.pair_injective",
-   "mod": "Complexity.Classical.Certificates"
+   "full": "Complexity.Classes.Certificates.pair_injective",
+   "mod": "Complexity.Classes.Certificates"
   },
   {
-   "full": "Complexity.Classical.Certificates.pair_length",
-   "mod": "Complexity.Classical.Certificates"
+   "full": "Complexity.Classes.Certificates.pair_length",
+   "mod": "Complexity.Classes.Certificates"
   },
   {
-   "full": "Complexity.Classical.ComplementClosure.closed_under_complement",
-   "mod": "Complexity.Classical.ComplementClosure"
+   "full": "Complexity.Classes.ComplementClosure.closed_under_complement",
+   "mod": "Complexity.Classes.ComplementClosure"
   },
   {
-   "full": "Complexity.Classical.FiniteStackEquivalence.finiteStackP_eq_P",
-   "mod": "Complexity.Classical.FiniteStackEquivalence"
+   "full": "Complexity.Classes.FiniteStackEquivalence.finiteStackP_eq_P",
+   "mod": "Complexity.Classes.FiniteStackEquivalence"
   },
   {
-   "full": "Complexity.Classical.ModelEquivalence.singleTapeP_eq_P",
-   "mod": "Complexity.Classical.ModelEquivalence"
+   "full": "Complexity.Classes.ModelEquivalence.singleTapeP_eq_P",
+   "mod": "Complexity.Classes.ModelEquivalence"
   },
   {
-   "full": "Complexity.Classical.PolynomialSpaceEquality.PSPACE_eq_NPSPACE",
-   "mod": "Complexity.Classical.PolynomialSpaceEquality"
+   "full": "Complexity.Classes.PolynomialSpaceEquality.PSPACE_eq_NPSPACE",
+   "mod": "Complexity.Classes.PolynomialSpaceEquality"
   },
   {
-   "full": "Complexity.Classical.SingleTapeComplement.closed_under_complement",
-   "mod": "Complexity.Classical.SingleTapeComplement"
+   "full": "Complexity.Classes.SingleTapeComplement.closed_under_complement",
+   "mod": "Complexity.Classes.SingleTapeComplement"
   },
   {
    "full": "Complexity.CookLevin.CircuitMachine.compile",
@@ -166,57 +166,57 @@
   }
  ],
  "aliases": {
-  "Complexity.Classical.BasicProperties.L_subset_NL": {
-   "proof_module": "Complexity.ClassicalProofs.BasicProperties",
-   "proof": "Complexity.ClassicalProofs.BasicProperties.L_subset_NL"
+  "Complexity.Classes.BasicProperties.L_subset_NL": {
+   "proof_module": "Complexity.ClassesProofs.BasicProperties",
+   "proof": "Complexity.ClassesProofs.BasicProperties.L_subset_NL"
   },
-  "Complexity.Classical.Certificates.unpair_pair": {
-   "proof_module": "Complexity.ClassicalProofs.Certificates",
-   "proof": "Complexity.ClassicalProofs.Certificates.unpair_pair"
+  "Complexity.Classes.Certificates.unpair_pair": {
+   "proof_module": "Complexity.ClassesProofs.Certificates",
+   "proof": "Complexity.ClassesProofs.Certificates.unpair_pair"
   },
-  "Complexity.Classical.Certificates.pair_injective": {
-   "proof_module": "Complexity.ClassicalProofs.Certificates",
-   "proof": "Complexity.ClassicalProofs.Certificates.pair_injective"
+  "Complexity.Classes.Certificates.pair_injective": {
+   "proof_module": "Complexity.ClassesProofs.Certificates",
+   "proof": "Complexity.ClassesProofs.Certificates.pair_injective"
   },
-  "Complexity.Classical.Certificates.pair_length": {
-   "proof_module": "Complexity.ClassicalProofs.Certificates",
-   "proof": "Complexity.ClassicalProofs.Certificates.pair_length"
+  "Complexity.Classes.Certificates.pair_length": {
+   "proof_module": "Complexity.ClassesProofs.Certificates",
+   "proof": "Complexity.ClassesProofs.Certificates.pair_length"
   },
-  "Complexity.Classical.ComplementClosure.closed_under_complement": {
-   "proof_module": "Complexity.ClassicalProofs.ComplementClosure",
-   "proof": "Complexity.ClassicalProofs.closed_under_complement"
+  "Complexity.Classes.ComplementClosure.closed_under_complement": {
+   "proof_module": "Complexity.ClassesProofs.ComplementClosure",
+   "proof": "Complexity.ClassesProofs.closed_under_complement"
   },
-  "Complexity.Classical.FiniteStackEquivalence.finiteStackP_eq_P": {
-   "proof_module": "Complexity.ClassicalProofs.ModelEquivalence",
-   "proof": "Complexity.ClassicalProofs.ModelEquivalence.finiteStackP_eq_P"
+  "Complexity.Classes.FiniteStackEquivalence.finiteStackP_eq_P": {
+   "proof_module": "Complexity.ClassesProofs.ModelEquivalence",
+   "proof": "Complexity.ClassesProofs.ModelEquivalence.finiteStackP_eq_P"
   },
-  "Complexity.Classical.ModelEquivalence.singleTapeP_eq_P": {
-   "proof_module": "Complexity.ClassicalProofs.ModelEquivalence",
-   "proof": "Complexity.ClassicalProofs.ModelEquivalence.singleTapeP_eq_P"
+  "Complexity.Classes.ModelEquivalence.singleTapeP_eq_P": {
+   "proof_module": "Complexity.ClassesProofs.ModelEquivalence",
+   "proof": "Complexity.ClassesProofs.ModelEquivalence.singleTapeP_eq_P"
   },
-  "Complexity.Classical.SingleTapeComplement.closed_under_complement": {
-   "proof_module": "Complexity.ClassicalProofs.ModelEquivalence",
-   "proof": "Complexity.ClassicalProofs.ModelEquivalence.singleTape_closed_under_complement"
+  "Complexity.Classes.SingleTapeComplement.closed_under_complement": {
+   "proof_module": "Complexity.ClassesProofs.ModelEquivalence",
+   "proof": "Complexity.ClassesProofs.ModelEquivalence.singleTape_closed_under_complement"
   },
-  "Complexity.Classical.BasicProperties.NL_subset_P": {
-   "proof_module": "Complexity.ClassicalProofs.NLPolynomialTime",
-   "proof": "Complexity.ClassicalProofs.NL_subset_P"
+  "Complexity.Classes.BasicProperties.NL_subset_P": {
+   "proof_module": "Complexity.ClassesProofs.NLPolynomialTime",
+   "proof": "Complexity.ClassesProofs.NL_subset_P"
   },
-  "Complexity.Classical.BasicProperties.NP_subset_PSPACE": {
-   "proof_module": "Complexity.ClassicalProofs.NPPolynomialSpace",
-   "proof": "Complexity.ClassicalProofs.NP_subset_PSPACE"
+  "Complexity.Classes.BasicProperties.NP_subset_PSPACE": {
+   "proof_module": "Complexity.ClassesProofs.NPPolynomialSpace",
+   "proof": "Complexity.ClassesProofs.NP_subset_PSPACE"
   },
-  "Complexity.Classical.BasicProperties.NPSPACE_subset_EXPTIME": {
-   "proof_module": "Complexity.ClassicalProofs.NPSpaceExponentialTime",
-   "proof": "Complexity.ClassicalProofs.NPSPACE_subset_EXPTIME"
+  "Complexity.Classes.BasicProperties.NPSPACE_subset_EXPTIME": {
+   "proof_module": "Complexity.ClassesProofs.NPSpaceExponentialTime",
+   "proof": "Complexity.ClassesProofs.NPSPACE_subset_EXPTIME"
   },
-  "Complexity.Classical.BasicProperties.P_subset_NP": {
-   "proof_module": "Complexity.ClassicalProofs.PSubsetNP",
-   "proof": "Complexity.ClassicalProofs.P_subset_NP"
+  "Complexity.Classes.BasicProperties.P_subset_NP": {
+   "proof_module": "Complexity.ClassesProofs.PSubsetNP",
+   "proof": "Complexity.ClassesProofs.P_subset_NP"
   },
-  "Complexity.Classical.PolynomialSpaceEquality.PSPACE_eq_NPSPACE": {
-   "proof_module": "Complexity.ClassicalProofs.PolynomialSpaceEquality",
-   "proof": "Complexity.ClassicalProofs.PSPACE_eq_NPSPACE"
+  "Complexity.Classes.PolynomialSpaceEquality.PSPACE_eq_NPSPACE": {
+   "proof_module": "Complexity.ClassesProofs.PolynomialSpaceEquality",
+   "proof": "Complexity.ClassesProofs.PSPACE_eq_NPSPACE"
   },
   "Complexity.CookLevin.FiniteWitness.bounded": {
    "proof_module": "Complexity.CookLevinProofs.Certificates",

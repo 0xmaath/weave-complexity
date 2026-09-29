@@ -11,8 +11,8 @@ import Complexity.CookLevinProofs.CertificateRepresentation
 
 namespace Complexity.CookLevinProofs.VerifierCircuit
 
-open Complexity.Classical.PolynomialTime Complexity.Classical.Certificates Complexity.CookLevin Complexity.CookLevin.CNF Complexity.CookLevin.Circuits
-open Complexity.Classical.MachineModels CircuitBuilder CertificateCircuit MachineCircuit
+open Complexity.Classes.PolynomialTime Complexity.Classes.Certificates Complexity.CookLevin Complexity.CookLevin.CNF Complexity.CookLevin.Circuits
+open Complexity.Classes.MachineModels CircuitBuilder CertificateCircuit MachineCircuit
 
 lemma body_value (M : SingleTape) (x : Word) (bound radius : ℕ) (ρ : Assignment) (y : Word)
     (hy : CertificateCircuit.Represents bound ρ y)

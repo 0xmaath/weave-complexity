@@ -14,8 +14,8 @@ set_option backward.isDefEq.respectTransparency false
 namespace Complexity.ArcKaylesProofs.CNFTraversal
 
 open Complexity.CookLevin CNF Encoding
-open Complexity.Classical.PolynomialTime
-open Complexity.ClassicalProofs.InclusionAux.TimeHelpers.Streaming
+open Complexity.Classes.PolynomialTime
+open Complexity.ClassesProofs.InclusionAux.TimeHelpers.Streaming
 
 def matrixClause (flags : Word) (C : Clause) : Finset (Fin (4 * flags.length)) :=
   ((C.filterMap (Quantified.signedLiteral flags.length (fun i => flags[i.val]))).toFinset).image

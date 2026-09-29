@@ -8,7 +8,7 @@ replaced by `alias`es of their proofs; imports adjusted accordingly.
 -/
 import Complexity.CookLevin.Tseitin
 import Complexity.CookLevin.Encoding
-import Complexity.Classical.NondeterministicPolynomialTime
+import Complexity.Classes.NondeterministicPolynomialTime
 
 /-!
 ---
@@ -25,7 +25,7 @@ the transition layers, and the final acceptance constraint.
 
 namespace Complexity.CookLevin.CircuitMachine
 
-open Complexity.Classical.PolynomialTime Complexity.Classical.Certificates Circuits Encoding
+open Complexity.Classes.PolynomialTime Complexity.Classes.Certificates Circuits Encoding
 
 /- The archived concept stated `compile` here as an `axiom`. In this port it is a
 theorem: it is proved as `Complexity.CookLevinProofs.Streaming.circuit_machine` in `Complexity.CookLevinProofs.CircuitMachine`, which

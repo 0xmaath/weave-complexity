@@ -14,9 +14,9 @@ set_option backward.isDefEq.respectTransparency false
 namespace Complexity.ArcKaylesProofs.CircuitStreaming
 
 open Complexity.CookLevinProofs.CircuitBuilder Complexity.CookLevinProofs.Streaming
-open Complexity.Classical.PolynomialTime Complexity.Classical.SpaceMachines
-open Complexity.ClassicalProofs.SavitchProofs ConfigurationWords
-open Complexity.ClassicalProofs.SavitchDefinitions.Reachability
+open Complexity.Classes.PolynomialTime Complexity.Classes.SpaceMachines
+open Complexity.ClassesProofs.SavitchProofs ConfigurationWords
+open Complexity.ClassesProofs.SavitchDefinitions.Reachability
 open Quantified (Vector vectorNumber)
 
 def lastNumber {I : Type} (n depth : Number I) (side : Bool) : Number I :=

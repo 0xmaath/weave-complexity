@@ -13,7 +13,7 @@ set_option backward.isDefEq.respectTransparency false
 
 namespace Complexity.CookLevinProofs.Streaming
 
-open Complexity.Classical.PolynomialTime CircuitBuilder
+open Complexity.Classes.PolynomialTime CircuitBuilder
 
 variable {I J : Type}
 

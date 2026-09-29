@@ -13,9 +13,9 @@ set_option backward.isDefEq.respectTransparency false
 
 namespace Complexity.ArcKaylesProofs.Quantified
 
-open Complexity.ClassicalProofs.SavitchProofs
-open Complexity.ClassicalProofs.SavitchDefinitions.Reachability
-open Complexity.Classical.SpaceMachines Complexity.Classical.PolynomialTime
+open Complexity.ClassesProofs.SavitchProofs
+open Complexity.ClassesProofs.SavitchDefinitions.Reachability
+open Complexity.Classes.SpaceMachines Complexity.Classes.PolynomialTime
 open ConfigurationWords
 
 def vectorNumber {n : ℕ} (v : Vector n) : Fin (2 ^ n) :=

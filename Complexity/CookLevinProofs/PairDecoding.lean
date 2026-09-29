@@ -7,13 +7,13 @@ renamed from `Lax429075Proofs.PairDecoding` to `Complexity.CookLevinProofs.PairD
 replaced by `alias`es of their proofs; imports adjusted accordingly.
 -/
 import Complexity.CookLevinProofs.VerifierProgram
-import Complexity.Classical.Certificates
+import Complexity.Classes.Certificates
 
 set_option backward.isDefEq.respectTransparency false
 
 namespace Complexity.CookLevinProofs.VerifierProgram
 
-open Complexity.Classical.PolynomialTime Complexity.Classical.Certificates
+open Complexity.Classes.PolynomialTime Complexity.Classes.Certificates
 
 structure SplitInput where
   formula : Word

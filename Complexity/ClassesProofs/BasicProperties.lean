@@ -1,0 +1,114 @@
+/-
+Ported from https://github.com/EdouardBonnet/classical-complexity (Lax submission lax-434930, commit 0c0840319318),
+file `proofs/Lax434930Proofs/BasicProperties.lean`.
+Original authors: Édouard Bonnet, Codex 5.6 and 6. Licensed under the Apache License, Version 2.0;
+see `LICENSES/classical-complexity.LICENSE`. Modifications for this port: module and namespace
+renamed from `Lax434930Proofs.BasicProperties` to `Complexity.ClassesProofs.BasicProperties`; concept-package `axiom` statements
+replaced by `alias`es of their proofs; imports adjusted accordingly.
+-/
+import Complexity.Classes.BasicProperties
+import Complexity.Classes.ModelEquivalence
+import Mathlib.Tactic
+import Batteries.Tactic.Alias
+import Complexity.ClassesProofs.ModelEquivalence
+
+namespace Complexity.ClassesProofs.BasicProperties
+
+open Complexity.Classes.PolynomialTime Complexity.Classes.SpaceBounds
+open Complexity.Classes.LogarithmicSpace Complexity.Classes.NondeterministicLogarithmicSpace
+open Complexity.Classes.PolynomialSpace Complexity.Classes.NondeterministicPolynomialSpace
+open Complexity.Classes.ComplementClasses Complexity.Classes.NondeterministicPolynomialTime
+open Complexity.Classes.ExponentialTime Complexity.Classes.Certificates
+
+theorem dspace_subset_nspace (s : ℕ → ℕ) : DSPACE s ⊆ NSPACE s := by
+  rintro A ⟨M, _, hdec, hspace⟩
+  exact ⟨M, hdec, hspace⟩
+
+theorem dspace_mono {s t : ℕ → ℕ} (h : ∀ n, s n ≤ t n) : DSPACE s ⊆ DSPACE t := by
+  rintro A ⟨M, hdet, hdec, hspace⟩
+  exact ⟨M, hdet, hdec, fun w n c hr => (hspace w n c hr).trans_le (h w.length)⟩
+
+theorem nspace_mono {s t : ℕ → ℕ} (h : ∀ n, s n ≤ t n) : NSPACE s ⊆ NSPACE t := by
+  rintro A ⟨M, hdec, hspace⟩
+  exact ⟨M, hdec, fun w n c hr => (hspace w n c hr).trans_le (h w.length)⟩
+
+/--
+---
+conclusion: Complexity.Classes.BasicProperties.L_subset_NL
+assumptions:
+---
+Use the same machine and the same logarithmic bound, allowing nondeterminism.
+-/
+theorem L_subset_NL : L ⊆ NL := by
+  rintro A ⟨c, hc, h⟩
+  exact ⟨c, hc, dspace_subset_nspace _ h⟩
+
+alias _root_.Complexity.Classes.BasicProperties.L_subset_NL := L_subset_NL
+
+/-- Use the same machine and polynomial, allowing nondeterminism. -/
+theorem PSPACE_subset_NPSPACE : PSPACE ⊆ NPSPACE := by
+  rintro A ⟨p, h⟩
+  exact ⟨p, dspace_subset_nspace _ h⟩
+
+/--
+The logarithmic bound is at most the linear polynomial c(n+2).
+-/
+theorem L_subset_PSPACE : L ⊆ PSPACE := by
+  rintro A ⟨c, _, h⟩
+  refine ⟨Polynomial.C c * (Polynomial.X + Polynomial.C 2), dspace_mono ?_ h⟩
+  intro n
+  simpa only [Polynomial.eval_mul, Polynomial.eval_add, Polynomial.eval_C,
+    Polynomial.eval_X] using! Nat.mul_le_mul_left c (Nat.log_le_self 2 (n + 2))
+
+/--
+Enlarge the bound to c(n+2) on every nondeterministic branch.
+-/
+theorem NL_subset_NPSPACE : NL ⊆ NPSPACE := by
+  rintro A ⟨c, _, h⟩
+  refine ⟨Polynomial.C c * (Polynomial.X + Polynomial.C 2), nspace_mono ?_ h⟩
+  intro n
+  simpa only [Polynomial.eval_mul, Polynomial.eval_add, Polynomial.eval_C,
+    Polynomial.eval_X] using! Nat.mul_le_mul_left c (Nat.log_le_self 2 (n + 2))
+
+/--
+Use the proved single-tape characterization of P, then
+enlarge the polynomial bound p(n) to 2 to the power p(n).
+-/
+theorem P_subset_EXPTIME : P ⊆ EXPTIME := by
+  intro A h
+  have hs : A ∈ Complexity.Classes.MachineModels.SingleTapeP := by
+    rw [Complexity.Classes.ModelEquivalence.singleTapeP_eq_P]
+    exact h
+  obtain ⟨M, p, hp⟩ := hs
+  refine ⟨M, p, ?_⟩
+  intro w
+  obtain ⟨c, ⟨ht⟩, hhalt, hanswer⟩ := hp w
+  have hb : p.eval w.length ≤ 2 ^ p.eval w.length :=
+    (Nat.lt_pow_self (by decide : 1 < (2 : ℕ))).le
+  exact ⟨c, ⟨⟨ht.toEvalsTo, ht.steps_le_m.trans hb⟩⟩, hhalt, hanswer⟩
+
+/--
+Complementing a binary language twice returns the original language.
+-/
+theorem co_co (C : Set Language) : co (co C) = C := by
+  ext A
+  simp only [co, Set.mem_setOf_eq, compl_compl]
+
+/--
+Negate the existential certificate characterization of the complement language.
+-/
+theorem mem_coNP_iff (A : Language) : A ∈ coNP ↔
+    ∃ V : Language, V ∈ P ∧ ∃ p : Polynomial ℕ, ∀ x : Word,
+      x ∈ A ↔ ∀ y : Word, y.length ≤ p.eval x.length → pair x y ∉ V := by
+  classical
+  constructor
+  · rintro ⟨V, hV, p, hp⟩
+    refine ⟨V, hV, p, fun x => ?_⟩
+    have h := not_congr (hp x)
+    simpa only [Set.mem_compl_iff, not_not, not_exists, not_and] using h
+  · rintro ⟨V, hV, p, hp⟩
+    refine ⟨V, hV, p, fun x => ?_⟩
+    have h := not_congr (hp x)
+    simpa only [Set.mem_compl_iff, not_forall, Classical.not_imp, not_not, exists_prop] using h
+
+end Complexity.ClassesProofs.BasicProperties

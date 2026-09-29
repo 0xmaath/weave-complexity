@@ -10,7 +10,7 @@ import Complexity.CookLevinProofs.LiteralExecution
 
 namespace Complexity.CookLevinProofs.VerifierProgram
 
-open Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackProgram
+open Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackProgram
 
 lemma loop_suffix_step {p q : Code} {b : Control → Bool} {s u t : Data} {a c : ℕ}
     (hb : b s.state = true) (hp : Executes p s u a)

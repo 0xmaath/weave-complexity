@@ -13,7 +13,7 @@ import Complexity.CookLevinProofs.InitialCircuit
 
 namespace Complexity.CookLevinProofs.Streaming
 
-open Complexity.Classical.PolynomialTime Complexity.Classical.MachineModels
+open Complexity.Classes.PolynomialTime Complexity.Classes.MachineModels
 open CertificateCircuit CircuitBuilder MachineCircuit WindowMachine
 open scoped Classical
 

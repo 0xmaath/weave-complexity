@@ -13,8 +13,8 @@ set_option backward.isDefEq.respectTransparency false
 
 namespace Complexity.ArcKaylesProofs.MachineCode
 
-open Complexity.ClassicalProofs.InclusionAux.TimeHelpers.Streaming
-open Complexity.Classical.PolynomialTime
+open Complexity.ClassesProofs.InclusionAux.TimeHelpers.Streaming
+open Complexity.Classes.PolynomialTime
 
 theorem eval_bind {I : Type} (p : Code I) (q : Code (Option I)) (a : I → Word) :
     (Code.bind p q).eval a = q.eval (extend a (p.eval a)) := rfl

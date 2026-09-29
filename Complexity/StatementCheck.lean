@@ -6,100 +6,100 @@ statement than the archived concept, this file fails to build.
 -/
 import Complexity
 
-namespace Complexity.Classical.BasicProperties
+namespace Complexity.Classes.BasicProperties
 open PolynomialTime LogarithmicSpace NondeterministicLogarithmicSpace
 open NondeterministicPolynomialTime PolynomialSpace NondeterministicPolynomialSpace
 open ExponentialTime
 example : L ⊆ NL :=
-  @Complexity.Classical.BasicProperties.L_subset_NL
-end Complexity.Classical.BasicProperties
+  @Complexity.Classes.BasicProperties.L_subset_NL
+end Complexity.Classes.BasicProperties
 
-namespace Complexity.Classical.BasicProperties
+namespace Complexity.Classes.BasicProperties
 open PolynomialTime LogarithmicSpace NondeterministicLogarithmicSpace
 open NondeterministicPolynomialTime PolynomialSpace NondeterministicPolynomialSpace
 open ExponentialTime
 example : NL ⊆ P :=
-  @Complexity.Classical.BasicProperties.NL_subset_P
-end Complexity.Classical.BasicProperties
+  @Complexity.Classes.BasicProperties.NL_subset_P
+end Complexity.Classes.BasicProperties
 
-namespace Complexity.Classical.BasicProperties
+namespace Complexity.Classes.BasicProperties
 open PolynomialTime LogarithmicSpace NondeterministicLogarithmicSpace
 open NondeterministicPolynomialTime PolynomialSpace NondeterministicPolynomialSpace
 open ExponentialTime
 example : P ⊆ NP :=
-  @Complexity.Classical.BasicProperties.P_subset_NP
-end Complexity.Classical.BasicProperties
+  @Complexity.Classes.BasicProperties.P_subset_NP
+end Complexity.Classes.BasicProperties
 
-namespace Complexity.Classical.BasicProperties
+namespace Complexity.Classes.BasicProperties
 open PolynomialTime LogarithmicSpace NondeterministicLogarithmicSpace
 open NondeterministicPolynomialTime PolynomialSpace NondeterministicPolynomialSpace
 open ExponentialTime
 example : NP ⊆ PSPACE :=
-  @Complexity.Classical.BasicProperties.NP_subset_PSPACE
-end Complexity.Classical.BasicProperties
+  @Complexity.Classes.BasicProperties.NP_subset_PSPACE
+end Complexity.Classes.BasicProperties
 
-namespace Complexity.Classical.BasicProperties
+namespace Complexity.Classes.BasicProperties
 open PolynomialTime LogarithmicSpace NondeterministicLogarithmicSpace
 open NondeterministicPolynomialTime PolynomialSpace NondeterministicPolynomialSpace
 open ExponentialTime
 example : NPSPACE ⊆ EXPTIME :=
-  @Complexity.Classical.BasicProperties.NPSPACE_subset_EXPTIME
-end Complexity.Classical.BasicProperties
+  @Complexity.Classes.BasicProperties.NPSPACE_subset_EXPTIME
+end Complexity.Classes.BasicProperties
 
-namespace Complexity.Classical.Certificates
+namespace Complexity.Classes.Certificates
 open PolynomialTime
 example : ∀ (x y : Word),
     unpair (pair x y) = some (x, y) :=
-  @Complexity.Classical.Certificates.unpair_pair
-end Complexity.Classical.Certificates
+  @Complexity.Classes.Certificates.unpair_pair
+end Complexity.Classes.Certificates
 
-namespace Complexity.Classical.Certificates
+namespace Complexity.Classes.Certificates
 open PolynomialTime
 example : Function.Injective (fun p : Word × Word => pair p.1 p.2) :=
-  @Complexity.Classical.Certificates.pair_injective
-end Complexity.Classical.Certificates
+  @Complexity.Classes.Certificates.pair_injective
+end Complexity.Classes.Certificates
 
-namespace Complexity.Classical.Certificates
+namespace Complexity.Classes.Certificates
 open PolynomialTime
 example : ∀ (x y : Word),
     (pair x y).length = 2 * x.length + y.length + 1 :=
-  @Complexity.Classical.Certificates.pair_length
-end Complexity.Classical.Certificates
+  @Complexity.Classes.Certificates.pair_length
+end Complexity.Classes.Certificates
 
-namespace Complexity.Classical.ComplementClosure
-open Complexity.Classical.PolynomialTime
+namespace Complexity.Classes.ComplementClosure
+open Complexity.Classes.PolynomialTime
 example : ∀ (L : Language),
     L ∈ P → Lᶜ ∈ P :=
-  @Complexity.Classical.ComplementClosure.closed_under_complement
-end Complexity.Classical.ComplementClosure
+  @Complexity.Classes.ComplementClosure.closed_under_complement
+end Complexity.Classes.ComplementClosure
 
-namespace Complexity.Classical.FiniteStackEquivalence
+namespace Complexity.Classes.FiniteStackEquivalence
 open PolynomialTime MachineModels
 example : FiniteStackP = P :=
-  @Complexity.Classical.FiniteStackEquivalence.finiteStackP_eq_P
-end Complexity.Classical.FiniteStackEquivalence
+  @Complexity.Classes.FiniteStackEquivalence.finiteStackP_eq_P
+end Complexity.Classes.FiniteStackEquivalence
 
-namespace Complexity.Classical.ModelEquivalence
+namespace Complexity.Classes.ModelEquivalence
 open PolynomialTime MachineModels
 example : SingleTapeP = P :=
-  @Complexity.Classical.ModelEquivalence.singleTapeP_eq_P
-end Complexity.Classical.ModelEquivalence
+  @Complexity.Classes.ModelEquivalence.singleTapeP_eq_P
+end Complexity.Classes.ModelEquivalence
 
-namespace Complexity.Classical.PolynomialSpaceEquality
+namespace Complexity.Classes.PolynomialSpaceEquality
 open PolynomialSpace NondeterministicPolynomialSpace
 example : PSPACE = NPSPACE :=
-  @Complexity.Classical.PolynomialSpaceEquality.PSPACE_eq_NPSPACE
-end Complexity.Classical.PolynomialSpaceEquality
+  @Complexity.Classes.PolynomialSpaceEquality.PSPACE_eq_NPSPACE
+end Complexity.Classes.PolynomialSpaceEquality
 
-namespace Complexity.Classical.SingleTapeComplement
+namespace Complexity.Classes.SingleTapeComplement
 open PolynomialTime MachineModels
 example : ∀ (L : Language),
     L ∈ SingleTapeP → Lᶜ ∈ SingleTapeP :=
-  @Complexity.Classical.SingleTapeComplement.closed_under_complement
-end Complexity.Classical.SingleTapeComplement
+  @Complexity.Classes.SingleTapeComplement.closed_under_complement
+end Complexity.Classes.SingleTapeComplement
 
 namespace Complexity.CookLevin.CircuitMachine
-open Complexity.Classical.PolynomialTime Complexity.Classical.Certificates Circuits Encoding
+open Complexity.Classes.PolynomialTime Complexity.Classes.Certificates Circuits Encoding
 example : ∀ (V : Language) (hV : V ∈ P) (p : Polynomial ℕ),
     ∃ circuits : Word → Circuit, Nonempty (Turing.TM2ComputableInPolyTime id id (fun x => encodeCNF (Tseitin.encode (circuits x)))) ∧ ∀ x, Satisfiable (circuits x) ↔ ∃ y : Word, y.length ≤ p.eval x.length ∧ pair x y ∈ V :=
   @Complexity.CookLevin.CircuitMachine.compile
@@ -119,7 +119,7 @@ example : ∀ (F : Formula),
 end Complexity.CookLevin.EncodingCorrect
 
 namespace Complexity.CookLevin.FiniteWitness
-open CNF Encoding Satisfiability Complexity.Classical.PolynomialTime
+open CNF Encoding Satisfiability Complexity.Classes.PolynomialTime
 example : ∀ (F : Formula),
     Satisfiable F ↔ ∃ y : Word, y.length ≤ (encodeCNF F).length ∧ eval F (assignment y) = true :=
   @Complexity.CookLevin.FiniteWitness.bounded
@@ -140,14 +140,14 @@ example : ∀ (F : Formula),
 end Complexity.CookLevin.SATEncoding
 
 namespace Complexity.CookLevin.SATHard
-open Satisfiability Reductions Complexity.Classical.PolynomialTime Complexity.Classical.NondeterministicPolynomialTime
+open Satisfiability Reductions Complexity.Classes.PolynomialTime Complexity.Classes.NondeterministicPolynomialTime
 example : ∀ (A : Language),
     A ∈ NP → ManyOne A SAT :=
   @Complexity.CookLevin.SATHard.hardness
 end Complexity.CookLevin.SATHard
 
 namespace Complexity.CookLevin.SATinNP
-open Satisfiability Complexity.Classical.NondeterministicPolynomialTime
+open Satisfiability Complexity.Classes.NondeterministicPolynomialTime
 example : SAT ∈ NP :=
   @Complexity.CookLevin.SATinNP.membership
 end Complexity.CookLevin.SATinNP
@@ -160,14 +160,14 @@ example : ∀ (C : Circuit),
 end Complexity.CookLevin.TseitinCorrect
 
 namespace Complexity.CookLevin.VerifierCorrect
-open Satisfiability Complexity.Classical.PolynomialTime Complexity.Classical.Certificates
+open Satisfiability Complexity.Classes.PolynomialTime Complexity.Classes.Certificates
 example : ∀ (w : Word),
     w ∈ SAT ↔ ∃ y : Word, y.length ≤ w.length ∧ pair w y ∈ Verifier :=
   @Complexity.CookLevin.VerifierCorrect.correct
 end Complexity.CookLevin.VerifierCorrect
 
 namespace Complexity.CookLevin.VerifierTime
-open Satisfiability Complexity.Classical.PolynomialTime
+open Satisfiability Complexity.Classes.PolynomialTime
 example : Verifier ∈ P :=
   @Complexity.CookLevin.VerifierTime.polynomial
 end Complexity.CookLevin.VerifierTime
@@ -179,7 +179,7 @@ example : ∀ {V : Type} [DecidableEq V] (G : SimpleGraph V) (S L R I : Finset V
 end Complexity.ArcKayles.Biclique
 
 namespace Complexity.ArcKayles.Completeness
-example : Encoding.arcKayles ∈ Complexity.Classical.PolynomialSpace.PSPACE :=
+example : Encoding.arcKayles ∈ Complexity.Classes.PolynomialSpace.PSPACE :=
   @Complexity.ArcKayles.Completeness.membership
 end Complexity.ArcKayles.Completeness
 

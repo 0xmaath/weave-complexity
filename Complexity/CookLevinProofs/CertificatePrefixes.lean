@@ -11,7 +11,7 @@ import Complexity.CookLevin.Satisfiability
 
 namespace Complexity.CookLevinProofs.CertificateCircuit
 
-open Complexity.Classical.PolynomialTime Complexity.CookLevin.CNF CircuitBuilder
+open Complexity.Classes.PolynomialTime Complexity.CookLevin.CNF CircuitBuilder
 
 def inputCount (bound : ℕ) : ℕ := 2 * bound + 1
 def dataPort (i : ℕ) : ℕ := i + 1

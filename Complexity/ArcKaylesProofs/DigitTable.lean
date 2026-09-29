@@ -9,15 +9,15 @@ replaced by `alias`es of their proofs; imports adjusted accordingly.
 import Complexity.ArcKaylesProofs.StreamingBridge
 import Complexity.ArcKaylesProofs.MatrixBits
 import Complexity.ArcKaylesProofs.GraphCode
-import Complexity.ClassicalProofs.SavitchProofs.BinaryWords
+import Complexity.ClassesProofs.SavitchProofs.BinaryWords
 
 set_option backward.isDefEq.respectTransparency false
 
 namespace Complexity.ArcKaylesProofs.CircuitStreaming
 
-open Complexity.Classical.PolynomialTime
-open Complexity.ClassicalProofs.InclusionAux.TimeHelpers.Streaming
-open Complexity.ClassicalProofs.SavitchProofs
+open Complexity.Classes.PolynomialTime
+open Complexity.ClassesProofs.InclusionAux.TimeHelpers.Streaming
+open Complexity.ClassesProofs.SavitchProofs
 
 theorem binaryWord_get (width value : ℕ) (j : Fin width) :
     (BinaryCounter.word width value)[j.val]'(by simp) = decide (value / 2 ^ j.val % 2 = 1) := by

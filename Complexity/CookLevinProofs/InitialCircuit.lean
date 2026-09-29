@@ -13,8 +13,8 @@ set_option backward.isDefEq.respectTransparency false
 
 namespace Complexity.CookLevinProofs.CertificateCircuit
 
-open Complexity.Classical.PolynomialTime Complexity.Classical.Certificates Complexity.CookLevin.CNF
-open Complexity.Classical.MachineModels CircuitBuilder WindowMachine
+open Complexity.Classes.PolynomialTime Complexity.Classes.Certificates Complexity.CookLevin.CNF
+open Complexity.Classes.MachineModels CircuitBuilder WindowMachine
 open scoped Classical
 
 noncomputable def initialBit (M : SingleTape) (x : Word) (bound radius : ℕ)

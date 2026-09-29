@@ -6,14 +6,14 @@ see `LICENSES/cook-levin.LICENSE`. Modifications for this port: module and names
 renamed from `Lax429075Proofs.StackMapTransfer` to `Complexity.CookLevinProofs.StackMapTransfer`; concept-package `axiom` statements
 replaced by `alias`es of their proofs; imports adjusted accordingly.
 -/
-import Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackTransfer
+import Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackTransfer
 import Mathlib.Tactic
 
 set_option backward.isDefEq.respectTransparency false
 
 namespace Complexity.CookLevinProofs.StackMapTransfer
 
-open Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackProgram Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackTransfer
+open Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackProgram Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackTransfer
 
 variable {K Aux : Type} [DecidableEq K]
 

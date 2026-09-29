@@ -15,10 +15,10 @@ set_option backward.isDefEq.respectTransparency false
 
 namespace Complexity.ArcKaylesProofs.ArcKaylesMachine
 
-open Complexity.ClassicalProofs.InclusionAux.TimeHelpers.Streaming
-open Complexity.ClassicalProofs.SavitchProofs
+open Complexity.ClassesProofs.InclusionAux.TimeHelpers.Streaming
+open Complexity.ClassesProofs.SavitchProofs
 open StackLanguage
-open Complexity.Classical.PolynomialTime Complexity.Classical.PolynomialSpace
+open Complexity.Classes.PolynomialTime Complexity.Classes.PolynomialSpace
 open Complexity.ArcKayles Encoding MachineCode CodeStepper DepthFirst Polynomial
 open scoped Classical
 
@@ -86,7 +86,7 @@ gives a single polynomial space bound for the entire terminating search.
 The archived stack-to-tape compiler provides the required deterministic
 read-only-input work-tape machine.
 -/
-theorem arcKayles_membership : Complexity.ArcKayles.Encoding.arcKayles ∈ Complexity.Classical.PolynomialSpace.PSPACE :=
+theorem arcKayles_membership : Complexity.ArcKayles.Encoding.arcKayles ∈ Complexity.Classes.PolynomialSpace.PSPACE :=
   ArcKaylesMachine.membership
 
 alias _root_.Complexity.ArcKayles.Completeness.membership := arcKayles_membership

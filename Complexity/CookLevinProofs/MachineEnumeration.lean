@@ -10,7 +10,7 @@ import Complexity.CookLevinProofs.MachineBitAddresses
 
 namespace Complexity.CookLevinProofs.MachineCircuit
 
-open Complexity.Classical.MachineModels WindowMachine
+open Complexity.Classes.MachineModels WindowMachine
 
 noncomputable def enumeration (A : Type) [Fintype A] : Fin (Fintype.card A) → A := by
   classical

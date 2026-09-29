@@ -12,7 +12,7 @@ import Complexity.CookLevinProofs.StreamingDrop
 
 namespace Complexity.CookLevinProofs.Streaming
 
-open Complexity.Classical.PolynomialTime
+open Complexity.Classes.PolynomialTime
 
 /-- Finite expressions for strings, with unary counters and bounded loops. -/
 inductive Code : Type → Type 1 where

@@ -10,7 +10,7 @@ import Complexity.CookLevinProofs.VerifierOutputLayout
 
 namespace Complexity.CookLevinProofs.Streaming
 
-open Complexity.Classical.PolynomialTime Complexity.Classical.MachineModels
+open Complexity.Classes.PolynomialTime Complexity.Classes.MachineModels
 open Complexity.CookLevin.CNF Complexity.CookLevin.Circuits Complexity.CookLevin.Encoding Complexity.CookLevin.Tseitin
 open CircuitBuilder CertificateCircuit
 

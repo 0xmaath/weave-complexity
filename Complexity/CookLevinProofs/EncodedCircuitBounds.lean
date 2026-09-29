@@ -13,7 +13,7 @@ namespace Complexity.CookLevinProofs
 
 open Complexity.CookLevin Complexity.CookLevin.CNF Complexity.CookLevin.Circuits Complexity.CookLevin.Encoding Complexity.CookLevin.Tseitin
 
-lemma encodeList_bound {α : Type} (enc : α → Complexity.Classical.PolynomialTime.Word) (xs : List α)
+lemma encodeList_bound {α : Type} (enc : α → Complexity.Classes.PolynomialTime.Word) (xs : List α)
     (bound : ℕ) (h : ∀ a ∈ xs, (enc a).length ≤ bound) :
     (encodeList enc xs).length ≤ xs.length * (bound + 1) + 1 := by
   induction xs with

@@ -21,7 +21,7 @@ each variable index by the word length.
 
 namespace Complexity.CookLevin.Encoding
 
-open CNF Complexity.Classical.PolynomialTime
+open CNF Complexity.Classes.PolynomialTime
 
 def encodeList {α : Type} (encode : α → Word) : List α → Word
   | [] => [false]

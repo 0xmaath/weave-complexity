@@ -13,8 +13,8 @@ set_option backward.isDefEq.respectTransparency false
 namespace Complexity.ArcKaylesProofs.CircuitStreaming
 
 open Complexity.CookLevinProofs.CircuitBuilder Complexity.CookLevinProofs.Streaming
-open Complexity.Classical.PolynomialTime Complexity.Classical.SpaceMachines
-open Complexity.ClassicalProofs.SavitchProofs ConfigurationWords
+open Complexity.Classes.PolynomialTime Complexity.Classes.SpaceMachines
+open Complexity.ClassesProofs.SavitchProofs ConfigurationWords
 
 theorem codedArray_bounded (α : Type) [Fintype α] [Inhabited α] {I : Type}
     (base : Number I) (a : I → Word) (j count b : ℕ) (hj : j < count)

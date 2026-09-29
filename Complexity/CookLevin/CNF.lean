@@ -6,7 +6,7 @@ see `LICENSES/cook-levin.LICENSE`. Modifications for this port: module and names
 renamed from `Lax429075.CNF` to `Complexity.CookLevin.CNF`; concept-package `axiom` statements
 replaced by `alias`es of their proofs; imports adjusted accordingly.
 -/
-import Complexity.Classical.PolynomialTime
+import Complexity.Classes.PolynomialTime
 
 /-!
 ---

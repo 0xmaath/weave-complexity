@@ -10,7 +10,7 @@ import Complexity.CookLevinProofs.CircuitAffineLayers
 
 namespace Complexity.CookLevinProofs.Streaming
 
-open CircuitBuilder Complexity.Classical.PolynomialTime
+open CircuitBuilder Complexity.Classes.PolynomialTime
 
 lemma compileRounds_offset_word {n : ℕ} (start initialBase initialPitch width : ℕ)
     (es : Fin n → Expr) (hw : 0 < width) (hc : ∀ i, (es i).cost = width)

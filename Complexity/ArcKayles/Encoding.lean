@@ -8,7 +8,7 @@ replaced by `alias`es of their proofs; imports adjusted accordingly.
 -/
 import Complexity.ArcKayles.ArcKayles
 import Complexity.ArcKayles.PositiveCNF
-import Complexity.Classical.PolynomialTime
+import Complexity.Classes.PolynomialTime
 
 /-!
 ---
@@ -25,7 +25,7 @@ Malformed strings are excluded from the associated languages.
 
 namespace Complexity.ArcKayles.Encoding
 
-open Complexity.Classical.PolynomialTime
+open Complexity.Classes.PolynomialTime
 
 structure Graph where
   vertices : ℕ

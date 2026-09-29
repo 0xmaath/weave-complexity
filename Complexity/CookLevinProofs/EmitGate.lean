@@ -11,7 +11,7 @@ import Complexity.CookLevin.Tseitin
 
 namespace Complexity.CookLevinProofs.CNFOutput
 
-open Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackProgram Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackTransfer
+open Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackProgram Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackTransfer
 open Complexity.CookLevin.Encoding Complexity.CookLevin.CNF Complexity.CookLevin.Circuits Complexity.CookLevin.Tseitin
 
 variable {K Aux : Type} [DecidableEq K]

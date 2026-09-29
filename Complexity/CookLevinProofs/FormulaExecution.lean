@@ -10,7 +10,7 @@ import Complexity.CookLevinProofs.FormulaLoop
 
 namespace Complexity.CookLevinProofs.VerifierProgram
 
-open Complexity.Classical.PolynomialTime Complexity.ClassicalProofs.InclusionAux.TimeCompiler.StackProgram
+open Complexity.Classes.PolynomialTime Complexity.ClassesProofs.InclusionAux.TimeCompiler.StackProgram
 
 def endCheck : Code := .atom (.load (fun s => ({s.1 with valid := s.1.valid && s.2.isNone}, s.2)))
 

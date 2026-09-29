@@ -12,7 +12,7 @@ import Batteries.Tactic.Alias
 
 namespace Complexity.CookLevinProofs
 
-open Complexity.CookLevin Complexity.CookLevin.CNF Complexity.CookLevin.Encoding Complexity.Classical.PolynomialTime
+open Complexity.CookLevin Complexity.CookLevin.CNF Complexity.CookLevin.Encoding Complexity.Classes.PolynomialTime
 
 lemma parse_nat_append (n : ℕ) (tail : Word) :
     parseNat (encodeNat n ++ tail) = some (n, tail) := by

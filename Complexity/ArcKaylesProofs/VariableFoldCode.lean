@@ -13,7 +13,7 @@ set_option backward.isDefEq.respectTransparency false
 namespace Complexity.ArcKaylesProofs.CircuitStreaming
 
 open Complexity.CookLevinProofs.CircuitBuilder Complexity.CookLevinProofs.Streaming
-open Complexity.Classical.PolynomialTime
+open Complexity.Classes.PolynomialTime
 
 theorem flatMap_replicate_sum {α : Type} (xs : List α) (f : α → ℕ) :
     (xs.flatMap (fun x => List.replicate (f x) true)) = List.replicate ((xs.map f).sum) true := by
