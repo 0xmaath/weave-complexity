@@ -10,3 +10,4 @@ import Complexity.CookLevinProofs
 import Complexity.Savitch
 import Complexity.Games.Membership
 import Complexity.QBF.Completeness
+import Complexity.Modular.QExpansion
