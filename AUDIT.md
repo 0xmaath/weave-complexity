@@ -1069,6 +1069,138 @@ Kayles reduction.
   nodes per variable and clause), so the reduction produces formulas that are polynomially
   larger than the minimal CNF translation. This affects only the size polynomial.
 
+## 14. The modular `j`-function and its `q`-expansion (milestone 3)
+
+References: Serre, *A Course in Arithmetic*, ch. VII (§2.1 modular functions, §3.3 the
+invariant `j`, §4.2 Eisenstein expansions, §4.4–4.5 `Δ` and `j`); Apostol, *Modular
+Functions and Dirichlet Series in Number Theory*, ch. 1 (§1.9–1.15) and ch. 2. The Mathlib
+objects used are `ModularForm.E₄`, `ModularForm.E₆` (normalised level-1 Eisenstein series,
+constant term `1`), `ModularForm.discriminant` (`Δ = η²⁴`, local notation `Δ` in Mathlib;
+`discriminant_eq_q_prod : Δ z = q ∏ (1 − qⁿ⁺¹)²⁴`, `discriminant_ne_zero`,
+`CuspForm.discriminant : CuspForm 𝒮ℒ 12`), and the `cuspFunction`/`qExpansion` machinery of
+`Mathlib.NumberTheory.ModularForms.QExpansion`.
+
+### 14.1 Definition
+
+```lean
+def j (z : ℍ) : ℂ := E₄ z ^ 3 / ModularForm.discriminant z
+theorem j_mul_discriminant (z : ℍ) : j z * ModularForm.discriminant z = E₄ z ^ 3
+theorem j_mul_E₄_cube_sub_E₆_sq (z : ℍ) : j z * (E₄ z ^ 3 - E₆ z ^ 2) = 1728 * E₄ z ^ 3
+theorem j_eq_E₄_cube_sub_E₆_sq (z : ℍ) : j z = 1728 * E₄ z ^ 3 / (E₄ z ^ 3 - E₆ z ^ 2)
+```
+(`Complexity/Modular/J.lean`)
+
+Serre §3.3 defines `j = 1728 g₂³ / Δ` with `g₂ = 60 G₂`, `Δ = g₂³ − 27 g₃²` (Serre's `G_k`
+has weight `2k`); Apostol §1.12 writes `J = g₂³ / Δ` and `j = 1728 J`. Both use the
+*unnormalised* discriminant, whose expansion is `Δ = (2π)¹² (q − 24q² + …)` (Serre §4.4
+eq. (34)/(35), Apostol Theorem 1.19). Since `G₂ = 2ζ(4) E₄` (Serre §4.2), one has
+`g₂ = 120 ζ(4) E₄ = (2π)⁴/12 · E₄`, hence `1728 g₂³ = (2π)¹² E₄³`, and
+`j = (2π)¹² E₄³ / ((2π)¹² q ∏(1 − qⁿ)²⁴) = E₄³ / Δ_Mathlib`.
+
+**Deviation (normalisation).** The milestone text asked for `1728 * E₄³ / discriminant`.
+With Mathlib's `discriminant` (already divided by `(2π)¹²`, leading coefficient `1`) that
+expression equals `1728 · j`, whose expansion would begin `1728 q⁻¹ + 1285632 + …`,
+contradicting the requested values `744` and `196884`. The definition adopted is therefore
+`E₄³ / Δ`, the unique function with `q · j → 1`; the requested factor `1728` is recovered
+verbatim in the second defining equation, because `1728 Δ = E₄³ − E₆²`
+(`ModularForm.discriminant_eq_E₄_cube_sub_E₆_sq`, i.e. Serre's `(2π)⁻¹² Δ = (E₄³ − E₆²)/1728`,
+§4.4 eq. (33)), so `j = 1728 E₄³ / (E₄³ − E₆²)`, which is Serre's `1728 g₂³ / Δ` with the
+common `(2π)¹²` factor cancelled. Well-definedness is `discriminant_ne_zero` (Serre §4.4:
+`Δ` has no zero on `ℍ`; in Mathlib it is `η²⁴` with `η ≠ 0`). Uniqueness of `j` given the
+defining equation is `eq_j_of_mul_discriminant`.
+
+### 14.2 Invariance under the modular group
+
+```lean
+theorem E₄_SL_smul (γ : SL(2, ℤ)) (z : ℍ) : E₄ (γ • z) = denom γ z ^ (4 : ℤ) * E₄ z
+theorem discriminant_SL_smul (γ : SL(2, ℤ)) (z : ℍ) :
+    ModularForm.discriminant (γ • z) = denom γ z ^ (12 : ℤ) * ModularForm.discriminant z
+theorem j_SL_smul (γ : SL(2, ℤ)) (z : ℍ) : j (γ • z) = j z
+theorem j_slash_invariant (γ : SL(2, ℤ)) : j ∣[(0 : ℤ)] γ = j
+```
+
+Serre §2.1: a modular function of weight `0` satisfies `f(γz) = f(z)` for all `γ ∈ G =
+SL(2, ℤ)` (Apostol §1.9, §2.2). `denom γ z = c z + d` is Mathlib's automorphy factor. The
+proof takes the slash-invariance of the bundled forms — `E₄ : ModularForm 𝒮ℒ 4` and
+`CuspForm.discriminant : CuspForm 𝒮ℒ 12`, whose field `slash_action_eq'` gives
+`f ∣[k] γ = f` for every element of `𝒮ℒ` (the image of `SL(2, ℤ)` in `GL(2, ℝ)`) — rewrites
+it pointwise with `SL_slash_apply`, and cancels `(cz + d)¹² = ((cz + d)⁴)³`. Nothing is
+restricted to the generators `S`, `T`: the statement is for all of `SL(2, ℤ)`, with the two
+special cases `j (z + 1) = j z` (`j_vadd_one`) and `j (−1/z) = j z` (`j_neg_inv`) recorded.
+There is no claim of holomorphy of `j` on `ℍ` as a separate theorem (it is a quotient of
+holomorphic functions with nonvanishing denominator; the holomorphy actually needed, that of
+`q · j`, is `qj_mdiff`).
+
+### 14.3 The `q`-expansion
+
+```lean
+def qj (τ : ℍ) : ℂ := 𝕢 1 τ * j τ                                  -- q · j
+def deltaProd (q : ℂ) : ℂ := ∏' n : ℕ, (1 - q ^ (n + 1)) ^ 24         -- u(q), Δ = q · u(q)
+def jReg (q : ℂ) : ℂ := cuspFunction 1 E₄ q ^ 3 / deltaProd q         -- regular part of j
+theorem cuspFunction_qj_eqOn : EqOn (cuspFunction 1 qj) jReg (ball 0 1)
+theorem cuspFunction_qj_zero : cuspFunction 1 qj 0 = 1                                  -- (a)
+theorem differentiableOn_cuspFunction_qj : DifferentiableOn ℂ (cuspFunction 1 qj) (ball 0 1)
+theorem hasSum_qExpansion_qj (τ : ℍ) :
+    HasSum (fun m ↦ (qExpansion 1 qj).coeff m * 𝕢 1 τ ^ m) (𝕢 1 τ * j τ)
+theorem j_eq_tsum (τ : ℍ) : j τ = (𝕢 1 τ)⁻¹ * ∑' m, (qExpansion 1 qj).coeff m * 𝕢 1 τ ^ m
+theorem qExpansion_qj_coeff_zero : (qExpansion 1 qj).coeff 0 = 1                        -- (a)
+theorem qExpansion_qj_coeff_one  : (qExpansion 1 qj).coeff 1 = 744                      -- (b)
+theorem qExpansion_qj_coeff_two  : (qExpansion 1 qj).coeff 2 = 196884                   -- (c)
+```
+(`Complexity/Modular/QExpansion.lean`; `𝕢 h τ = exp (2πiτ/h)` is Mathlib's `Periodic.qParam`.)
+
+*What the textbook says.* Serre §4.5 (Apostol Theorem 1.20): `j = 1/q + 744 + Σ_{n≥1} c(n) qⁿ`
+with `c(1) = 196884`; `j` is holomorphic on `ℍ` with a simple pole at infinity (§3.3).
+
+*What Mathlib's machinery expresses.* For `f : ℍ → ℂ`, `cuspFunction h f` is the function
+`q ↦ f (invQParam h q)` on the punctured disc, extended at `q = 0` by the limit along
+`𝓝[≠] 0` (`Function.update … (limUnder …)`, an arbitrary value if the limit does not
+exist), and `qExpansion h f` is its Taylor series at `0` (`coeff m = iteratedDeriv m /m!`).
+Because `j` itself has a pole at the cusp, this is applied to `qj = q · j`, which is
+holomorphic on `ℍ` (`qj_mdiff`), `1`-periodic (`qj_periodic`, from `j (z + 1) = j z` and
+`𝕢 (z + 1) = 𝕢 z`) and bounded at infinity (`qj_isBoundedAtImInfty`, from `q · j → 1`).
+Stage (a), "`q · j` extends with value `1` at `q = 0`", is then literally
+`cuspFunction 1 qj 0 = 1` together with holomorphy of that extension on the open unit disc;
+in fact `cuspFunction_qj_eqOn` identifies the extension with the explicit regular function
+`jReg = E₄(q)³ / ∏ (1 − qⁿ)²⁴`, using Mathlib's `discriminant_cuspFunction_eqOn`
+(`cuspFunction 1 Δ = q ∏ (1 − qⁿ⁺¹)²⁴` on the disc) and
+`differentiableOn_tprod_one_sub_pow_pow`. The transfer lemma `cuspFunction_eqOn_of_comp`
+(if `f τ = H (𝕢 τ)` with `H` continuous at `0` then `cuspFunction 1 f = H` on the disc) is
+what pins down the otherwise non-canonical value at `0`. The Laurent expansion of the
+textbook is `hasSum_qExpansion_qj` / `j_eq_tsum`: for every `τ ∈ ℍ`,
+`j τ = q⁻¹ Σ Q_m qᵐ` with `Q = qExpansion 1 qj`, so `c(n) = Q_{n+1}` and the constant term of
+`j` is `Q₁`.
+
+*How the coefficients are computed.* Multiplicativity of `q`-expansions
+(`UpperHalfPlane.qExpansion_mul`, for functions whose cusp functions are analytic at `0`)
+applied to `qj · Δ = q · E₄³` gives the power-series identity
+`Q · P = X · A³` (`qExpansion_qj_mul`), where `P = qExpansion 1 Δ`, `A = qExpansion 1 E₄`,
+and `qExpansion 1 (τ ↦ 𝕢 τ) = X` (`qExpansion_qParam`, by uniqueness of coefficients).
+The known coefficients are `P₀ = 0` (cusp form), `P₁ = 1` (Mathlib's
+`discriminant_qExpansion_coeff_one`), `P₂ = −24`, `P₃ = 252` and `A = 1 + 240 q + 2160 q² +
+6720 q³ + …` (`Complexity/Modular/Coefficients.lean`): `A` and `B = qExpansion 1 E₆ = 1 −
+504 q − 16632 q² − 122976 q³ − …` come from Mathlib's `E_qExpansion_coeff`
+(`E_k = 1 − (2k/B_k) Σ σ_{k−1}(n) qⁿ`, Serre §4.2 eq. (30), Apostol Theorem 1.18) with
+`B₄ = −1/30`, `B₆ = 1/42`, and `P₂`, `P₃` from `1728 P = A³ − B²`, the expansion of
+`1728 Δ = E₄³ − E₆²`. Comparing the coefficients of `q¹, q², q³` in `Q · P = X · A³`:
+`Q₀ = 1`; `Q₁ + P₂ = 720` so `Q₁ = 744`; `Q₂ + P₂ Q₁ + P₃ = 179280` so `Q₂ = 196884`.
+This is Serre's computation in §4.5 (`j = E₄³ / (q ∏(1−qⁿ)²⁴)` expanded to first order),
+with the two Ramanujan coefficients `τ(2) = −24`, `τ(3) = 252` obtained from the Eisenstein
+identity rather than from the product. All three stages are fully proved; no statement of
+this milestone carries a gap.
+
+**Deviations.**
+
+* *Laurent series.* Mathlib has no analytic Laurent-series API at a cusp, so the expansion of
+  `j` is stated through `q · j` and as `j = q⁻¹ · (Σ Q_m qᵐ)`; `qExpansion 1 j` itself is
+  never used (it would be the Taylor series of a function that is not continuous at `0`).
+* *Coefficient source.* `τ(2)` and `τ(3)` are derived from `1728 Δ = E₄³ − E₆²`, not by
+  expanding `q ∏ (1 − qⁿ)²⁴`; the product formula enters only through Mathlib's identification
+  of `cuspFunction 1 Δ`, which is what makes the regular part explicit. No general formula for
+  `c(n)`, `n ≥ 2`, and no integrality statement is proved.
+
+---
+
 ## 8. Summary of deviations and weaknesses
 
 | Item | Status |
@@ -1089,8 +1221,10 @@ Kayles reduction.
 | QBF encoding (milestone 2) | Prenex formulas, one specific postorder-with-sizes encoding; canonicity (`valid w → w = encode (decode w)`) not proved. |
 | TQBF membership (milestone 2) | Via the formula game (Sipser's second proof), not the direct recursive evaluator. |
 | TQBF hardness (milestone 2) | Inherits the configuration-graph recursion from the port's signed-CNF hardness; milestone 2 adds the syntactic translation. Hard instances have a uniform gadget matrix. |
+| `j` normalisation (milestone 3) | The milestone text's `1728 · E₄³ / discriminant` uses Serre's unnormalised `Δ`; with Mathlib's `Δ = q ∏(1−qⁿ)²⁴` it would be `1728 · j`. Defined as `E₄³ / Δ`; both `j · Δ = E₄³` and `j · (E₄³ − E₆²) = 1728 E₄³` are proved (§14.1). |
+| `q`-expansion of `j` (milestone 3) | Stated for `q · j` (`cuspFunction`/`qExpansion` of Mathlib) and as `j = q⁻¹ Σ Q_m qᵐ`; coefficients `1, 744, 196884` all proved, via `1728 Δ = E₄³ − E₆²` rather than the product formula. No Laurent-series object, no `c(n)` for `n ≥ 2`. |
 
 Nothing in the list weakens the headline theorems as stated; they are the
 standard statements for the standard definitions, and the only axioms they
 use are `propext`, `Classical.choice` and `Quot.sound` (checked for every
-ported statement and every milestone-2 theorem by `scripts/AxiomCheck.lean`).
+ported statement and every milestone-2 and milestone-3 theorem by `scripts/AxiomCheck.lean`).

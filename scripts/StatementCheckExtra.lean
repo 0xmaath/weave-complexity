@@ -42,3 +42,39 @@ example : Complexity.QBF.TQBF ∈ PSPACE ∧
   Complexity.QBF.TQBF_complete
 
 end Milestone2
+
+/-! ## Milestone 3 statements
+
+The modular `j`-function and its `q`-expansion, restated in textbook form. -/
+
+section Milestone3
+open UpperHalfPlane ModularForm MatrixGroups Complexity.Modular
+
+/-- `j = E₄³ / Δ` with Mathlib's `Δ = η²⁴ = q ∏ (1 − qⁿ)²⁴`; the defining equation. -/
+example : ∀ z : ℍ, j z * ModularForm.discriminant z = E₄ z ^ 3 := j_mul_discriminant
+
+/-- The defining equation with the discriminant normalised as `E₄³ − E₆² (= 1728 Δ)`. -/
+example : ∀ z : ℍ, j z * (E₄ z ^ 3 - E₆ z ^ 2) = 1728 * E₄ z ^ 3 := j_mul_E₄_cube_sub_E₆_sq
+example : ∀ z : ℍ, j z = 1728 * E₄ z ^ 3 / (E₄ z ^ 3 - E₆ z ^ 2) := j_eq_E₄_cube_sub_E₆_sq
+
+/-- Invariance under the full modular group. -/
+example : ∀ (γ : SL(2, ℤ)) (z : ℍ), j (γ • z) = j z := j_SL_smul
+example : ∀ γ : SL(2, ℤ), j ∣[(0 : ℤ)] γ = j := j_slash_invariant
+
+/-- Stage (a): `q · j` extends holomorphically to the open unit disc with value `1` at `q = 0`. -/
+example : cuspFunction 1 qj 0 = 1 := cuspFunction_qj_zero
+example : DifferentiableOn ℂ (cuspFunction 1 qj) (Metric.ball 0 1) := differentiableOn_cuspFunction_qj
+example : (qExpansion 1 qj).coeff 0 = 1 := qExpansion_qj_coeff_zero
+
+/-- The Laurent expansion `j τ = q⁻¹ Σ Q_m qᵐ` converges for every `τ ∈ ℍ`. -/
+example : ∀ τ : ℍ,
+    HasSum (fun m ↦ (qExpansion 1 qj).coeff m * Periodic.qParam 1 τ ^ m) (Periodic.qParam 1 τ * j τ) :=
+  hasSum_qExpansion_qj
+
+/-- Stage (b): the constant term of `j` is `744`. -/
+example : (qExpansion 1 qj).coeff 1 = 744 := qExpansion_qj_coeff_one
+
+/-- Stage (c): the coefficient of `q` in `j` is `196884`. -/
+example : (qExpansion 1 qj).coeff 2 = 196884 := qExpansion_qj_coeff_two
+
+end Milestone3

@@ -276,7 +276,8 @@ with open(f'{DST}/Complexity.lean', 'w') as out:
     out.write('/-\nRoot module of the Complexity library. Imports every ported definition and proof.\n-/\n')
     for r in sorted(roots):
         out.write(f'import {r}\n')
-    for r in ['Complexity.Savitch', 'Complexity.Games.Membership', 'Complexity.QBF.Completeness']:
+    for r in ['Complexity.Savitch', 'Complexity.Games.Membership', 'Complexity.QBF.Completeness',
+              'Complexity.Modular.QExpansion']:
         out.write(f'import {r}\n')
 
 # ---------- statement-fidelity check file ----------

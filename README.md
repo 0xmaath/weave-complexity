@@ -32,6 +32,23 @@ size and rank bounds, and the two `Code` programs, and PSPACE membership of the
 winner-determination language follows. `Complexity/QBF/TQBFGame.lean` is the worked example.
 See `AUDIT.md` §9–§13 for the definitions and the deviations from the textbooks.
 
+## Milestone 3 (the modular `j`-function)
+
+| Result | Where | Statement |
+| --- | --- | --- |
+| Definition | `Complexity/Modular/J.lean` | `j z = E₄ z ^ 3 / discriminant z`; `j_mul_discriminant : j z * Δ z = E₄ z ^ 3`; `j_mul_E₄_cube_sub_E₆_sq : j z * (E₄ z ^ 3 - E₆ z ^ 2) = 1728 * E₄ z ^ 3` |
+| Invariance | `Complexity/Modular/J.lean` | `j_SL_smul : ∀ γ : SL(2, ℤ), j (γ • z) = j z`, `j_slash_invariant : j ∣[0] γ = j` |
+| Coefficients of `E₄`, `E₆`, `Δ` | `Complexity/Modular/Coefficients.lean` | `E₄ = 1 + 240q + 2160q² + 6720q³ + …`, `E₆ = 1 − 504q − …`, `Δ = q − 24q² + 252q³ + …` (from `1728 Δ = E₄³ − E₆²`) |
+| (a) simple pole | `Complexity/Modular/QExpansion.lean` | `cuspFunction_qj_zero : cuspFunction 1 qj 0 = 1`, `differentiableOn_cuspFunction_qj`, `cuspFunction_qj_eqOn` (`qj τ = 𝕢 τ · j τ`) |
+| Laurent expansion | `Complexity/Modular/QExpansion.lean` | `hasSum_qExpansion_qj`, `j_eq_tsum : j τ = q⁻¹ Σ Q_m qᵐ` |
+| (b) constant term | `Complexity/Modular/QExpansion.lean` | `qExpansion_qj_coeff_one : (qExpansion 1 qj).coeff 1 = 744` |
+| (c) next coefficient | `Complexity/Modular/QExpansion.lean` | `qExpansion_qj_coeff_two : (qExpansion 1 qj).coeff 2 = 196884` (fully proved) |
+
+`j` is `E₄³ / Δ` with Mathlib's normalised `Δ = η²⁴ = q ∏ (1 − qⁿ)²⁴`; the literal
+`1728 · E₄³ / Δ` of the milestone text would be `1728 · j` in that normalisation (it is
+Serre's `1728 g₂³ / Δ` with the unnormalised `Δ`), and the equivalent form
+`j = 1728 E₄³ / (E₄³ − E₆²)` is proved. See `AUDIT.md` §14.
+
 ## Toolchain
 
 * Lean `leanprover/lean4:v4.33.0`
@@ -57,12 +74,13 @@ Complexity/ArcKaylesProofs/      proofs of arc-kayles
 Complexity/Savitch.lean          milestone 2: NPSPACE ⊆ PSPACE
 Complexity/Games/                milestone 2: the game template and its PSPACE membership proof
 Complexity/QBF/                  milestone 2: QBF, TQBF, membership, hardness, completeness
+Complexity/Modular/              milestone 3: the modular j-function and its q-expansion
 Complexity/StatementCheck.lean   generated: re-elaborates every archived statement, plus
-                                 hand-maintained restatements of the milestone-2 theorems
+                                 hand-maintained restatements of the milestone-2 and -3 theorems
                                  (scripts/StatementCheckExtra.lean)
 scripts/check.sh                 CI acceptance checks
 scripts/AxiomCheck.lean          `#print axioms` + hard failure on non-standard axioms, for
-                                 every ported statement and every milestone-2 theorem
+                                 every ported statement and every milestone-2 and -3 theorem
 scripts/forbidden_tokens.py      no sorry/admit/axiom/native_decide outside comments
 AUDIT.md                         semantic audit of the load-bearing definitions
 ```
@@ -112,7 +130,7 @@ scripts/check.sh        # lake build, token scan, axiom audit
 
 `scripts/check.sh` fails unless `lake build` is clean (no errors, no `sorry`
 warnings), the token scan is clean, and `#print axioms` on every ported
-top-level statement (all 41 former concept axioms and the milestone-2 theorems) shows nothing beyond
+top-level statement (all 41 former concept axioms and the milestone-2 and -3 theorems) shows nothing beyond
 `propext`, `Classical.choice` and `Quot.sound`. The same script runs in CI
 (`.github/workflows/ci.yml`).
 
