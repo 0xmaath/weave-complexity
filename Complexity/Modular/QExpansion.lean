@@ -114,7 +114,7 @@ theorem cuspFunction_eqOn_of_comp {f : ℍ → ℂ} {H : ℂ → ℂ} (hf : ∀ 
       eventually_nhdsWithin_of_eventually_nhds (ball_mem_nhds (0 : ℂ) one_pos)] with x hx0 hx
     have hx0' : x ≠ 0 := hx0
     rw [← hne x (mem_ball_zero_iff.mp hx) hx0']
-    exact (Periodic.cuspFunction_eq_of_nonzero 1 _ hx0').symm
+    exact Periodic.cuspFunction_eq_of_nonzero 1 (f ∘ ofComplex) hx0'
   · exact hne q hq hq0
 
 /-- **Stage (a).** The cusp function of `q · j` is the regular function `jReg` on the
@@ -147,12 +147,12 @@ theorem qParam_add_one (w : ℂ) : 𝕢 1 (w + 1) = 𝕢 1 w := by
 
 theorem qj_periodic : Periodic (qj ∘ ofComplex) 1 := by
   intro w
-  rw [ofReal_one]
+  show (qj ∘ ofComplex) (w + 1) = (qj ∘ ofComplex) w
   by_cases hw : 0 < w.im
   · have hw1 : 0 < (w + 1).im := by simpa using hw
     simp only [comp_apply, ofComplex_apply_of_im_pos hw1, ofComplex_apply_of_im_pos hw, qj_eq_jReg]
     exact congrArg jReg (qParam_add_one w)
-  · push_neg at hw
+  · rw [not_lt] at hw
     simp only [comp_apply]
     rw [ofComplex_apply_eq_of_im_nonpos (by simpa using hw) hw]
 
@@ -169,7 +169,8 @@ theorem qj_mdiff : MDiff qj := by
     simp only [comp_apply, ofComplex_apply_of_im_pos hz]
     exact ModularForm.discriminant_ne_zero _
   · intro z hz
-    simp only [comp_apply, ofComplex_apply_of_im_pos hz, Pi.mul_apply, Pi.pow_apply, qj, j]
+    simp only [comp_apply, Pi.div_apply, Pi.mul_apply, Pi.pow_apply, ofComplex_apply_of_im_pos hz,
+      qj, j]
     ring
 
 /-- `q · j → 1` at the cusp. -/
@@ -185,8 +186,8 @@ theorem qj_isBoundedAtImInfty : IsBoundedAtImInfty qj :=
 /-- The Laurent expansion of `j`: `q · j(τ) = Σ Q_m qᵐ` with `Q = qExpansion 1 qj`. -/
 theorem hasSum_qExpansion_qj (τ : ℍ) :
     HasSum (fun m ↦ (qExpansion 1 qj).coeff m * 𝕢 1 τ ^ m) (𝕢 1 τ * j τ) := by
-  simpa [smul_eq_mul] using
-    hasSum_qExpansion one_pos qj_periodic qj_mdiff qj_isBoundedAtImInfty τ
+  have h := hasSum_qExpansion one_pos qj_periodic qj_mdiff qj_isBoundedAtImInfty τ
+  simpa [qj, smul_eq_mul] using h
 
 /-- `j τ = q⁻¹ · Σ Q_m qᵐ`. -/
 theorem j_eq_tsum (τ : ℍ) :

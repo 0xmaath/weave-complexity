@@ -72,17 +72,20 @@ section invariance
 /-- Transformation law of `E₄` under `SL(2, ℤ)`. -/
 theorem E₄_SL_smul (γ : SL(2, ℤ)) (z : ℍ) :
     E₄ (γ • z) = denom γ z ^ (4 : ℤ) * E₄ z := by
-  have h := congr_fun (E₄.slash_action_eq' (γ : GL (Fin 2) ℝ) ⟨γ, rfl⟩) z
-  rw [← SL_slash, SL_slash_apply, zpow_neg] at h
+  have h : (⇑E₄ ∣[(4 : ℤ)] γ) z = E₄ z :=
+    congr_fun (SlashInvariantForm.slash_action_eqn E₄
+      (Matrix.SpecialLinearGroup.mapGL ℝ γ) ⟨γ, rfl⟩) z
+  rw [SL_slash_apply, zpow_neg] at h
   rw [← h]
   field_simp [zpow_ne_zero (4 : ℤ) (denom_ne_zero γ z)]
 
 /-- Transformation law of `Δ` under `SL(2, ℤ)`. -/
 theorem discriminant_SL_smul (γ : SL(2, ℤ)) (z : ℍ) :
     ModularForm.discriminant (γ • z) = denom γ z ^ (12 : ℤ) * ModularForm.discriminant z := by
-  have h := congr_fun (CuspForm.discriminant.slash_action_eq' (γ : GL (Fin 2) ℝ) ⟨γ, rfl⟩) z
-  rw [← SL_slash, SL_slash_apply, zpow_neg] at h
-  rw [CuspForm.coe_discriminant] at h
+  have h : (⇑CuspForm.discriminant ∣[(12 : ℤ)] γ) z = CuspForm.discriminant z :=
+    congr_fun (SlashInvariantForm.slash_action_eqn CuspForm.discriminant
+      (Matrix.SpecialLinearGroup.mapGL ℝ γ) ⟨γ, rfl⟩) z
+  rw [SL_slash_apply, zpow_neg, CuspForm.coe_discriminant] at h
   rw [← h]
   field_simp [zpow_ne_zero (12 : ℤ) (denom_ne_zero γ z)]
 

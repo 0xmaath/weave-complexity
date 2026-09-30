@@ -1092,8 +1092,8 @@ theorem j_eq_E₄_cube_sub_E₆_sq (z : ℍ) : j z = 1728 * E₄ z ^ 3 / (E₄ z
 
 Serre §3.3 defines `j = 1728 g₂³ / Δ` with `g₂ = 60 G₂`, `Δ = g₂³ − 27 g₃²` (Serre's `G_k`
 has weight `2k`); Apostol §1.12 writes `J = g₂³ / Δ` and `j = 1728 J`. Both use the
-*unnormalised* discriminant, whose expansion is `Δ = (2π)¹² (q − 24q² + …)` (Serre §4.4
-eq. (34)/(35), Apostol Theorem 1.19). Since `G₂ = 2ζ(4) E₄` (Serre §4.2), one has
+*unnormalised* discriminant, whose expansion is `Δ = (2π)¹² (q − 24q² + …)` (Serre §4.4–4.5,
+Apostol Theorem 1.19). Since `G₂ = 2ζ(4) E₄` (Serre §4.2), one has
 `g₂ = 120 ζ(4) E₄ = (2π)⁴/12 · E₄`, hence `1728 g₂³ = (2π)¹² E₄³`, and
 `j = (2π)¹² E₄³ / ((2π)¹² q ∏(1 − qⁿ)²⁴) = E₄³ / Δ_Mathlib`.
 
@@ -1103,8 +1103,8 @@ expression equals `1728 · j`, whose expansion would begin `1728 q⁻¹ + 128563
 contradicting the requested values `744` and `196884`. The definition adopted is therefore
 `E₄³ / Δ`, the unique function with `q · j → 1`; the requested factor `1728` is recovered
 verbatim in the second defining equation, because `1728 Δ = E₄³ − E₆²`
-(`ModularForm.discriminant_eq_E₄_cube_sub_E₆_sq`, i.e. Serre's `(2π)⁻¹² Δ = (E₄³ − E₆²)/1728`,
-§4.4 eq. (33)), so `j = 1728 E₄³ / (E₄³ − E₆²)`, which is Serre's `1728 g₂³ / Δ` with the
+(`ModularForm.discriminant_eq_E₄_cube_sub_E₆_sq`, i.e. Serre's `(2π)⁻¹² Δ = (E₄³ − E₆²)/1728`
+in §4.4), so `j = 1728 E₄³ / (E₄³ − E₆²)`, which is Serre's `1728 g₂³ / Δ` with the
 common `(2π)¹²` factor cancelled. Well-definedness is `discriminant_ne_zero` (Serre §4.4:
 `Δ` has no zero on `ℍ`; in Mathlib it is `η²⁴` with `η ≠ 0`). Uniqueness of `j` given the
 defining equation is `eq_j_of_mul_discriminant`.
@@ -1180,7 +1180,7 @@ The known coefficients are `P₀ = 0` (cusp form), `P₁ = 1` (Mathlib's
 `discriminant_qExpansion_coeff_one`), `P₂ = −24`, `P₃ = 252` and `A = 1 + 240 q + 2160 q² +
 6720 q³ + …` (`Complexity/Modular/Coefficients.lean`): `A` and `B = qExpansion 1 E₆ = 1 −
 504 q − 16632 q² − 122976 q³ − …` come from Mathlib's `E_qExpansion_coeff`
-(`E_k = 1 − (2k/B_k) Σ σ_{k−1}(n) qⁿ`, Serre §4.2 eq. (30), Apostol Theorem 1.18) with
+(`E_k = 1 − (2k/B_k) Σ σ_{k−1}(n) qⁿ`, Serre §4.2, Apostol Theorem 1.18) with
 `B₄ = −1/30`, `B₆ = 1/42`, and `P₂`, `P₃` from `1728 P = A³ − B²`, the expansion of
 `1728 Δ = E₄³ − E₆²`. Comparing the coefficients of `q¹, q², q³` in `Q · P = X · A³`:
 `Q₀ = 1`; `Q₁ + P₂ = 720` so `Q₁ = 744`; `Q₂ + P₂ Q₁ + P₃ = 179280` so `Q₂ = 196884`.
