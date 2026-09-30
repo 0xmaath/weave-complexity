@@ -68,7 +68,7 @@ example : (qExpansion 1 qj).coeff 0 = 1 := qExpansion_qj_coeff_zero
 
 /-- The Laurent expansion `j τ = q⁻¹ Σ Q_m qᵐ` converges for every `τ ∈ ℍ`. -/
 example : ∀ τ : ℍ,
-    HasSum (fun m ↦ (qExpansion 1 qj).coeff m * Periodic.qParam 1 τ ^ m) (Periodic.qParam 1 τ * j τ) :=
+    HasSum (fun m ↦ (qExpansion 1 qj).coeff m * Function.Periodic.qParam 1 τ ^ m) (Function.Periodic.qParam 1 τ * j τ) :=
   hasSum_qExpansion_qj
 
 /-- Stage (b): the constant term of `j` is `744`. -/
