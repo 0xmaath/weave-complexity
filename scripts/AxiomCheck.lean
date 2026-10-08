@@ -6,6 +6,7 @@ and every milestone-2 and milestone-3 theorem, this prints `#print axioms` and f
 -/
 import Complexity
 import Complexity.StatementCheck
+import ReticuliProver.SHA256
 
 open Lean Elab Command in
 elab "#check_standard_axioms " ids:ident* : command => do
@@ -96,6 +97,15 @@ elab "#check_standard_axioms " ids:ident* : command => do
 #print axioms Complexity.Modular.qExpansion_qj_coeff_two
 #print axioms Complexity.Modular.j_expansion
 
+-- SHA-256 ground: test vectors and the genesis sanity check
+#print axioms ReticuliProver.SHA256.sha256_empty
+#print axioms ReticuliProver.SHA256.sha256_abc
+#print axioms ReticuliProver.SHA256.sha256_two_block
+#print axioms ReticuliProver.Mining.genesis_doubleSHA256
+#print axioms ReticuliProver.Mining.genesis_target
+#print axioms ReticuliProver.Mining.genesis_meetsTarget
+#print axioms ReticuliProver.Mining.genesis_validCompact
+
 #check_standard_axioms
   Complexity.ArcKayles.Biclique.value_eq
   Complexity.ArcKayles.Completeness.membership
@@ -167,3 +177,10 @@ elab "#check_standard_axioms " ids:ident* : command => do
   Complexity.Modular.qExpansion_qj_coeff_one
   Complexity.Modular.qExpansion_qj_coeff_two
   Complexity.Modular.j_expansion
+  ReticuliProver.SHA256.sha256_empty
+  ReticuliProver.SHA256.sha256_abc
+  ReticuliProver.SHA256.sha256_two_block
+  ReticuliProver.Mining.genesis_doubleSHA256
+  ReticuliProver.Mining.genesis_target
+  ReticuliProver.Mining.genesis_meetsTarget
+  ReticuliProver.Mining.genesis_validCompact

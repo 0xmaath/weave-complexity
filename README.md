@@ -49,6 +49,18 @@ See `AUDIT.md` §9–§13 for the definitions and the deviations from the textbo
 Serre's `1728 g₂³ / Δ` with the unnormalised `Δ`), and the equivalent form
 `j = 1728 E₄³ / (E₄³ − E₆²)` is proved. See `AUDIT.md` §14.
 
+## SHA-256 ground (`lean/ReticuliProver/SHA256.lean`)
+
+A self-contained file (no Mathlib import) transcribing SHA-256 from FIPS 180-4 clause by
+clause (`SHR`, `ROTR`, `Ch`, `Maj`, `Σ₀`, `Σ₁`, `σ₀`, `σ₁`, `K`, `pad`, `M`, `H⁰`, `W`, the eight
+working variables, `round`, `compress`, `hashBlocks`, `digest`, `sha256`), with the NIST test
+vectors (empty, `"abc"`, the two-block `"abcdbcde…"` message) kernel-checked by
+`decide +kernel`, and the proof-of-work condition `meetsTarget header nBits` (little-endian
+value of `doubleSHA256 header` ≤ the raw compact-encoded target), kernel-checked on the
+80 genesis header bytes. The module is laid out as `ReticuliProver.SHA256` for the `lean/`
+tree of the prover; the `ReticuliProver` library in `lakefile.toml` builds it here and
+`scripts/check.sh` audits its theorems.
+
 ## Toolchain
 
 * Lean `leanprover/lean4:v4.33.0`
@@ -75,6 +87,7 @@ Complexity/Savitch.lean          milestone 2: NPSPACE ⊆ PSPACE
 Complexity/Games/                milestone 2: the game template and its PSPACE membership proof
 Complexity/QBF/                  milestone 2: QBF, TQBF, membership, hardness, completeness
 Complexity/Modular/              milestone 3: the modular j-function and its q-expansion
+lean/ReticuliProver/SHA256.lean  SHA-256 (FIPS 180-4) and the proof-of-work target condition
 Complexity/StatementCheck.lean   generated: re-elaborates every archived statement, plus
                                  hand-maintained restatements of the milestone-2 and -3 theorems
                                  (scripts/StatementCheckExtra.lean)

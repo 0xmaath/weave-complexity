@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail if any Lean source under Complexity/ contains a forbidden token outside comments.
+"""Fail if any Lean source under Complexity/ or lean/ contains a forbidden token outside comments.
 
 Forbidden: `sorry`, `admit`, `axiom`, `native_decide`, `implemented_by`, `extern`, `unsafe`.
 Comments (`-- ...`, `/- ... -/`, docstrings) are stripped first, so the attribution
@@ -16,7 +16,7 @@ def strip_comments(text: str) -> str:
     return text
 
 bad = []
-for path in sorted(list((ROOT / 'Complexity').rglob('*.lean')) + [ROOT / 'Complexity.lean']):
+for path in sorted(list((ROOT / 'Complexity').rglob('*.lean')) + list((ROOT / 'lean').rglob('*.lean')) + [ROOT / 'Complexity.lean']):
     stripped = strip_comments(path.read_text(encoding='utf-8'))
     for m in FORBIDDEN.finditer(stripped):
         line = stripped.count('\n', 0, m.start()) + 1

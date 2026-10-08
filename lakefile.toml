@@ -1,5 +1,5 @@
 name = "Complexity"
-defaultTargets = ["Complexity"]
+defaultTargets = ["Complexity", "ReticuliProver"]
 
 [leanOptions]
 autoImplicit = false
@@ -14,3 +14,10 @@ name = "Complexity"
 # Build the root module and every module under Complexity/, including the
 # generated StatementCheck module that re-elaborates the archived statements.
 globs = ["Complexity.*"]
+
+[[lean_lib]]
+name = "ReticuliProver"
+# SHA-256 (FIPS 180-4) and the proof-of-work target condition; a self-contained file
+# (no Mathlib import) laid out as `lean/ReticuliProver/SHA256.lean`.
+srcDir = "lean"
+roots = ["ReticuliProver.SHA256"]
